@@ -4,12 +4,16 @@ import PageNavigation from "@/components/page-navigation";
 import ReferenceCaseList from "@/components/reference-case/reference-case-list";
 import SubTitle from "@/components/sub-title";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
-  q: string;
-  page: number;
+  searchParams: {
+    q: string;
+    page: number;
+  };
 }
 
-const ReferenceCase = async ({ q, page }: Props) => {
+const ReferenceCase = async ({ searchParams: { q, page } }: Props) => {
   const referenceCaseList = await getReferenceCaseList(q, page);
 
   return (

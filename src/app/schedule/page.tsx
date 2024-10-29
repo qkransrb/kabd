@@ -2,6 +2,8 @@ import { getScheduleListForMonth } from "@/actions/schedule-actions";
 import ScheduleContent from "@/components/schedule/schedule-content";
 import { getYearAndMonth } from "@/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 const Schedule = async () => {
   const scheduleListForMonth = await getScheduleListForMonth(getYearAndMonth());
 

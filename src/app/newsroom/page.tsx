@@ -3,6 +3,8 @@ import NewsroomLists from "@/components/newsroom/newsroom-lists";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   searchParams: { q: string; page: number };
 }

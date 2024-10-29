@@ -3,6 +3,8 @@ import MyPayment from "@/components/my-page/my-payment";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
+export const dynamic = "force-dynamic";
+
 const MyPage = () => {
   return (
     <div className="mt-[38px] max-w-screen-xl mx-auto">

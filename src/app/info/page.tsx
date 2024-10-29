@@ -3,6 +3,8 @@ import SubTitle from "@/components/sub-title";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 const Info = () => {
   return (
     <div className="mt-[38px]">

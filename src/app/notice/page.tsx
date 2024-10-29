@@ -3,6 +3,8 @@ import NoticeTable from "@/components/notice/notice-table";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   searchParams: {
     q: string;

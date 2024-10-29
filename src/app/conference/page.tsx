@@ -4,12 +4,16 @@ import Terminated from "@/components/conference/terminated";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
-  q: string;
-  page: number;
+  searchParams: {
+    q: string;
+    page: number;
+  };
 }
 
-const Conference = async ({ q, page }: Props) => {
+const Conference = async ({ searchParams: { q, page } }: Props) => {
   const conferenceList: ConferenceList = await getConferenceList(q, page);
 
   return (

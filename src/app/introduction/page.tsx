@@ -14,6 +14,8 @@ import kim from "@/assets/images/kim.png";
 import song from "@/assets/images/song.png";
 import map from "@/assets/images/map.png";
 
+export const dynamic = "force-dynamic";
+
 const Introduction = () => {
   return (
     <div className="mt-[38px]">

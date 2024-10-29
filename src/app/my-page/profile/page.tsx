@@ -4,6 +4,8 @@ import SubTitle from "@/components/sub-title";
 import EditProfile from "@/components/my-page/edit-profile";
 import { getUserProfile } from "@/actions/my-page-actions";
 
+export const dynamic = "force-dynamic";
+
 const MyPage = async () => {
   const userProfile = await getUserProfile();
 

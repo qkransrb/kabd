@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 const FindPasswordConfirm = () => {
   return (
     <div className="max-w-screen-xl mx-auto h-[calc(100vh_-_140px)] flex items-center justify-center pb-20">

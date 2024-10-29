@@ -6,6 +6,8 @@ import MainCarousel from "@/components/home/main-carousel";
 import PressRelease from "@/components/home/press-release";
 import UserProfile from "@/components/home/user-profile";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const authenticated = await isAuthenticated();
   const homeResources: HomeResources = await getHomeResources();

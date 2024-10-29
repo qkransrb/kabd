@@ -3,12 +3,16 @@ import GalleryList from "@/components/gallery/gallery-list";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
-  q: string;
-  page: number;
+  searchParams: {
+    q: string;
+    page: number;
+  };
 }
 
-const Gallery = async ({ q, page }: Props) => {
+const Gallery = async ({ searchParams: { q, page } }: Props) => {
   const galleryList = await getGalleryList(q, page);
 
   return (

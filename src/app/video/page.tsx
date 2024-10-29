@@ -3,6 +3,8 @@ import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 import VideoList from "@/components/video/video-list";
 
+export const dynamic = "force-dynamic";
+
 const Video = async () => {
   const videoList = await getVideoList();
 
