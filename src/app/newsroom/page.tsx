@@ -4,7 +4,7 @@ import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
 interface Props {
-  searchParams: { q: string | undefined; page: number | undefined };
+  searchParams: { q: string; page: number };
 }
 
 const NewsRoom = async ({ searchParams: { q, page } }: Props) => {

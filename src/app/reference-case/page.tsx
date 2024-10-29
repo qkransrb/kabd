@@ -5,8 +5,8 @@ import ReferenceCaseList from "@/components/reference-case/reference-case-list";
 import SubTitle from "@/components/sub-title";
 
 interface Props {
-  q: string | undefined;
-  page: number | undefined;
+  q: string;
+  page: number;
 }
 
 const ReferenceCase = async ({ q, page }: Props) => {

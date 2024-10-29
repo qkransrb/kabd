@@ -5,8 +5,8 @@ import SubTitle from "@/components/sub-title";
 
 interface Props {
   searchParams: {
-    q: string | undefined;
-    page: number | undefined;
+    q: string;
+    page: number;
   };
 }
 

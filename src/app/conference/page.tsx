@@ -5,8 +5,8 @@ import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 
 interface Props {
-  q: string | undefined;
-  page: number | undefined;
+  q: string;
+  page: number;
 }
 
 const Conference = async ({ q, page }: Props) => {
