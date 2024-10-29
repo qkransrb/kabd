@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 
@@ -10,7 +11,6 @@ import { signOut } from "@/actions/auth-actions";
 import profile01 from "@/assets/images/profile01.png";
 import profile02 from "@/assets/images/profile02.png";
 import profile03 from "@/assets/images/profile03.png";
-import Image from "next/image";
 
 const UserProfile = () => {
   const [user, setUser] = useState<LocalStorageUser | null>(null);

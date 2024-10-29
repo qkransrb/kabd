@@ -16,11 +16,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import {
-  authCodeConfirm,
-  checkForDuplicates,
-  sendAuthCode,
-} from "@/actions/auth-actions";
+import { authCodeConfirm, sendAuthCode } from "@/actions/auth-actions";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,

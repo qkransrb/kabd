@@ -2,8 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { PlusIcon } from "lucide-react";
 
-import example01 from "@/assets/images/examples/example01.png";
-
 interface Props {
   pressList: HomePressList;
 }

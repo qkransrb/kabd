@@ -1,7 +1,7 @@
 import React from "react";
-import { getDaysInMonth, subMonths, startOfWeek } from "date-fns";
+import { getDaysInMonth } from "date-fns";
 
-const DATE_MONTH_FIXER = 1;
+// const DATE_MONTH_FIXER = 1;
 const CALENDER_LENGTH = 35;
 const DEFAULT_TRASH_VALUE = 0;
 const DAY_OF_WEEK = 7;
