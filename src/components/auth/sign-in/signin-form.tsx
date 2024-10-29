@@ -145,13 +145,13 @@ const SignInForm = () => {
 
         <div className="flex items-center justify-between mb-[70px]">
           <Link
-            href="/"
+            href="/find-id"
             className="text-base font-medium leading-[19.2px] custom-letter-spacing"
           >
             아이디/비밀번호 찾기
           </Link>
           <Link
-            href="/"
+            href="/sign-up"
             className="text-base font-medium leading-[19.2px] custom-letter-spacing"
           >
             회원가입

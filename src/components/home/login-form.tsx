@@ -134,7 +134,7 @@ const LoginForm = () => {
           </Button>
         </form>
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-base font-medium">
+          <Link href="/find-id" className="text-base font-medium">
             아이디/비밀번호 찾기
           </Link>
           <Link href="/sign-up" className="text-base font-medium">
