@@ -368,7 +368,7 @@ const Introduction = () => {
               전화번호
             </strong>
             <p className="text-[20px] font-normal custom-letter-spacing">
-              070-4217-2170
+              070-5153-2795
             </p>
           </div>
         </div>

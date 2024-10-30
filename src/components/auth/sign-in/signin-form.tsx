@@ -159,7 +159,7 @@ const SignInForm = () => {
         </div>
 
         <p className="text-[15px] leading-[18px] font-medium text-[#595959] custom-letter-spacing mb-[30px]">
-          * 로그인 오류 시 070-4217-2170으로 문의주시기 바랍니다.
+          * 로그인 오류 시 070-5153-2795으로 문의주시기 바랍니다.
         </p>
 
         <Separator className="bg-[#D2D2D2] mb-[72px]" />
