@@ -45,7 +45,7 @@ const InProgress = ({ ingList }: Props) => {
                 </div>
               </div>
               <Link
-                href="/"
+                href={`/conference/${conference.ac_seq}`}
                 className="w-[269px] h-[56px] rounded-[10px] flex items-center justify-center bg-[#2C2C2C]"
               >
                 <span className="text-white text-lg custom-letter-spacing leading-[21.48px] font-semibold">
