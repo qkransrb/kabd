@@ -30,7 +30,7 @@ const AcademicConferenceDetails = ({ conference }: Props) => {
           {conference.ac_title}
         </h3>
         <span className="text-sm font-medium leading-[16.71px] text-[#626262] custom-letter-spacing">
-          {conference.ac_date}
+          {conference.ac_date.split("-").join(".")}
         </span>
       </div>
       <Separator className="h-[3px] bg-black mb-[110px]" />
