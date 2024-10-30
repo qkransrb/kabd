@@ -23,22 +23,22 @@ const Header = async () => {
           />
         </Link>
         <ul className="w-[709px] flex items-center gap-20 h-full">
-          <li className="h-full flex items-center">
+          <li className="h-full flex items-center whitespace-nowrap">
             <Link href="/introduction" className="text-header-navigation">
               학회소개
             </Link>
           </li>
-          <li className="h-full flex items-center">
+          <li className="h-full flex items-center whitespace-nowrap">
             <Link href="/info" className="text-header-navigation">
               회원가입안내
             </Link>
           </li>
-          <li className="h-full flex items-center">
+          <li className="h-full flex items-center whitespace-nowrap">
             <Link href="/conference" className="text-header-navigation">
               학술대회안내
             </Link>
           </li>
-          <li className="h-full flex items-center relative group">
+          <li className="h-full flex items-center relative group whitespace-nowrap">
             <span className="text-header-navigation cursor-pointer">
               학회소식
             </span>
@@ -85,7 +85,7 @@ const Header = async () => {
               </li>
             </ul>
           </li>
-          <li className="h-full flex items-center relative group">
+          <li className="h-full flex items-center relative group whitespace-nowrap">
             <span className="text-header-navigation cursor-pointer">
               자료실
             </span>
