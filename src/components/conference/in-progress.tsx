@@ -30,13 +30,13 @@ const InProgress = ({ ingList }: Props) => {
                   {conference.ac_title}
                 </h4>
                 <div className="space-y-3">
-                  <p className="flex items-center gap-5">
+                  <p className="flex items-center gap-5 whitespace-nowrap">
                     <span className="text-lg font-bold">학회일시</span>
                     <span className="text-lg font-medium">
                       {conference.ac_date_string}
                     </span>
                   </p>
-                  <p className="flex items-center gap-5">
+                  <p className="flex items-center gap-5 whitespace-nowrap">
                     <span className="text-lg font-bold">학회장소</span>
                     <span className="text-lg font-medium">
                       {conference.ac_location}

@@ -29,8 +29,9 @@ const Info = () => {
             </div>
             <div className="h-14 w-14 rotate-45 bg-[#D0E3FF] -translate-x-7 z-10" />
             <div className="h-20 bg-[#5194FB] w-[350px] -translate-x-14 flex items-center justify-center">
-              <p className="text-[21px] text-white font-bold leading-[25.2px] max-w-[124px] translate-x-7">
-                이사회 심사 및 입·연회비 납부
+              <p className="text-[21px] text-white font-bold leading-[25.2px] translate-x-7 whitespace-nowrap">
+                이사회 심사 및<br />
+                입·연회비 납부
               </p>
             </div>
             <div className="h-14 w-14 rotate-45 bg-[#5194FB] -translate-x-[84px] z-10" />
@@ -63,8 +64,9 @@ const Info = () => {
         </h3>
         <ul className="list-none text-lg font-normal leading-[34px] custom-letter-spacing max-w-[895px] space-y-2">
           <li>
-            · 한국생체모방치의학회는 환자 치료의 질을 향상시키기 위해 노력하는
+            · 한국생체모방치의학회는 생체모방치의학의 발전을 위해 노력하는
             치과계 의료 전문가들과 유관 분야 연구자들의 공동체입니다.
+            <br />
             &nbsp;&nbsp;따라서 치과의사가 아니신 분들도 학회 가입이 가능합니다.
           </li>
           <li>

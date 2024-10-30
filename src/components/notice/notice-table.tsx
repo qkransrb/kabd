@@ -64,7 +64,7 @@ const NoticeTable = ({ noticeList }: Props) => {
               ? noticeList.list.map((notice) => (
                   <TableRow key={notice.b_seq}>
                     <TableCell className="text-center font-medium custom-letter-spacing">
-                      {notice.b_seq}
+                      {notice.rnum}
                     </TableCell>
                     <TableCell className="text-start max-w-[800px]">
                       <Link href={`/notice/${notice.b_seq}`}>

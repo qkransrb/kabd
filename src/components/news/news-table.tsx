@@ -63,7 +63,7 @@ const NewsTable = ({ newsList }: Props) => {
               ? newsList.list.map((news) => (
                   <TableRow key={news.b_seq}>
                     <TableCell className="text-center font-medium custom-letter-spacing">
-                      {news.b_seq}
+                      {news.rnum}
                     </TableCell>
                     <TableCell className="text-center max-w-[800px]">
                       <Link href={`/news/${news.b_seq}`}>

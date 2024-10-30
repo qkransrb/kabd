@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="flex items-center gap-x-10">
             <div className="space-x-1.5">
               <span className="footer-info-a">Tel.</span>
-              <span className="footer-info-q">070-4217-2170</span>
+              <span className="footer-info-q">070-5153-2795</span>
             </div>
             <div className="space-x-1.5">
               <span className="footer-info-a">Fax.</span>
