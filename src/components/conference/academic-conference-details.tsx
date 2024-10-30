@@ -77,9 +77,9 @@ const AcademicConferenceDetails = ({ conference }: Props) => {
         <Separator className="bg-[#626262] mb-[100px]" />
         <Link
           href="/conference"
-          className="border border-[#626262] w-[150px] h-[60px] bg-[#F5F5F5] flex items-center justify-center mb-[200px]"
+          className="w-[108px] h-[50px] rounded-[10px] bg-[#DFDFDF] flex items-center justify-center mb-[200px]"
         >
-          <span className="text-base font-medium custom-letter-spacing leading-[19.06px] pt-1">
+          <span className="text-base font-semibold custom-letter-spacing leading-[19.06px] pt-1 whitespace-nowrap">
             목록
           </span>
         </Link>
