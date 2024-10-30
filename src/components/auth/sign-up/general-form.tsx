@@ -857,7 +857,7 @@ const GeneralForm = () => {
                       <li>7. 영수증 출력은 회원 마이페이지에서 가능합니다.</li>
                       <li>
                         8. 기타 문의 사항은 학회 사무국으로 연락해 주시기
-                        바랍니다 (전화: 070-4217-2170).
+                        바랍니다 (전화: 070-5153-2795).
                       </li>
                     </ul>
                     <p className="font-bold">제5조(탈퇴 및 환불 규정)</p>
@@ -1124,7 +1124,7 @@ const GeneralForm = () => {
                     </div>
                     <ul className="list-disc list-inside px-5">
                       <li>성명: 유다연</li>
-                      <li>연락처: 070-4217-2170</li>
+                      <li>연락처: 070-5153-2795</li>
                       <li>이메일: 2021kabd@gmail.com</li>
                     </ul>
                   </AccordionContent>
