@@ -9,6 +9,7 @@ import {
   getScheduleListForMonth,
   getScheduleListForYaerMonthDay,
 } from "@/actions/schedule-actions";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Props {
   scheduleListForMonth: ScheduleListForMonth;
@@ -25,7 +26,7 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
 
   return (
     <>
-      <div className="flex items-center justify-center mb-20 gap-10">
+      <div className="flex items-center justify-center mb-20 gap-5">
         <button
           onClick={async () => {
             setCurrentDate(subMonths(currentDate, 1));
@@ -38,10 +39,14 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
             setScheduleList(data.list);
           }}
         >
-          prev
+          <ChevronLeft size={42} className="mb-2" />
         </button>
         <h3 className="text-center text-5xl">
-          {`${currentDate.getFullYear()}.${currentDate.getMonth() + 1}`}
+          {`${currentDate.getFullYear()}.${
+            String(currentDate.getMonth() + 1).length > 1
+              ? currentDate.getMonth() + 1
+              : `0${currentDate.getMonth() + 1}`
+          }`}
         </h3>
         <button
           onClick={async () => {
@@ -55,7 +60,7 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
             setScheduleList(data.list);
           }}
         >
-          next
+          <ChevronRight size={42} className="mb-2" />
         </button>
       </div>
       <div className="flex justify-between">
