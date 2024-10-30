@@ -30,3 +30,7 @@ export function formatBytes(bytes: number, decimals: number = 2) {
 
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
+
+export function getVideoId(videoUrl: string) {
+  return videoUrl.split("https://vimeo.com/")[1];
+}

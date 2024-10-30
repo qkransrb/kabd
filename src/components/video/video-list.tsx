@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import VideoItem from "./video-item";
-import Pagination from "../pagination";
+import Pagination from "@/components/pagination";
+import VideoItem from "@/components/video/video-item";
+import VimeoPlayer from "@/components/video/vimeo-player";
+import { getVideoId } from "@/lib/utils";
 
 interface Props {
   videoList: VideoList;
@@ -29,26 +31,12 @@ const VideoList = ({ videoList }: Props) => {
       <div className="mb-10">
         {selectedVideo ? (
           <>
-            <h3 className="text-[24px] font-bold leading-[28.8px]">
+            <h3 className="text-[24px] font-bold leading-[28.8px] mb-3">
               {selectedVideo.b_title}
             </h3>
             {selectedVideo ? (
               <div className="rounded-[20px] overflow-hidden">
-                {/* <iframe
-                  width="1280"
-                  height="678"
-                  // src={selectedVideo.b_file2_real}
-                  src="https://vimeo.com/1023629912?share=copy"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                /> */}
-
-                <video controls preload="none" aria-label="Video player">
-                  <source src="https://vimeo.com/1023629912" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <VimeoPlayer videoId={getVideoId(selectedVideo.b_file2_real)} />
               </div>
             ) : null}
           </>

@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { getVideoId } from "@/lib/utils";
+
 interface Props {
   video: Video;
   setSelectedVideo: React.Dispatch<React.SetStateAction<Video | null>>;
@@ -13,7 +15,7 @@ const VideoItem = ({ video, setSelectedVideo }: Props) => {
     >
       <div className="mb-8">
         <Image
-          src={`https://vumbnail.com/1023629912.jpg`}
+          src={`https://vumbnail.com/${getVideoId(video.b_file2_real)}.jpg`}
           alt=""
           width={556}
           height={292}
@@ -27,13 +29,11 @@ const VideoItem = ({ video, setSelectedVideo }: Props) => {
         <div className="space-y-2">
           <p className="text-lg leading-[21.6px] space-x-5">
             <span className="font-bold">학회일시</span>
-            <span className="font-medium">2024년 10월 26일(토) ~ 27일(일)</span>
+            <span className="font-medium">{video.b_date_string}</span>
           </p>
           <p className="text-lg leading-[21.6px] space-x-5">
             <span className="font-bold">학회장소</span>
-            <span className="font-medium">
-              서울특별시 강남구 언주로 728, 5층(논현동)
-            </span>
+            <span className="font-medium">{video.b_location}</span>
           </p>
         </div>
       </div>
