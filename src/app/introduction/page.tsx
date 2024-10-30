@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 const Introduction = () => {
   return (
     <div className="mt-[38px]">
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-xl mx-auto" id="introduction">
         <PageNavigation first="Home" second="학회소개" />
       </div>
 
@@ -89,7 +89,8 @@ const Introduction = () => {
           />
         </div>
       </section>
-      <section className="mb-[200px] max-w-screen-xl mx-auto">
+
+      <section className="mb-[200px] max-w-screen-xl mx-auto" id="history">
         <SubTitle text="연혁" className="mb-9" />
         <div className="py-[50px] px-9 rounded-[20px] bg-[#F4F5FA] max-w-[471px] w-full">
           <p className="text-[21px] font-bold mb-7">
@@ -141,7 +142,7 @@ const Introduction = () => {
           </ul>
         </div>
       </section>
-      <section className="bg-[#F4F5FA] h-[833px] mb-[200px]">
+      <section className="bg-[#F4F5FA] h-[833px] mb-[200px]" id="purpose">
         <div className="max-w-screen-xl mx-auto flex justify-between">
           <div>
             <SubTitle text="설립 목적" className="pt-[110px] mb-9" />
@@ -163,7 +164,8 @@ const Introduction = () => {
           />
         </div>
       </section>
-      <section className="max-w-screen-xl mx-auto mb-[200px]">
+
+      <section className="max-w-screen-xl mx-auto mb-[200px]" id="regulations">
         <div className="flex items-center gap-5 mb-9">
           <SubTitle text="회칙" />
           <a
@@ -181,7 +183,7 @@ const Introduction = () => {
           <h5 className="text-[26px] font-bold">{`<미니쉬생체모방치의학회 정관>`}</h5>
         </div>
       </section>
-      <section className="max-w-screen-xl mx-auto mb-[200px]">
+      <section className="max-w-screen-xl mx-auto mb-[200px]" id="executive">
         <div className="mb-9">
           <SubTitle text="임원진 안내" />
         </div>
@@ -336,7 +338,8 @@ const Introduction = () => {
           </div>
         </div>
       </section>
-      <section className="max-w-screen-xl mx-auto mb-[200px]">
+
+      <section className="max-w-screen-xl mx-auto mb-[200px]" id="location">
         <div className="mb-9">
           <SubTitle text="사무국 안내" />
         </div>

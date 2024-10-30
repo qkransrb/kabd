@@ -23,10 +23,60 @@ const Header = async () => {
           />
         </Link>
         <ul className="w-[709px] flex items-center gap-20 h-full">
-          <li className="h-full flex items-center whitespace-nowrap">
+          <li className="h-full flex items-center whitespace-nowrap group relative">
             <Link href="/introduction" className="text-header-navigation">
               학회소개
             </Link>
+            <ul className="hidden group-hover:flex py-[18px] px-8 flex-col gap-y-[18px] absolute min-w-[131px] bg-white/70 backdrop-blur-[5px] top-[92px] -left-[60%] z-10 rounded-[10px]">
+              <li className="w-full text-center">
+                <Link
+                  href="/introduction#introduction"
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  학회소개
+                </Link>
+              </li>
+              <li className="w-full text-center">
+                <Link
+                  href="/introduction#history"
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  연혁
+                </Link>
+              </li>
+              <li className="w-full text-center">
+                <Link
+                  href="/introduction#purpose"
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  설립목적
+                </Link>
+              </li>
+              <li className="w-full text-center">
+                <Link
+                  href="/introduction#regulations"
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  회칙
+                </Link>
+              </li>
+              <li className="w-full text-center">
+                <Link
+                  href="/introduction#executive"
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  임원진 안내
+                </Link>
+              </li>
+              <li className="w-full text-center">
+                <Link
+                  href="/introduction#location"
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  사무국 안내
+                </Link>
+              </li>
+            </ul>
           </li>
           <li className="h-full flex items-center whitespace-nowrap">
             <Link href="/info" className="text-header-navigation">

@@ -157,13 +157,14 @@ const MyPageConference = () => {
                                   alt="kabd"
                                   width={71}
                                   height={71}
+                                  className="w-[71px] h-[71px] object-contain"
                                 />
                                 <Image
                                   src={receiptPhrase}
                                   alt="kabd"
                                   width={143}
                                   height={20}
-                                  className="absolute"
+                                  className="absolute w-[143px] h-[20px] object-contain"
                                 />
                               </div>
                             </div>
