@@ -9,19 +9,19 @@ const Footer = () => {
       <div className="max-w-screen-xl h-full mx-auto flex flex-col justify-between">
         <Image src={Logo} alt="" width={278} height={49} />
         <div className="flex items-center gap-x-4">
-          <Link href="/" className="footer-link">
+          <Link href="/privacy-policy" className="footer-link">
             개인정보처리방침
           </Link>
           <span className="h-[11px] w-[1px] bg-[#7A7A7A]" />
-          <Link href="/" className="footer-link">
+          <Link href="/terms" className="footer-link">
             이용약관
           </Link>
           <span className="h-[11px] w-[1px] bg-[#7A7A7A]" />
-          <Link href="/introduction" className="footer-link">
+          <Link href="/introduction#location" className="footer-link">
             오시는길
           </Link>
           <span className="h-[11px] w-[1px] bg-[#7A7A7A]" />
-          <Link href="/introduction" className="footer-link">
+          <Link href="/introduction#introduction" className="footer-link">
             학회소개
           </Link>
         </div>

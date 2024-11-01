@@ -34,3 +34,33 @@ export function formatBytes(bytes: number, decimals: number = 2) {
 export function getVideoId(videoUrl: string) {
   return videoUrl.split("https://vimeo.com/")[1];
 }
+
+export function getMyPagePaymentType(typeNumber: string) {
+  switch (typeNumber) {
+    case "1":
+      return "신용카드";
+    case "2":
+      return "계좌이체";
+    case "3":
+      return "가상계좌";
+    case "4":
+      return "휴대폰";
+    default:
+      return "";
+  }
+}
+
+export function getMyPagePaymentStatus(status: string) {
+  switch (status) {
+    case "P":
+      return "결제대기";
+    case "Y":
+      return "결제완료";
+    case "N":
+      return "결제취소";
+    case "S":
+      return "결제실패";
+    default:
+      return "";
+  }
+}

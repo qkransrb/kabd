@@ -29,7 +29,7 @@ const UserProfile = () => {
         <div>
           <span className="text-[13px] text-[#595959] font-semibold custom-letter-spacing">
             {user?.type === "G" ? "치과의사" : "일반회원"}/
-            {user?.grade === "Y" ? "정회원" : "비회원"}
+            {user?.grade !== "N" ? "정회원" : "비회원"}
           </span>
           <div className="space-x-1">
             <span className="text-[22px] font-semibold custom-letter-spacing underline">

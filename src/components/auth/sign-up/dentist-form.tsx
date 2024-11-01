@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import SubTitle from "@/components/sub-title";
 import {
@@ -46,6 +47,8 @@ import {
   dentistSignUp,
   sendAuthCode,
 } from "@/actions/auth-actions";
+import { useToast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 const majors = [
   {
@@ -162,7 +165,12 @@ const DentistForm = () => {
   const [addressType, setAddressType] = useState<"H" | "J">("J");
   const [address, setAddress] = useState<string>("");
   const [zipcode, setZipcode] = useState<string>("");
-  const [confirmUserId, setConfirmUserId] = useState<boolean>(false);
+  const [confirmUserId, setConfirmUserId] = useState<boolean>(true);
+  const [majorList, setMajorList] = useState<string[]>([]);
+
+  const router = useRouter();
+
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -201,7 +209,13 @@ const DentistForm = () => {
       return window.alert("휴대전화 인증 확인을 진행해주세요.");
     }
 
-    await dentistSignUp(values);
+    if (await dentistSignUp(values)) {
+      toast({ title: "회원가입에 성공하였습니다." });
+      form.reset();
+      router.push("/sign-in");
+    } else {
+      toast({ title: "회원가입에 실패하였습니다.", variant: "destructive" });
+    }
   };
 
   return (
@@ -249,9 +263,14 @@ const DentistForm = () => {
                         ) {
                           form.setValue("userIdConfirm", true);
                           setConfirmUserId(true);
+                          toast({ title: "사용 가능한 아이디 입니다." });
                         } else {
                           form.setValue("userIdConfirm", false);
                           setConfirmUserId(false);
+                          toast({
+                            title: "사용하실 수 없는 아이디입니다.",
+                            variant: "destructive",
+                          });
                         }
                       }}
                       className={cn(
@@ -485,7 +504,19 @@ const DentistForm = () => {
                     </FormControl>
                     <button
                       type="button"
-                      onClick={() => sendAuthCode(field.value)}
+                      onClick={async () => {
+                        const result = await sendAuthCode(field.value);
+                        if (result.code === "000" && result.msg === "success") {
+                          toast({
+                            title: "인증번호가 발송되었습니다.",
+                          });
+                        } else {
+                          toast({
+                            title: "인증번호 발송에 실패하였습니다.",
+                            variant: "destructive",
+                          });
+                        }
+                      }}
                       className={cn(
                         "h-10 rounded-full min-w-[116px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
                         form.getFieldState(field.name).invalid ||
@@ -525,6 +556,15 @@ const DentistForm = () => {
 
                         if (res.code === "000" && res.msg === "success") {
                           form.setValue("phoneConfirm", true);
+                          toast({
+                            title: "인증에 성공하였습니다.",
+                          });
+                        } else {
+                          form.setValue("phoneConfirm", false);
+                          toast({
+                            title: "인증에 실패하였습니다.",
+                            variant: "destructive",
+                          });
                         }
                       }}
                       className={cn(
@@ -658,7 +698,7 @@ const DentistForm = () => {
                 전공과목
               </span>
             </div>
-            <div className="w-full flex items-center p-[22px]">
+            <div className="w-full flex items-center px-[22px] gap-x-4">
               <FormField
                 control={form.control}
                 name="major"
@@ -691,16 +731,29 @@ const DentistForm = () => {
                                   <Checkbox
                                     checked={field.value?.includes(major.id)}
                                     onCheckedChange={(checked) => {
-                                      return checked
-                                        ? field.onChange([
-                                            ...field.value,
-                                            major.id,
-                                          ])
-                                        : field.onChange(
-                                            field.value?.filter(
-                                              (value) => value !== major.id
-                                            )
-                                          );
+                                      if (checked) {
+                                        field.onChange([
+                                          ...field.value,
+                                          major.id,
+                                        ]);
+
+                                        setMajorList((prev) => [
+                                          ...prev,
+                                          major.id,
+                                        ]);
+                                      } else {
+                                        field.onChange(
+                                          field.value?.filter(
+                                            (value) => value !== major.id
+                                          )
+                                        );
+
+                                        setMajorList((prev) =>
+                                          prev.filter(
+                                            (item) => item !== major.id
+                                          )
+                                        );
+                                      }
                                     }}
                                   />
                                 </FormControl>
@@ -716,6 +769,16 @@ const DentistForm = () => {
                   </DropdownMenu>
                 )}
               />
+              <div className="grid grid-cols-6 gap-x-2 gap-y-1">
+                {majorList.map((major) => (
+                  <Badge
+                    key={major}
+                    className="flex items-center justify-center font-medium text-sm"
+                  >
+                    {major}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -734,17 +797,17 @@ const DentistForm = () => {
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
-                        defaultValue="kakao"
-                        className="flex items-center gap-[54px]"
+                        defaultValue="S"
+                        className="flex items-center gap-6"
                       >
-                        <FormItem className="flex items-center space-x-1.5 space-y-0">
+                        {/* <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="K" />
                           </FormControl>
                           <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                             카카오톡
                           </FormLabel>
-                        </FormItem>
+                        </FormItem> */}
                         <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="S" />
@@ -801,7 +864,7 @@ const DentistForm = () => {
                               form.setValue("addressName", "");
                               form.setValue("addressTel", "");
                             }}
-                            defaultValue="company"
+                            defaultValue="J"
                             className="flex items-center gap-6"
                           >
                             <FormItem className="flex items-center space-x-1.5 space-y-0">

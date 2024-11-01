@@ -11,24 +11,20 @@ export async function getConferenceList(q?: string, page?: number) {
       {
         keyword: q,
         currentPage: page && page >= 2 ? page : 1,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
-        },
       }
     );
 
     return data;
   } catch (error) {
-    if (error instanceof AxiosError) {
-      if (
-        error.response?.data?.msg === "Expired token" ||
-        error.response?.data?.msg === "Wrong number of segments"
-      ) {
-        return redirect("/sign-in");
-      }
-    }
+    // if (error instanceof AxiosError) {
+    //   if (
+    //     error.response?.data?.msg === "Expired token" ||
+    //     error.response?.data?.msg === "Wrong number of segments"
+    //   ) {
+    //     return redirect("/sign-in");
+    //   }
+    // }
+    console.log(error);
   }
 }
 
@@ -38,23 +34,19 @@ export async function getConferenceDetails(id: string) {
       "https://api.kabd.or.kr/api/conference/conference.php",
       {
         ac_seq: id,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
-        },
       }
     );
 
     return data;
   } catch (error) {
-    if (error instanceof AxiosError) {
-      if (
-        error.response?.data?.msg === "Expired token" ||
-        error.response?.data?.msg === "Wrong number of segments"
-      ) {
-        return redirect("/sign-in");
-      }
-    }
+    // if (error instanceof AxiosError) {
+    //   if (
+    //     error.response?.data?.msg === "Expired token" ||
+    //     error.response?.data?.msg === "Wrong number of segments"
+    //   ) {
+    //     return redirect("/sign-in");
+    //   }
+    // }
+    console.log(error);
   }
 }

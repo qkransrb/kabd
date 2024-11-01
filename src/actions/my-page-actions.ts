@@ -43,7 +43,7 @@ export async function updateDentistProfile(dentist: UpdateDentistProfile) {
         m_license_number: dentist.license,
         m_email: dentist.email,
         m_school: dentist.university,
-        m_major: dentist.major,
+        m_major: dentist.major.join("|"),
         m_notices_method: dentist.type,
         m_zipcode: dentist.zipcode,
         m_addr1: dentist.address,
@@ -59,8 +59,6 @@ export async function updateDentistProfile(dentist: UpdateDentistProfile) {
         },
       }
     );
-
-    console.log(data);
 
     return data;
   } catch (error) {
@@ -107,6 +105,60 @@ export async function updateGeneralProfile(general: UpdateGeneralProfile) {
     );
 
     console.log(data);
+
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (
+        error.response?.data?.msg === "Expired token" ||
+        error.response?.data?.msg === "Wrong number of segments"
+      ) {
+        return redirect("/sign-in");
+      }
+    }
+  }
+}
+
+export async function getPaymentList(page?: number) {
+  try {
+    const { data } = await axios.post(
+      "https://api.kabd.or.kr/api/pay/history_sel.php",
+      {
+        currentPage: page && page >= 2 ? page : 1,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
+        },
+      }
+    );
+
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (
+        error.response?.data?.msg === "Expired token" ||
+        error.response?.data?.msg === "Wrong number of segments"
+      ) {
+        return redirect("/sign-in");
+      }
+    }
+  }
+}
+
+export async function getConferenceList(page?: number) {
+  try {
+    const { data } = await axios.post(
+      "https://api.kabd.or.kr/api/attendees/attendees_sel.php",
+      {
+        currentPage: page && page >= 2 ? page : 1,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
+        },
+      }
+    );
 
     return data;
   } catch (error) {

@@ -4,12 +4,12 @@ import axios, { AxiosError } from "axios";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export async function getScheduleListForMonth(month: string) {
+export async function getScheduleListForMonth(ym: string) {
   try {
     const { data } = await axios.post(
-      "https://api.kabd.or.kr/api/conference/search.php",
+      "https://api.kabd.or.kr/api/calendar/search.php",
       {
-        month,
+        month: ym,
       },
       {
         headers: {
@@ -34,7 +34,7 @@ export async function getScheduleListForMonth(month: string) {
 export async function getScheduleListForYaerMonthDay(ymd: string) {
   try {
     const { data } = await axios.post(
-      "https://api.kabd.or.kr/api/conference/search_new.php",
+      "https://api.kabd.or.kr/api/calendar/search_new.php",
       {
         ymd,
       },

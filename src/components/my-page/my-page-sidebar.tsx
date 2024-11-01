@@ -26,7 +26,7 @@ const MyPageSidebar = () => {
       <div>
         <span className="text-[21px] text-[#595959] font-semibold custom-letter-spacing">
           {user?.type === "G" ? "치과의사" : "일반회원"} /{" "}
-          {user?.grade === "Y" ? "정회원" : "비회원"}
+          {user?.grade !== "N" ? "정회원" : "비회원"}
         </span>
         <div className="space-x-2 my-4">
           <span className="text-[30px] font-semibold custom-letter-spacing underline underline-offset-4">

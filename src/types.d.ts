@@ -448,11 +448,12 @@ type ConferenceList = {
 };
 
 type Schedule = {
-  ac_seq: string;
-  ac_title: string;
-  ac_location: string;
-  ac_date_string: string;
+  c_seq: string;
+  c_title: string;
+  c_location: string;
+  c_date_string: string;
   sDate: string;
+  sDate_string: string;
   eDate: string;
 };
 
@@ -541,4 +542,51 @@ type UpdateGeneralProfile = {
   type: string;
   userId: string;
   zipcode: string;
+};
+
+type MyPagePayment = {
+  rnum: string;
+  ph_seq: string;
+  ph_date: string;
+  ph_amount: string;
+  ph_pay_type: string;
+  ph_pay_tid: string;
+  ph_pay_status: string;
+  pp_seq: string;
+  pp_title: string;
+};
+
+type MyPagePaymentList = {
+  List: MyPagePayment[];
+  total: string;
+  currentPage: string;
+  page_cnt: number;
+  code: string;
+  msg: string;
+};
+
+type MyPageConference = {
+  rnum: string;
+  a_seq: string;
+  a_date: string;
+  a_ac_seq: string;
+  a_order_amount: string;
+  a_amount: string;
+  a_pay_type: string;
+  a_pay_tid: string;
+  a_order_date: string;
+  a_pay_date: string;
+  a_pay_status: string;
+  ac_ac_title: string | null;
+  m_id: string;
+  m_name: string;
+};
+
+type MyPageConferenceList = {
+  list: MyPageConference[];
+  total: string;
+  currentPage: string;
+  page_cnt: number;
+  code: string;
+  msg: string;
 };

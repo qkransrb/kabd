@@ -62,7 +62,7 @@ const Info = () => {
         <h3 className="text-[24px] font-bold leading-[28.8px] mb-10">
           안내사항
         </h3>
-        <ul className="list-none text-lg font-normal leading-[34px] custom-letter-spacing max-w-[895px] space-y-2">
+        <ul className="list-none text-lg font-normal leading-[34px] custom-letter-spacing max-w-[895px] space-y-2 whitespace-nowrap">
           <li>
             · 한국생체모방치의학회는 생체모방치의학의 발전을 위해 노력하는
             치과계 의료 전문가들과 유관 분야 연구자들의 공동체입니다.
@@ -121,15 +121,17 @@ const Info = () => {
               · 종신회비 납부 시, 더이상 연회비는 납부하지 않으셔도 됩니다.
             </li>
             <li>· 결제 방법 : 계좌이체 또는 카드결제 가능합니다.</li>
-            <li>
-              · 납부 계좌 :{" "}
-              <span className="font-bold underline underline-offset-2">
-                신한은행 140-014-665217 (예금주: (사)미니쉬생체모방치의학회)
-              </span>
-              <p className="ml-[86px]">
-                치과의사의 경우 입금 시 면허번호+성함으로 입금 부탁드립니다.
-                (ex: 99999홍길동)
-              </p>
+            <li className="flex gap-1">
+              <span>· 납부 계좌 :</span>
+              <div>
+                <span className="font-bold underline underline-offset-2">
+                  신한은행 140-014-665217 (예금주: (사)미니쉬생체모방치의학회)
+                </span>
+                <p>
+                  치과의사의 경우 입금 시 면허번호+성함으로 입금 부탁드립니다.
+                  (ex: 99999홍길동)
+                </p>
+              </div>
             </li>
             <li>· 영수증 출력은 마이페이지에서 가능합니다.</li>
             <li>

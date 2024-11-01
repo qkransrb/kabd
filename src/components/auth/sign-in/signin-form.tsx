@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { signIn } from "@/actions/auth-actions";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   userId: z.string(),
@@ -25,6 +26,8 @@ const SignInForm = () => {
   const [saveUserId, setSaveUserId] = useState<boolean>(false);
 
   const router = useRouter();
+
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,6 +67,11 @@ const SignInForm = () => {
       );
 
       router.push("/");
+    } else {
+      toast({
+        title: user.msg,
+        variant: "destructive",
+      });
     }
   };
 
@@ -158,7 +166,7 @@ const SignInForm = () => {
           </Link>
         </div>
 
-        <p className="text-[15px] leading-[18px] font-medium text-[#595959] custom-letter-spacing mb-[30px]">
+        <p className="text-[15px] leading-[18px] font-medium text-[#595959] custom-letter-spacing mb-[30px] whitespace-nowrap">
           * 로그인 오류 시 070-5153-2795으로 문의주시기 바랍니다.
         </p>
 

@@ -1,3 +1,4 @@
+import { getPaymentList } from "@/actions/my-page-actions";
 import MyPageSidebar from "@/components/my-page/my-page-sidebar";
 import MyPayment from "@/components/my-page/my-payment";
 import PageNavigation from "@/components/page-navigation";
@@ -5,7 +6,13 @@ import SubTitle from "@/components/sub-title";
 
 export const dynamic = "force-dynamic";
 
-const MyPage = () => {
+interface Props {
+  searchParams: { page: number };
+}
+
+const MyPage = async ({ searchParams: { page } }: Props) => {
+  const paymentList = await getPaymentList(page);
+
   return (
     <div className="mt-[38px] max-w-screen-xl mx-auto">
       <PageNavigation first="Home" second="마이페이지" />
@@ -20,7 +27,7 @@ const MyPage = () => {
         </div>
 
         <div className="w-9/12 pl-6 border-l border-[#D9D9D9]">
-          <MyPayment />
+          <MyPayment paymentList={paymentList} />
         </div>
       </section>
     </div>

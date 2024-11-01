@@ -146,7 +146,7 @@ const Introduction = () => {
         <div className="max-w-screen-xl mx-auto flex justify-between">
           <div>
             <SubTitle text="설립 목적" className="pt-[110px] mb-9" />
-            <p className="max-w-[653px] custom-letter-spacing text-lg leading-[32px] font-normal">
+            <p className="max-w-[653px] custom-letter-spacing text-lg leading-[32px] font-normal whitespace-nowrap">
               최근 대두되는 생체모방이론에 입각한 과학적 근거을 정립하고,
               <br />
               임상적으로 응용 가능하도록 하는 것에 목적을 두고 있습니다.

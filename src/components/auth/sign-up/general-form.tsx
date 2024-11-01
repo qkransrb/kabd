@@ -32,6 +32,8 @@ import {
   generalSignUp,
   sendAuthCode,
 } from "@/actions/auth-actions";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z
   .object({
@@ -92,7 +94,11 @@ const GeneralForm = () => {
   const [addressType, setAddressType] = useState<"H" | "J">("J");
   const [address, setAddress] = useState<string>("");
   const [zipcode, setZipcode] = useState<string>("");
-  const [confirmUserId, setConfirmUserId] = useState<boolean>(false);
+  const [confirmUserId, setConfirmUserId] = useState<boolean>(true);
+
+  const router = useRouter();
+
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -128,7 +134,13 @@ const GeneralForm = () => {
       return window.alert("휴대전화 인증 확인을 진행해주세요.");
     }
 
-    await generalSignUp(values);
+    if (await generalSignUp(values)) {
+      toast({ title: "회원가입에 성공하였습니다." });
+      form.reset();
+      router.push("/sign-in");
+    } else {
+      toast({ title: "회원가입에 실패하였습니다.", variant: "destructive" });
+    }
   };
 
   return (
@@ -176,9 +188,14 @@ const GeneralForm = () => {
                         ) {
                           form.setValue("userIdConfirm", true);
                           setConfirmUserId(true);
+                          toast({ title: "사용 가능한 아이디 입니다." });
                         } else {
                           form.setValue("userIdConfirm", false);
                           setConfirmUserId(false);
+                          toast({
+                            title: "사용하실 수 없는 아이디입니다.",
+                            variant: "destructive",
+                          });
                         }
                       }}
                       className={cn(
@@ -412,7 +429,19 @@ const GeneralForm = () => {
                     </FormControl>
                     <button
                       type="button"
-                      onClick={() => sendAuthCode(field.value)}
+                      onClick={async () => {
+                        const result = await sendAuthCode(field.value);
+                        if (result.code === "000" && result.msg === "success") {
+                          toast({
+                            title: "인증번호가 발송되었습니다.",
+                          });
+                        } else {
+                          toast({
+                            title: "인증번호 발송에 실패하였습니다.",
+                            variant: "destructive",
+                          });
+                        }
+                      }}
                       className={cn(
                         "h-10 rounded-full min-w-[116px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
                         form.getFieldState(field.name).invalid ||
@@ -452,6 +481,15 @@ const GeneralForm = () => {
 
                         if (res.code === "000" && res.msg === "success") {
                           form.setValue("phoneConfirm", true);
+                          toast({
+                            title: "인증에 성공하였습니다.",
+                          });
+                        } else {
+                          form.setValue("phoneConfirm", false);
+                          toast({
+                            title: "인증에 실패하였습니다.",
+                            variant: "destructive",
+                          });
                         }
                       }}
                       className={cn(
@@ -514,17 +552,17 @@ const GeneralForm = () => {
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
-                        defaultValue="kakao"
+                        defaultValue="S"
                         className="flex items-center gap-[54px]"
                       >
-                        <FormItem className="flex items-center space-x-1.5 space-y-0">
+                        {/* <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="K" />
                           </FormControl>
                           <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                             카카오톡
                           </FormLabel>
-                        </FormItem>
+                        </FormItem> */}
                         <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="S" />
@@ -581,7 +619,7 @@ const GeneralForm = () => {
                               form.setValue("addressName", "");
                               form.setValue("addressTel", "");
                             }}
-                            defaultValue="company"
+                            defaultValue="J"
                             className="flex items-center gap-6"
                           >
                             <FormItem className="flex items-center space-x-1.5 space-y-0">

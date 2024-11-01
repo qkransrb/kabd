@@ -37,6 +37,7 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
             );
 
             setScheduleList(data.list);
+            setSelectedDay(undefined);
           }}
         >
           <ChevronLeft size={42} className="mb-2" />
@@ -58,6 +59,7 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
             );
 
             setScheduleList(data.list);
+            setSelectedDay(undefined);
           }}
         >
           <ChevronRight size={42} className="mb-2" />
@@ -68,19 +70,19 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
           <div className="flex bg-[#F4F5FA] border-t-[3px] border-black border-b border-b-[#828282]">
             {DAY_LIST.map((day) => (
               <div
+                key={`DAY-${day}`}
                 className="w-24 h-14 flex items-center justify-center"
-                key={day}
               >
                 {day}
               </div>
             ))}
           </div>
           {weekCalendarList.map((item) => (
-            <div className="flex w-full" key={Math.random()}>
+            <div key={`WCL-${Math.random()}`} className="flex w-full">
               {item.map((day, index) => {
                 return (
                   <button
-                    key={Math.random()}
+                    key={`WL-${Math.random()}`}
                     onClick={async () => {
                       setSelectedDay(day);
 
@@ -122,7 +124,7 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
           <div className="pt-5 space-y-5">
             {scheduleList.map((schedule) => (
               <div
-                key={schedule.ac_seq}
+                key={`SL-${schedule.c_seq}`}
                 className="bg-[#F4F5FA] px-10 py-9 rounded-[20px] overflow-hidden flex flex-col justify-between max-h-[192px]"
               >
                 <div className="mb-5">
@@ -132,19 +134,19 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
                     }월 ${selectedDay}일`}</span>
                   ) : null}
                   <p className="truncate text-[20px] font-bold block leading-[23.87px]">
-                    {schedule.ac_title}
+                    {schedule.c_title}
                   </p>
                 </div>
                 <div className="text-lg text-[#525252] leading-[21.6px] space-y-1">
                   <div className="space-x-5">
                     <span className="font-bold">학회일시</span>
                     <span className="font-medium">
-                      {schedule.ac_date_string}
+                      {schedule.c_date_string}
                     </span>
                   </div>
                   <div className="space-x-5">
                     <span className="font-bold">학회장소</span>
-                    <span className="font-medium">{schedule.ac_location}</span>
+                    <span className="font-medium">{schedule.c_location}</span>
                   </div>
                 </div>
               </div>

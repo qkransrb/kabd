@@ -1,3 +1,4 @@
+import { getConferenceList } from "@/actions/my-page-actions";
 import MyPageConference from "@/components/my-page/my-page-conference";
 import MyPageSidebar from "@/components/my-page/my-page-sidebar";
 
@@ -6,7 +7,15 @@ import SubTitle from "@/components/sub-title";
 
 export const dynamic = "force-dynamic";
 
-const MyConference = () => {
+interface Props {
+  searchParams: { page: number };
+}
+
+const MyConference = async ({ searchParams: { page } }: Props) => {
+  const conferenceList = await getConferenceList(page);
+
+  console.log(conferenceList);
+
   return (
     <div className="mt-[38px] max-w-screen-xl mx-auto">
       <PageNavigation first="Home" second="마이페이지" />
@@ -21,7 +30,7 @@ const MyConference = () => {
         </div>
 
         <div className="w-9/12 pl-6 border-l border-[#D9D9D9]">
-          <MyPageConference />
+          <MyPageConference conferenceList={conferenceList} />
         </div>
       </section>
     </div>

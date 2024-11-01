@@ -85,7 +85,9 @@ export const dentistSignUp = async (data: DentistSignUp) => {
   const res = await response.json();
 
   if (res.code === "000" && res.msg === "success") {
-    return redirect("/sign-in");
+    return true;
+  } else {
+    return false;
   }
 };
 
@@ -117,11 +119,10 @@ export const generalSignUp = async (data: GeneralSignUp) => {
 
   const res = await response.json();
 
-  console.log(response);
-  console.log(res);
-
   if (res.code === "000" && res.msg === "success") {
-    return redirect("/sign-in");
+    return true;
+  } else {
+    return false;
   }
 };
 

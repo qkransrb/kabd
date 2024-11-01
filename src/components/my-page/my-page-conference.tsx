@@ -24,6 +24,7 @@ import {
 
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
 import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
+import { getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
 const payments = [
   {
@@ -52,7 +53,11 @@ const payments = [
   },
 ];
 
-const MyPageConference = () => {
+interface Props {
+  conferenceList: MyPageConferenceList;
+}
+
+const MyPageConference = ({ conferenceList }: Props) => {
   return (
     <div>
       <div className="mb-[18px]">
@@ -85,16 +90,22 @@ const MyPageConference = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {payments.map((payment) => (
-              <TableRow key={payment.id}>
-                <TableCell className="text-center">{payment.title}</TableCell>
+            {conferenceList.list.map((conference) => (
+              <TableRow key={conference.a_seq}>
                 <TableCell className="text-center">
-                  {payment.amount.toLocaleString("kr")}원
+                  {conference.ac_ac_title}
                 </TableCell>
-                <TableCell className="text-center">{payment.status}</TableCell>
+                <TableCell className="text-center">
+                  {Number(conference.a_amount).toLocaleString("kr")}원
+                </TableCell>
+                <TableCell className="text-center">
+                  {getMyPagePaymentStatus(conference.a_pay_status)}
+                </TableCell>
                 <TableCell>
                   <div className="flex items-center justify-between">
-                    <div className="w-1/2 text-center">{payment.method}</div>
+                    <div className="w-1/2 text-center">
+                      {getMyPagePaymentType(conference.a_pay_type)}
+                    </div>
                     <div className="w-1/2">
                       <Dialog>
                         <DialogTrigger asChild>
@@ -114,7 +125,11 @@ const MyPageConference = () => {
                           </DialogHeader>
                           <div className="pt-[70px] pb-[60px]">
                             <p className="text-[17px] font-semibold custom-letter-spacing mb-3">
-                              24년 06월 01일 결제정보
+                              {conference.a_pay_date
+                                .split(" ")[0]
+                                .split("-")
+                                .join(".")}{" "}
+                              결제정보
                             </p>
                             <Table>
                               <TableHeader className="border-t border-[#111111] h-12">
@@ -130,10 +145,13 @@ const MyPageConference = () => {
                               <TableBody className="border-b border-[#D2D2D2] h-12">
                                 <TableRow>
                                   <TableCell className="text-center text-lg font-normal w-1/2 border-r border-[#D2D2D2] p-0">
-                                    2024 추계학술대회
+                                    {conference.ac_ac_title}
                                   </TableCell>
                                   <TableCell className="text-center text-lg font-normal w-1/2 p-0">
-                                    100,000원
+                                    {Number(conference.a_amount).toLocaleString(
+                                      "kr"
+                                    )}
+                                    원
                                   </TableCell>
                                 </TableRow>
                               </TableBody>
@@ -141,14 +159,27 @@ const MyPageConference = () => {
                             <Separator className="bg-black mt-[70px] mb-1" />
                             <div className="text-lg font-semibold flex items-center justify-between">
                               <span>총금액</span>
-                              <span>100,000원</span>
+                              <span>
+                                {Number(conference.a_amount).toLocaleString(
+                                  "kr"
+                                )}
+                                원
+                              </span>
                             </div>
                           </div>
                           <DialogFooter className="w-full flex items-center justify-center">
                             <div className="w-full flex items-center justify-center flex-col gap-5">
                               <div className="w-full flex items-center justify-center">
                                 <span className="text-[17px] font-normal custom-letter-spacing">
-                                  2024년 11월 30일
+                                  {new Date().getFullYear()}년{" "}
+                                  {String(new Date().getMonth() + 1).length > 1
+                                    ? new Date().getMonth() + 1
+                                    : `0${new Date().getMonth() + 1}`}
+                                  월{" "}
+                                  {String(new Date().getDate()).length > 1
+                                    ? new Date().getDate()
+                                    : `0${new Date().getDate()}`}
+                                  일
                                 </span>
                               </div>
                               <div className="w-full flex items-center justify-center relative">
@@ -175,7 +206,7 @@ const MyPageConference = () => {
                   </div>
                 </TableCell>
                 <TableCell className="text-center">
-                  {payment.createdAt}
+                  {conference.a_pay_date.split(" ")[0].split("-").join(".")}{" "}
                 </TableCell>
                 <TableCell className="text-center">취소완료</TableCell>
               </TableRow>

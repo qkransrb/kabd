@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,37 +34,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
+import Pagination from "@/components/pagination";
+import { cn, getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
 import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
-
-const payments = [
-  {
-    id: 1,
-    title: "종신회비",
-    amount: 800000,
-    status: "결제완료",
-    method: "계좌이체",
-    createdAt: "24.09.01",
-  },
-  {
-    id: 2,
-    title: "2023 연회비",
-    amount: 50000,
-    status: "결제완료",
-    method: "카드",
-    createdAt: "24.08.01",
-  },
-  {
-    id: 3,
-    title: "입회비",
-    amount: 50000,
-    status: "결제완료",
-    method: "카드",
-    createdAt: "24.08.01",
-  },
-];
 
 const formSchema = z.object({
   type: z.string().min(1),
@@ -71,7 +46,13 @@ const formSchema = z.object({
   method: z.string().min(1),
 });
 
-const MyPayment = () => {
+interface Props {
+  paymentList: MyPagePaymentList;
+}
+
+const MyPayment = ({ paymentList }: Props) => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -81,8 +62,13 @@ const MyPayment = () => {
     },
   });
 
+  const onPageChange = (event: any) => {
+    const { selected } = event;
+    router.push(`/my-page/payment?page=${selected + 1}`);
+  };
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    //
+    console.log(values);
   };
 
   return (
@@ -103,7 +89,24 @@ const MyPayment = () => {
               render={({ field }) => (
                 <FormItem className="flex items-center w-[160px]">
                   <Select
-                    onValueChange={field.onChange}
+                    onValueChange={(value) => {
+                      field.onChange(value);
+
+                      switch (value) {
+                        case "입회비":
+                          return form.setValue("amount", "50000");
+                        case "연회비(1년)":
+                          return form.setValue("amount", "50000");
+                        case "연회비(3년)":
+                          return form.setValue("amount", "150000");
+                        case "연회비(5년)":
+                          return form.setValue("amount", "500000");
+                        case "종신회비":
+                          return form.setValue("amount", "800000");
+                        default:
+                          break;
+                      }
+                    }}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -139,10 +142,14 @@ const MyPayment = () => {
                 <FormItem className="flex items-center w-[160px]">
                   <FormControl>
                     <Input
-                      type="number"
                       placeholder="결제금액"
                       {...field}
-                      className="h-[50px] rounded-[10px]"
+                      className={cn(
+                        "h-[50px] text-base text-[#828282] font-medium custom-letter-spacing rounded-[10px]",
+                        form.getFieldState(field.name).error &&
+                          "border-[#D00000]"
+                      )}
+                      readOnly
                     />
                   </FormControl>
                 </FormItem>
@@ -211,20 +218,22 @@ const MyPayment = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {payments.map((payment) => (
-              <TableRow key={payment.id}>
+            {paymentList.List.map((payment) => (
+              <TableRow key={payment.ph_seq}>
                 <TableCell className="w-2/12 text-center">
-                  {payment.title}
+                  {payment.pp_title}
                 </TableCell>
                 <TableCell className="w-2/12 text-center">
-                  {payment.amount.toLocaleString("kr")}원
+                  {Number(payment.ph_amount).toLocaleString("kr")}원
                 </TableCell>
                 <TableCell className="w-2/12 text-center">
-                  {payment.status}
+                  {getMyPagePaymentStatus(payment.ph_pay_status)}
                 </TableCell>
                 <TableCell className="w-4/12">
                   <div className="flex items-center justify-between">
-                    <div className="w-1/2 text-center">{payment.method}</div>
+                    <div className="w-1/2 text-center">
+                      {getMyPagePaymentType(payment.ph_pay_type)}
+                    </div>
                     <div className="w-1/2">
                       <Dialog>
                         <DialogTrigger asChild>
@@ -244,7 +253,11 @@ const MyPayment = () => {
                           </DialogHeader>
                           <div className="pt-[70px] pb-[60px]">
                             <p className="text-[17px] font-semibold custom-letter-spacing mb-3">
-                              24년 06월 01일 결제정보
+                              {payment.ph_date
+                                .split(" ")[0]
+                                .split("-")
+                                .join(".")}{" "}
+                              결제정보
                             </p>
                             <Table>
                               <TableHeader className="border-t border-[#111111] h-12">
@@ -260,10 +273,13 @@ const MyPayment = () => {
                               <TableBody className="border-b border-[#D2D2D2] h-12">
                                 <TableRow>
                                   <TableCell className="text-center text-lg font-normal w-1/2 border-r border-[#D2D2D2] p-0">
-                                    2024 추계학술대회
+                                    {payment.pp_title}
                                   </TableCell>
                                   <TableCell className="text-center text-lg font-normal w-1/2 p-0">
-                                    100,000원
+                                    {Number(payment.ph_amount).toLocaleString(
+                                      "kr"
+                                    )}
+                                    원
                                   </TableCell>
                                 </TableRow>
                               </TableBody>
@@ -271,14 +287,25 @@ const MyPayment = () => {
                             <Separator className="bg-black mt-[70px] mb-1" />
                             <div className="text-lg font-semibold flex items-center justify-between">
                               <span>총금액</span>
-                              <span>100,000원</span>
+                              <span>
+                                {Number(payment.ph_amount).toLocaleString("kr")}
+                                원
+                              </span>
                             </div>
                           </div>
                           <DialogFooter className="w-full flex items-center justify-center">
                             <div className="w-full flex items-center justify-center flex-col gap-5">
                               <div className="w-full flex items-center justify-center">
                                 <span className="text-[17px] font-normal custom-letter-spacing">
-                                  2024년 11월 30일
+                                  {new Date().getFullYear()}년{" "}
+                                  {String(new Date().getMonth() + 1).length > 1
+                                    ? new Date().getMonth() + 1
+                                    : `0${new Date().getMonth() + 1}`}
+                                  월{" "}
+                                  {String(new Date().getDate()).length > 1
+                                    ? new Date().getDate()
+                                    : `0${new Date().getDate()}`}
+                                  일
                                 </span>
                               </div>
                               <div className="w-full flex items-center justify-center relative">
@@ -305,12 +332,19 @@ const MyPayment = () => {
                   </div>
                 </TableCell>
                 <TableCell className="w-2/12 text-center">
-                  {payment.createdAt}
+                  {payment.ph_date.split(" ")[0].split("-").join(".")}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="mt-[50px]">
+        <Pagination
+          onPageChange={onPageChange}
+          pageCount={paymentList.page_cnt}
+        />
       </div>
     </div>
   );
