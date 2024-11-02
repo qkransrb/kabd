@@ -19,12 +19,12 @@ const NewsDetailsContent = ({ newsDetails }: Props) => {
             {newsDetails.data.b_date2?.split("-").join(".")}
           </span>
         </div>
-        <Separator className="h-[3px] bg-black mb-2.5" />
-        <div className="flex items-center justify-end mb-[100px]">
+        <Separator className="h-[3px] bg-black mb-20" />
+        {/* <div className="flex items-center justify-end mb-[100px]">
           <span className="text-[26px] text-black font-bold leading-[31.2px] custom-letter-spacing">
             {newsDetails.data.b_user_name}
           </span>
-        </div>
+        </div> */}
 
         <div className="flex flex-col items-center justify-center">
           <article className="max-w-[1134px] mx-auto">

@@ -36,13 +36,13 @@ const AcademicConferenceDetails = ({ conference }: Props) => {
       </div>
       <Separator className="h-[3px] bg-black mb-[110px]" />
       <div className="flex flex-col items-center">
-        <Image
-          src={conference.ac_file1}
-          alt={conference.ac_title}
-          width={1134}
-          height={650}
-          className="object-cover w-[1134px] h-[650px] mb-[90px]"
-        />
+        <div className="mb-[90px]">
+          <img
+            src={conference.ac_file1}
+            alt={conference.ac_title}
+            className="object-cover"
+          />
+        </div>
 
         <ConferencePaymentButton />
         <Separator className="bg-[#626262] mb-[100px]" />

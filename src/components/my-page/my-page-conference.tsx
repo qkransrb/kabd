@@ -26,33 +26,6 @@ import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
 import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
 import { getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
-const payments = [
-  {
-    id: 1,
-    title: "2024 추계학술대회",
-    amount: 800000,
-    status: "결제완료",
-    method: "계좌이체",
-    createdAt: "24.09.01",
-  },
-  {
-    id: 2,
-    title: "2024 추계학술대회",
-    amount: 50000,
-    status: "결제완료",
-    method: "카드",
-    createdAt: "24.08.01",
-  },
-  {
-    id: 3,
-    title: "2024 추계학술대회",
-    amount: 50000,
-    status: "결제완료",
-    method: "카드",
-    createdAt: "24.08.01",
-  },
-];
-
 interface Props {
   conferenceList: MyPageConferenceList;
 }

@@ -52,14 +52,16 @@ export function getMyPagePaymentType(typeNumber: string) {
 
 export function getMyPagePaymentStatus(status: string) {
   switch (status) {
-    case "P":
-      return "결제대기";
     case "Y":
       return "결제완료";
     case "N":
-      return "결제취소";
+      return "결제대기";
     case "S":
       return "결제실패";
+    case "W":
+      return "취소신청중";
+    case "C":
+      return "취소완료";
     default:
       return "";
   }
