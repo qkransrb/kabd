@@ -1,10 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useReactToPrint } from "react-to-print";
+import { Printer } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
@@ -51,6 +54,9 @@ interface Props {
 }
 
 const MyPayment = ({ paymentList }: Props) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const reactToPrintFn = useReactToPrint({ contentRef });
+
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -244,11 +250,23 @@ const MyPayment = ({ paymentList }: Props) => {
                             영수증 출력
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="p-9 sm:max-w-[460px]">
+                        <DialogContent
+                          ref={contentRef}
+                          className="p-9 sm:max-w-[460px]"
+                        >
                           <DialogHeader>
                             <DialogTitle className="text-[29px] font-semibold custom-letter-spacing text-center">
                               영수증
                             </DialogTitle>
+                            <Button
+                              onClick={() => {
+                                reactToPrintFn();
+                              }}
+                              variant="ghost"
+                              className="absolute !m-0"
+                            >
+                              <Printer />
+                            </Button>
                             <DialogDescription hidden />
                           </DialogHeader>
                           <div className="pt-[70px] pb-[60px]">
