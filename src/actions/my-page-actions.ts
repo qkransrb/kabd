@@ -104,8 +104,6 @@ export async function updateGeneralProfile(general: UpdateGeneralProfile) {
       }
     );
 
-    console.log(data);
-
     return data;
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -161,6 +159,33 @@ export async function getConferenceList(page?: number) {
     );
 
     return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (
+        error.response?.data?.msg === "Expired token" ||
+        error.response?.data?.msg === "Wrong number of segments"
+      ) {
+        return redirect("/sign-in");
+      }
+    }
+  }
+}
+
+export async function withdraw() {
+  try {
+    const { data } = await axios.post(
+      "https://api.kabd.or.kr/api/member/withdraw.php",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
+        },
+      }
+    );
+
+    console.log(data);
+
+    cookies().delete("kabd_token");
   } catch (error) {
     if (error instanceof AxiosError) {
       if (

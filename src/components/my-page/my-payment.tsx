@@ -100,7 +100,7 @@ const MyPayment = ({ paymentList }: Props) => {
                         case "연회비(3년)":
                           return form.setValue("amount", "150000");
                         case "연회비(5년)":
-                          return form.setValue("amount", "500000");
+                          return form.setValue("amount", "250000");
                         case "종신회비":
                           return form.setValue("amount", "800000");
                         default:

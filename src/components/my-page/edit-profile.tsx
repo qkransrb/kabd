@@ -49,8 +49,8 @@ import {
 import {
   updateDentistProfile,
   updateGeneralProfile,
+  withdraw,
 } from "@/actions/my-page-actions";
-import { useToast } from "@/hooks/use-toast";
 import { Badge } from "../ui/badge";
 
 const majors = [
@@ -171,8 +171,6 @@ const EditProfile = ({ userProfile }: Props) => {
 
   const router = useRouter();
 
-  const { toast } = useToast();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -213,24 +211,18 @@ const EditProfile = ({ userProfile }: Props) => {
     if (userProfile.mem_info.m_type === "G") {
       const result = await updateDentistProfile(values);
       if (result.code === "200") {
-        toast({ title: "회원정보 수정에 성공하였습니다." });
+        window.alert("회원정보 수정에 성공하였습니다.");
         router.refresh();
       } else {
-        toast({
-          title: "회원정보 수정에 실패하였습니다.",
-          variant: "destructive",
-        });
+        window.alert("회원정보 수정에 실패하였습니다.");
       }
     } else {
       const result = await updateGeneralProfile(values);
       if (result.code === "200") {
-        toast({ title: "회원정보 수정에 성공하였습니다." });
+        window.alert("회원정보 수정에 성공하였습니다.");
         router.refresh();
       } else {
-        toast({
-          title: "회원정보 수정에 실패하였습니다.",
-          variant: "destructive",
-        });
+        window.alert("회원정보 수정에 실패하였습니다.");
       }
     }
 
@@ -514,14 +506,9 @@ const EditProfile = ({ userProfile }: Props) => {
                       onClick={async () => {
                         const result = await sendAuthCode(field.value);
                         if (result.code === "000" && result.msg === "success") {
-                          toast({
-                            title: "인증번호가 발송되었습니다.",
-                          });
+                          window.alert("인증번호가 발송되었습니다.");
                         } else {
-                          toast({
-                            title: "인증번호 발송에 실패하였습니다.",
-                            variant: "destructive",
-                          });
+                          window.alert("인증번호 발송에 실패하였습니다.");
                         }
                       }}
                       className={cn(
@@ -563,15 +550,10 @@ const EditProfile = ({ userProfile }: Props) => {
 
                         if (res.code === "000" && res.msg === "success") {
                           form.setValue("phoneConfirm", true);
-                          toast({
-                            title: "인증에 성공하였습니다.",
-                          });
+                          window.alert("인증에 성공하였습니다.");
                         } else {
                           form.setValue("phoneConfirm", false);
-                          toast({
-                            title: "인증에 실패하였습니다.",
-                            variant: "destructive",
-                          });
+                          window.alert("인증에 실패하였습니다.");
                         }
                       }}
                       className={cn(
@@ -1068,7 +1050,15 @@ const EditProfile = ({ userProfile }: Props) => {
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter className="pt-4">
-                  <AlertDialogAction className="w-full">탈퇴</AlertDialogAction>
+                  <AlertDialogAction
+                    className="w-full"
+                    onClick={async () => {
+                      await withdraw();
+                      window.alert("탈퇴가 완료되었습니다.");
+                    }}
+                  >
+                    탈퇴
+                  </AlertDialogAction>
                   <AlertDialogCancel className="w-full">취소</AlertDialogCancel>
                 </AlertDialogFooter>
               </AlertDialogContent>

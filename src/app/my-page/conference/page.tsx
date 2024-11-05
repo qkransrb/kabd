@@ -14,8 +14,6 @@ interface Props {
 const MyConference = async ({ searchParams: { page } }: Props) => {
   const conferenceList = await getConferenceList(page);
 
-  console.log(conferenceList);
-
   return (
     <div className="mt-[38px] max-w-screen-xl mx-auto">
       <PageNavigation first="Home" second="마이페이지" />

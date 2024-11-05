@@ -1,11 +1,16 @@
+import { isRegularMember } from "@/actions/auth-actions";
 import { getVideoList } from "@/actions/video-actions";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 import VideoList from "@/components/video/video-list";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 const Video = async () => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const videoList = await getVideoList();
 
   return (

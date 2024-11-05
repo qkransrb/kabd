@@ -1,7 +1,9 @@
 import { getAbstractList } from "@/actions/abstract-actions";
+import { isRegularMember } from "@/actions/auth-actions";
 import AbstractList from "@/components/abstract/abstract-list";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -10,6 +12,9 @@ interface Props {
 }
 
 const Abstract = async ({ searchParams: { q, page } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const abstractList = await getAbstractList(q, page);
 
   return (

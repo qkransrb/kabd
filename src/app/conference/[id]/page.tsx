@@ -18,7 +18,7 @@ const ConferenceDetails = async ({ params: { id } }: Props) => {
         <SubTitle text="학술대회안내" className="mt-[30px] mb-[58px]" />
       </section>
 
-      <AcademicConferenceDetails conference={conference} />
+      <AcademicConferenceDetails id={id} conference={conference} />
     </div>
   );
 };

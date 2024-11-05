@@ -47,7 +47,6 @@ import {
   dentistSignUp,
   sendAuthCode,
 } from "@/actions/auth-actions";
-import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 
 const majors = [
@@ -170,8 +169,6 @@ const DentistForm = () => {
 
   const router = useRouter();
 
-  const { toast } = useToast();
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -210,11 +207,11 @@ const DentistForm = () => {
     }
 
     if (await dentistSignUp(values)) {
-      toast({ title: "회원가입에 성공하였습니다." });
+      window.alert("회원가입에 성공하였습니다.");
       form.reset();
       router.push("/sign-in");
     } else {
-      toast({ title: "회원가입에 실패하였습니다.", variant: "destructive" });
+      window.alert("회원가입에 실패하였습니다.");
     }
   };
 
@@ -263,14 +260,11 @@ const DentistForm = () => {
                         ) {
                           form.setValue("userIdConfirm", true);
                           setConfirmUserId(true);
-                          toast({ title: "사용 가능한 아이디 입니다." });
+                          window.alert("사용 가능한 아이디 입니다.");
                         } else {
                           form.setValue("userIdConfirm", false);
                           setConfirmUserId(false);
-                          toast({
-                            title: "사용하실 수 없는 아이디입니다.",
-                            variant: "destructive",
-                          });
+                          window.alert("사용하실 수 없는 아이디입니다.");
                         }
                       }}
                       className={cn(
@@ -507,14 +501,9 @@ const DentistForm = () => {
                       onClick={async () => {
                         const result = await sendAuthCode(field.value);
                         if (result.code === "000" && result.msg === "success") {
-                          toast({
-                            title: "인증번호가 발송되었습니다.",
-                          });
+                          window.alert("인증번호가 발송되었습니다.");
                         } else {
-                          toast({
-                            title: "인증번호 발송에 실패하였습니다.",
-                            variant: "destructive",
-                          });
+                          window.alert("인증번호 발송에 실패하였습니다.");
                         }
                       }}
                       className={cn(
@@ -556,15 +545,10 @@ const DentistForm = () => {
 
                         if (res.code === "000" && res.msg === "success") {
                           form.setValue("phoneConfirm", true);
-                          toast({
-                            title: "인증에 성공하였습니다.",
-                          });
+                          window.alert("인증에 성공하였습니다.");
                         } else {
                           form.setValue("phoneConfirm", false);
-                          toast({
-                            title: "인증에 실패하였습니다.",
-                            variant: "destructive",
-                          });
+                          window.alert("인증에 실패하였습니다.");
                         }
                       }}
                       className={cn(

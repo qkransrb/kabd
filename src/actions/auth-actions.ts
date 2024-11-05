@@ -2,7 +2,7 @@
 
 import { AxiosError } from "axios";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import jwt from "jsonwebtoken";
 
 import { SignInValues } from "@/components/auth/sign-in/signin-form";
 import { DentistSignUp } from "@/components/auth/sign-up/dentist-form";
@@ -164,6 +164,27 @@ export const signIn = async (data: SignInValues) => {
 export const isAuthenticated = async () => {
   try {
     return cookies().get("kabd_token") ? true : false;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+export const isRegularMember = async () => {
+  try {
+    const token = cookies().get("kabd_token")?.value;
+
+    if (token) {
+      const payload: any = jwt.verify(token, process.env.JWT_SECRET!);
+
+      if (payload.data.m_regular === "Y") {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   } catch (error) {
     console.log(error);
     return false;

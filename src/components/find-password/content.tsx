@@ -9,24 +9,20 @@ import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { findPassword, resetPassword } from "@/actions/find-actions";
+import { findPassword } from "@/actions/find-actions";
 import { useState } from "react";
 import { authCodeConfirm, sendAuthCode } from "@/actions/auth-actions";
-import { useToast } from "@/hooks/use-toast";
 
-const formSchema = z.object({
-  userId: z.string().min(1),
-  username: z.string().min(1),
-  phone: z.string().min(10),
-  phoneConfirm: z
-    .boolean()
-    .default(false)
-    .refine((value) => value === true),
-  confirmNumber: z.string().min(6),
-});
-
-const resetPasswordFormSchema = z
+const formSchema = z
   .object({
+    userId: z.string().min(1),
+    username: z.string().min(1),
+    phone: z.string().min(10),
+    phoneConfirm: z
+      .boolean()
+      .default(false)
+      .refine((value) => value === true),
+    confirmNumber: z.string().min(6),
     password: z
       .string()
       .min(8)
@@ -48,14 +44,10 @@ const resetPasswordFormSchema = z
 
 export type FindPasswordValues = z.infer<typeof formSchema>;
 
-export type ResetPasswordValues = z.infer<typeof resetPasswordFormSchema>;
-
 const Content = () => {
   const [fetchSuccess, setFetchSuccess] = useState<boolean>(false);
 
   const router = useRouter();
-
-  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -65,12 +57,6 @@ const Content = () => {
       phone: "",
       phoneConfirm: false,
       confirmNumber: "",
-    },
-  });
-
-  const resetPasswordForm = useForm<z.infer<typeof resetPasswordFormSchema>>({
-    resolver: zodResolver(resetPasswordFormSchema),
-    defaultValues: {
       password: "",
       confirmPassword: "",
     },
@@ -80,25 +66,17 @@ const Content = () => {
     const result = await findPassword(values);
 
     if (result.code === "000" && result.msg === "success") {
-      setFetchSuccess(true);
+      router.push("/find-password/confirm");
+    } else {
+      window.alert("비밀번호 변경에 실패하였습니다.");
     }
   };
 
-  const resetPasswordOnSubmit = async (
-    values: z.infer<typeof resetPasswordFormSchema>
-  ) => {
-    const result = await resetPassword({
-      ...values,
-      userId: form.getValues("userId"),
-    });
-
-    if (result.code === "000" && result.msg === "success") {
-      router.push("/find-password/confirm");
+  const handleNextStep = () => {
+    if (form.getValues("phoneConfirm")) {
+      setFetchSuccess(true);
     } else {
-      toast({
-        title: "비밀번호 변경에 실패하였습니다.",
-        variant: "destructive",
-      });
+      return alert("휴대전화 인증을 진행해주세요.");
     }
   };
 
@@ -129,64 +107,12 @@ const Content = () => {
           </div>
         )}
 
-        {fetchSuccess ? (
-          <Form {...resetPasswordForm}>
-            <form
-              onSubmit={resetPasswordForm.handleSubmit(resetPasswordOnSubmit)}
-              className="max-w-[520px] w-full"
-            >
-              <div className="mb-3">
-                <FormField
-                  control={resetPasswordForm.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          type="password"
-                          placeholder="비밀번호"
-                          className="h-[56px] rounded-[10px] w-full px-5"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="mb-3">
-                <FormField
-                  control={resetPasswordForm.control}
-                  name="confirmPassword"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          type="password"
-                          placeholder="비밀번호 확인"
-                          className="h-[56px] rounded-[10px] w-full px-5"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="flex items-center justify-center">
-                <Button
-                  type="submit"
-                  className="h-[56px] w-[345px] rounded-[10px] flex items-center justify-center text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
-                >
-                  확인
-                </Button>
-              </div>
-            </form>
-          </Form>
-        ) : (
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="max-w-[520px] w-full"
-            >
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="max-w-[520px] w-full"
+          >
+            <div hidden={fetchSuccess}>
               <div className="mb-3">
                 <FormField
                   control={form.control}
@@ -242,13 +168,9 @@ const Content = () => {
                   onClick={async () => {
                     const result = await sendAuthCode(form.getValues("phone"));
                     if (result.code === "000" && result.msg === "success") {
-                      form.setValue("phoneConfirm", true);
-                      toast({ title: "인증번호를 발송하였습니다." });
+                      window.alert("인증번호를 발송하였습니다.");
                     } else {
-                      toast({
-                        title: "인증번호 발송에 실패하였습니다.",
-                        variant: "destructive",
-                      });
+                      window.alert("인증번호 발송에 실패하였습니다.");
                     }
                   }}
                   className="min-w-[120px] bg-[#2C2C2C] text-white h-[56px] rounded-[10px] px-4 font-medium"
@@ -280,12 +202,11 @@ const Content = () => {
                       form.getValues("phone")
                     );
                     if (result.code === "000" && result.msg === "success") {
-                      toast({ title: "인증 성공하였습니다." });
+                      form.setValue("phoneConfirm", true);
+                      window.alert("인증 성공하였습니다.");
                     } else {
-                      toast({
-                        title: "인증 실패하였습니다.",
-                        variant: "destructive",
-                      });
+                      form.setValue("phoneConfirm", false);
+                      window.alert("인증 실패하였습니다.");
                     }
                   }}
                   className="min-w-[120px] bg-[#2C2C2C] text-white h-[56px] rounded-[10px] px-4 font-medium"
@@ -295,16 +216,63 @@ const Content = () => {
               </div>
               <div className="flex items-center justify-center">
                 <Button
-                  type="submit"
+                  type="button"
+                  onClick={handleNextStep}
                   className="h-[56px] w-[345px] rounded-[10px] flex items-center justify-center text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
                   disabled={fetchSuccess}
                 >
                   다음 단계
                 </Button>
               </div>
-            </form>
-          </Form>
-        )}
+            </div>
+            <div hidden={!fetchSuccess}>
+              <div className="mb-3">
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="비밀번호"
+                          className="h-[56px] rounded-[10px] w-full px-5"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="mb-3">
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          type="password"
+                          placeholder="비밀번호 확인"
+                          className="h-[56px] rounded-[10px] w-full px-5"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex items-center justify-center">
+                <Button
+                  type="submit"
+                  className="h-[56px] w-[345px] rounded-[10px] flex items-center justify-center text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
+                >
+                  확인
+                </Button>
+              </div>
+            </div>
+          </form>
+        </Form>
       </div>
     </div>
   );

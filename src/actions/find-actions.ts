@@ -1,10 +1,7 @@
 "use server";
 
 import { FindIdValues } from "@/components/find-id/content";
-import {
-  FindPasswordValues,
-  ResetPasswordValues,
-} from "@/components/find-password/content";
+import { FindPasswordValues } from "@/components/find-password/content";
 import axios from "axios";
 
 export async function findId(values: FindIdValues) {

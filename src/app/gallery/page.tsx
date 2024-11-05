@@ -1,7 +1,9 @@
+import { isRegularMember } from "@/actions/auth-actions";
 import { getGalleryList } from "@/actions/gallery-actions";
 import GalleryList from "@/components/gallery/gallery-list";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -13,6 +15,9 @@ interface Props {
 }
 
 const Gallery = async ({ searchParams: { q, page } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const galleryList = await getGalleryList(q, page);
 
   return (

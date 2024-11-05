@@ -1,7 +1,9 @@
+import { isRegularMember } from "@/actions/auth-actions";
 import { getNewsroomList } from "@/actions/newsroom-actions";
 import NewsroomLists from "@/components/newsroom/newsroom-lists";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -10,6 +12,9 @@ interface Props {
 }
 
 const NewsRoom = async ({ searchParams: { q, page } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const newsroomList = await getNewsroomList(q, page);
 
   return (

@@ -1,13 +1,18 @@
 import { getAbstractDetails } from "@/actions/abstract-actions";
+import { isRegularMember } from "@/actions/auth-actions";
 import AbstractPdfDownload from "@/components/abstract/abstract-pdf-download";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
+import { redirect } from "next/navigation";
 
 interface Props {
   params: { id: string };
 }
 
 const AbstractDetails = async ({ params: { id } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const abstract = await getAbstractDetails(id);
 
   return (

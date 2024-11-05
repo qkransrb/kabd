@@ -1,29 +1,23 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ChevronRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import ConferencePaymentButton from "./conference-payment-button";
+import ConferencePaymentButton from "@/components/conference/conference-payment-button";
 
 interface Props {
+  id: string;
   conference: {
     ac_file1: string;
     ac_date: string;
     ac_title: string;
     ac_seq: string;
     amount: string;
+    r_amount: string;
     code: string;
     msg: string;
   };
 }
 
-const AcademicConferenceDetails = ({ conference }: Props) => {
+const AcademicConferenceDetails = ({ id, conference }: Props) => {
   return (
     <div>
       <div className="flex items-baseline justify-between mb-4">
@@ -44,7 +38,7 @@ const AcademicConferenceDetails = ({ conference }: Props) => {
           />
         </div>
 
-        <ConferencePaymentButton />
+        <ConferencePaymentButton id={id} amount={conference.r_amount} />
         <Separator className="bg-[#626262] mb-[100px]" />
         <Link
           href="/conference"

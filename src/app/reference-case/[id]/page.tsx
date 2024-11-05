@@ -1,13 +1,18 @@
+import { isRegularMember } from "@/actions/auth-actions";
 import { getReferenceCaseDetails } from "@/actions/reference-case-actions";
 import PageNavigation from "@/components/page-navigation";
 import ReferenceCaseDetailsContent from "@/components/reference-case/reference-case-details-content";
 import SubTitle from "@/components/sub-title";
+import { redirect } from "next/navigation";
 
 interface Props {
   params: { id: string };
 }
 
 const ReferenceCaseDetails = async ({ params: { id } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const referenceCaseDetails = await getReferenceCaseDetails(id);
 
   return (

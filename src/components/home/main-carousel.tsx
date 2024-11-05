@@ -9,6 +9,7 @@ import {
 
 import mc02 from "@/assets/images/mc02.png";
 import mc01 from "@/assets/images/mc01.png";
+import Link from "next/link";
 
 const list = [
   {
@@ -27,7 +28,10 @@ const MainCarousel = () => {
       <CarouselContent>
         {list.map((item) => (
           <CarouselItem key={item.id}>
-            <div className="overflow-hidden rounded-[20px]">
+            <Link
+              href="/conference"
+              className="block overflow-hidden rounded-[20px]"
+            >
               <Card>
                 <CardContent className="p-0">
                   <Image
@@ -38,7 +42,7 @@ const MainCarousel = () => {
                   />
                 </CardContent>
               </Card>
-            </div>
+            </Link>
           </CarouselItem>
         ))}
       </CarouselContent>

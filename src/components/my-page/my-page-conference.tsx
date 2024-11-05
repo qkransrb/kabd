@@ -1,6 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useReactToPrint } from "react-to-print";
 
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -25,12 +28,19 @@ import {
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
 import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
 import { getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
+import { Printer } from "lucide-react";
+import { cancelConference } from "@/actions/conference-actions";
 
 interface Props {
   conferenceList: MyPageConferenceList;
 }
 
 const MyPageConference = ({ conferenceList }: Props) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const reactToPrintFn = useReactToPrint({ contentRef });
+
+  const router = useRouter();
+
   return (
     <div>
       <div className="mb-[18px]">
@@ -89,11 +99,23 @@ const MyPageConference = ({ conferenceList }: Props) => {
                             영수증 출력
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="p-9 sm:max-w-[460px]">
+                        <DialogContent
+                          ref={contentRef}
+                          className="p-9 sm:max-w-[460px]"
+                        >
                           <DialogHeader>
                             <DialogTitle className="text-[29px] font-semibold custom-letter-spacing text-center">
                               영수증
                             </DialogTitle>
+                            <Button
+                              onClick={() => {
+                                reactToPrintFn();
+                              }}
+                              variant="ghost"
+                              className="absolute !m-0"
+                            >
+                              <Printer />
+                            </Button>
                             <DialogDescription hidden />
                           </DialogHeader>
                           <div className="pt-[70px] pb-[60px]">
@@ -181,7 +203,31 @@ const MyPageConference = ({ conferenceList }: Props) => {
                 <TableCell className="text-center">
                   {conference.a_pay_date.split(" ")[0].split("-").join(".")}{" "}
                 </TableCell>
-                <TableCell className="text-center">취소완료</TableCell>
+                <TableCell className="text-center">
+                  {conference.a_pay_status === "W" ? (
+                    <span className="text-center">취소신청중</span>
+                  ) : conference.a_pay_status === "C" ? (
+                    <span className="text-center">취소완료</span>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={async () => {
+                        const result = await cancelConference(conference.a_seq);
+                        if (result.code === "000" && result.msg === "success") {
+                          router.refresh();
+                          window.alert("취소신청 되었습니다.");
+                        } else {
+                          window.alert(result.msg);
+                        }
+                      }}
+                      className="w-full h-[35px] border border-[#D2D2D2] rounded-[10px] flex items-center justify-center"
+                    >
+                      취소신청
+                    </Button>
+                  )}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

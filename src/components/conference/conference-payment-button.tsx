@@ -9,8 +9,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useEffect, useState } from "react";
+import { registConference } from "@/actions/conference-actions";
 
-const ConferencePaymentButton = () => {
+interface Props {
+  id: string;
+  amount: string;
+}
+
+const ConferencePaymentButton = ({ id, amount }: Props) => {
   const [user, setUser] = useState<LocalStorageUser | null>(null);
 
   useEffect(() => {
@@ -24,7 +30,14 @@ const ConferencePaymentButton = () => {
       {user?.grade !== "N" ? (
         <Button
           type="button"
-          onClick={() => console.log("정회원 결제 처리")}
+          onClick={async () => {
+            const result = await registConference(id, amount);
+            if (result.code === "000" && result.msg === "success") {
+              window.alert("신청이 완료되었습니다.");
+            } else {
+              window.alert(result.msg);
+            }
+          }}
           className="w-[269px] h-[56px] flex items-center justify-center rounded-[10px] mb-[100px]"
         >
           <span className="text-lg text-white font-semibold leading-[21.48px] pl-2">

@@ -2,12 +2,17 @@ import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 import NewsroomDetailsContent from "@/components/newsroom/newsroom-details-content";
 import { getNewsroomDetails } from "@/actions/newsroom-actions";
+import { isRegularMember } from "@/actions/auth-actions";
+import { redirect } from "next/navigation";
 
 interface Props {
   params: { id: string };
 }
 
 const NewsroomDetails = async ({ params: { id } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const newsroomDetails = await getNewsroomDetails(id);
 
   return (

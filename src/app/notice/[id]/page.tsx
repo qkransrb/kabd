@@ -1,3 +1,6 @@
+import { redirect } from "next/navigation";
+
+import { isRegularMember } from "@/actions/auth-actions";
 import { getNoticeDetails } from "@/actions/notice-actions";
 
 import NoticeDetailsContent from "@/components/notice/notice-details-content";
@@ -9,6 +12,9 @@ interface Props {
 }
 
 const NoticeDetails = async ({ params: { id } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const noticeDetails = await getNoticeDetails(id);
 
   return (

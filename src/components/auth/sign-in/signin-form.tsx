@@ -13,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { signIn } from "@/actions/auth-actions";
-import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   userId: z.string(),
@@ -26,8 +25,6 @@ const SignInForm = () => {
   const [saveUserId, setSaveUserId] = useState<boolean>(false);
 
   const router = useRouter();
-
-  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -68,10 +65,7 @@ const SignInForm = () => {
 
       router.push("/");
     } else {
-      toast({
-        title: user.msg,
-        variant: "destructive",
-      });
+      window.alert(user.msg);
     }
   };
 

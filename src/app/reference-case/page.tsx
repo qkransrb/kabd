@@ -1,8 +1,10 @@
+import { isRegularMember } from "@/actions/auth-actions";
 import { getReferenceCaseList } from "@/actions/reference-case-actions";
 
 import PageNavigation from "@/components/page-navigation";
 import ReferenceCaseList from "@/components/reference-case/reference-case-list";
 import SubTitle from "@/components/sub-title";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +16,9 @@ interface Props {
 }
 
 const ReferenceCase = async ({ searchParams: { q, page } }: Props) => {
+  const regularMember = await isRegularMember();
+  if (!regularMember) return redirect("/");
+
   const referenceCaseList = await getReferenceCaseList(q, page);
 
   return (
