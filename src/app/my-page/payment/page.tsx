@@ -1,4 +1,4 @@
-import { getPaymentList } from "@/actions/my-page-actions";
+import { getPaymentList, getProductList } from "@/actions/my-page-actions";
 import MyPageSidebar from "@/components/my-page/my-page-sidebar";
 import MyPayment from "@/components/my-page/my-payment";
 import PageNavigation from "@/components/page-navigation";
@@ -11,6 +11,7 @@ interface Props {
 }
 
 const MyPage = async ({ searchParams: { page } }: Props) => {
+  const productList = await getProductList();
   const paymentList = await getPaymentList(page);
 
   return (
@@ -27,7 +28,7 @@ const MyPage = async ({ searchParams: { page } }: Props) => {
         </div>
 
         <div className="w-9/12 pl-6 border-l border-[#D9D9D9]">
-          <MyPayment paymentList={paymentList} />
+          <MyPayment productList={productList} paymentList={paymentList} />
         </div>
       </section>
     </div>

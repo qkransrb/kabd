@@ -42,6 +42,7 @@ import { cn, getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
 import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
+import { registProduct } from "@/actions/my-page-actions";
 
 const formSchema = z.object({
   type: z.string().min(1),
@@ -50,10 +51,11 @@ const formSchema = z.object({
 });
 
 interface Props {
+  productList: ProductList;
   paymentList: MyPagePaymentList;
 }
 
-const MyPayment = ({ paymentList }: Props) => {
+const MyPayment = ({ productList, paymentList }: Props) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const reactToPrintFn = useReactToPrint({ contentRef });
 
@@ -74,7 +76,17 @@ const MyPayment = ({ paymentList }: Props) => {
   };
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    if (values.method === "1") {
+      const result = await registProduct(values.type, "", values.method);
+      if (result.code === "000" && result.msg === "success") {
+        window.alert("입·연회비 납부 신청이 완료되었습니다.");
+        router.refresh();
+      } else {
+        window.alert("입·연회비 납부 신청에 실패하였습니다.");
+      }
+    } else {
+      window.alert("카드결제는 준비중 입니다.");
+    }
   };
 
   return (
@@ -97,20 +109,14 @@ const MyPayment = ({ paymentList }: Props) => {
                   <Select
                     onValueChange={(value) => {
                       field.onChange(value);
-
-                      switch (value) {
-                        case "입회비":
-                          return form.setValue("amount", "50000");
-                        case "연회비(1년)":
-                          return form.setValue("amount", "50000");
-                        case "연회비(3년)":
-                          return form.setValue("amount", "150000");
-                        case "연회비(5년)":
-                          return form.setValue("amount", "250000");
-                        case "종신회비":
-                          return form.setValue("amount", "800000");
-                        default:
-                          break;
+                      const product: Product | undefined =
+                        productList.productList.find(
+                          (product) => product.pp_seq === value
+                        );
+                      if (product) {
+                        return form.setValue("amount", product.pp_amount);
+                      } else {
+                        return form.setValue("amount", "");
                       }
                     }}
                     defaultValue={field.value}
@@ -130,11 +136,11 @@ const MyPayment = ({ paymentList }: Props) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="text-base font-medium custom-letter-spacing">
-                      <SelectItem value="입회비">입회비</SelectItem>
-                      <SelectItem value="연회비(1년)">연회비(1년)</SelectItem>
-                      <SelectItem value="연회비(3년)">연회비(3년)</SelectItem>
-                      <SelectItem value="연회비(5년)">연회비(5년)</SelectItem>
-                      <SelectItem value="종신회비">종신회비</SelectItem>
+                      {productList.productList.map((product) => (
+                        <SelectItem key={product.pp_seq} value={product.pp_seq}>
+                          {product.pp_title}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </FormItem>
@@ -186,7 +192,8 @@ const MyPayment = ({ paymentList }: Props) => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="text-base font-medium custom-letter-spacing">
-                      <SelectItem value="카드결제">카드결제</SelectItem>
+                      <SelectItem value="1">무통장</SelectItem>
+                      <SelectItem value="2">카드결제</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormItem>
@@ -265,7 +272,7 @@ const MyPayment = ({ paymentList }: Props) => {
                               variant="ghost"
                               className="absolute !m-0"
                             >
-                              <Printer />
+                              <Printer className="!size-6" />
                             </Button>
                             <DialogDescription hidden />
                           </DialogHeader>

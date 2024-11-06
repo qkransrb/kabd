@@ -68,7 +68,7 @@ const ConferencePaymentButton = ({ id, amount }: Props) => {
             <div className="custom-letter-spacing space-y-1.5 mb-4">
               <p>현재 카드결제 시스템 도입중으로, 계좌이체만 가능합니다.</p>
               <p className="font-bold underline underline-offset-2">
-                신한은행 140-014-665217 ( 예금주:(사)미니쉬생체모방치의학회 )
+                신한은행 140-014-665217 ( 예금주:(사)한국생체모방치의학회 )
               </p>
               <p>
                 치과의사의 경우 입금 시 면허번호+성함으로 입금 부탁드립니다.

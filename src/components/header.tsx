@@ -4,10 +4,12 @@ import Image from "next/image";
 import Logo from "@/assets/images/logo.png";
 import Avatar from "@/assets/images/avatar.png";
 import { Button } from "@/components/ui/button";
-import { isAuthenticated } from "@/actions/auth-actions";
+import HeaderLinkButton from "@/components/header-link-button";
+import { isAuthenticated, isRegularMember } from "@/actions/auth-actions";
 
 const Header = async () => {
   const authenticated = await isAuthenticated();
+  const regularMember = await isRegularMember();
 
   return (
     <header className="max-w-[1920px] h-[140px] flex items-center w-full">
@@ -94,44 +96,39 @@ const Header = async () => {
             </span>
             <ul className="hidden group-hover:flex py-[18px] px-8 flex-col gap-y-[18px] absolute min-w-[131px] bg-white/70 backdrop-blur-[5px] top-[92px] -left-[50%] z-10 rounded-[10px]">
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="공지사항"
                   href="/notice"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  공지사항
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="주요일정"
                   href="/schedule"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  주요일정
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="보도자료"
                   href="/news"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  보도자료
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="뉴스룸"
                   href="/newsroom"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  뉴스룸
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="사진첩"
                   href="/gallery"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  사진첩
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
             </ul>
           </li>
@@ -141,28 +138,25 @@ const Header = async () => {
             </span>
             <ul className="hidden group-hover:flex py-[18px] flex-col gap-y-[18px] absolute min-w-[150px] bg-white/70 backdrop-blur-[5px] top-[92px] -left-[90%] z-10 rounded-[10px]">
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="Case 공유"
                   href="/reference-case"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  Case 공유
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="학술대회 초록집"
                   href="/abstract"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  학술대회 초록집
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
               <li className="w-full text-center">
-                <Link
+                <HeaderLinkButton
+                  label="학술대회 강의영상"
                   href="/video"
-                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
-                >
-                  학술대회 강의영상
-                </Link>
+                  isRegularMember={regularMember}
+                />
               </li>
             </ul>
           </li>

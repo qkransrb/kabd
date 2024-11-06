@@ -117,6 +117,31 @@ export async function updateGeneralProfile(general: UpdateGeneralProfile) {
   }
 }
 
+export async function getProductList() {
+  try {
+    const { data } = await axios.post(
+      "https://api.kabd.or.kr/api/pay/product_sel.php",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
+        },
+      }
+    );
+
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (
+        error.response?.data?.msg === "Expired token" ||
+        error.response?.data?.msg === "Wrong number of segments"
+      ) {
+        return redirect("/sign-in");
+      }
+    }
+  }
+}
+
 export async function getPaymentList(page?: number) {
   try {
     const { data } = await axios.post(
@@ -183,9 +208,41 @@ export async function withdraw() {
       }
     );
 
-    console.log(data);
-
     cookies().delete("kabd_token");
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      if (
+        error.response?.data?.msg === "Expired token" ||
+        error.response?.data?.msg === "Wrong number of segments"
+      ) {
+        return redirect("/sign-in");
+      }
+    }
+  }
+}
+
+export async function registProduct(
+  seq: string,
+  tid: string = "",
+  type: string
+) {
+  try {
+    const { data } = await axios.post(
+      "https://api.kabd.or.kr/api/pay/history_ins.php",
+      {
+        pp_seq: seq,
+        ph_pay_status: "N",
+        ph_pay_tid: tid,
+        ph_pay_type: type,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${cookies().get("kabd_token")?.value}`,
+        },
+      }
+    );
+
+    return data;
   } catch (error) {
     if (error instanceof AxiosError) {
       if (

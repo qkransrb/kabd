@@ -114,7 +114,7 @@ const MyPageConference = ({ conferenceList }: Props) => {
                               variant="ghost"
                               className="absolute !m-0"
                             >
-                              <Printer />
+                              <Printer className="!size-6" />
                             </Button>
                             <DialogDescription hidden />
                           </DialogHeader>

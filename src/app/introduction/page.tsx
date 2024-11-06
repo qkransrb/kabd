@@ -180,7 +180,7 @@ const Introduction = () => {
           </a>
         </div>
         <div className="w-full min-h-[724px] overflow-auto py-[50px] px-14 border border-[#D2D2D2] rounded-[20px] custom-letter-spacing">
-          <h5 className="text-[26px] font-bold">{`<미니쉬생체모방치의학회 정관>`}</h5>
+          <h5 className="text-[26px] font-bold">{`<(사)한국생체모방치의학회 정관>`}</h5>
         </div>
       </section>
       <section className="max-w-screen-xl mx-auto mb-[200px]" id="executive">

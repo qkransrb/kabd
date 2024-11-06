@@ -10,8 +10,10 @@ const FindPasswordConfirm = () => {
         <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center mb-6">
           <Check size={40} color="white" />
         </div>
-        <h2 className="max-w-[208px] text-[30px] font-bold custom-letter-spacing leading-[35.8px] text-center mb-10">
-          비밀번호 재설정이 완료되었습니다.
+        <h2 className="max-w-[208px] text-[30px] font-bold custom-letter-spacing leading-[35.8px] text-center mb-10 whitespace-nowrap">
+          비밀번호 재설정이
+          <br />
+          완료되었습니다.
         </h2>
         <Link
           href="/sign-in"

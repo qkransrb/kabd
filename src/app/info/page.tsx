@@ -125,7 +125,7 @@ const Info = () => {
               <span>· 납부 계좌 :</span>
               <div>
                 <span className="font-bold underline underline-offset-2">
-                  신한은행 140-014-665217 (예금주: (사)미니쉬생체모방치의학회)
+                  신한은행 140-014-665217 (예금주: (사)한국생체모방치의학회)
                 </span>
                 <p>
                   치과의사의 경우 입금 시 면허번호+성함으로 입금 부탁드립니다.

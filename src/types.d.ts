@@ -549,7 +549,7 @@ type MyPagePayment = {
   ph_seq: string;
   ph_date: string;
   ph_amount: string;
-  ph_pay_type: string;
+  ph_pay_type: string; // 1. 계좌이체 2. 신용카드
   ph_pay_tid: string;
   ph_pay_status: string;
   pp_seq: string;
@@ -584,6 +584,23 @@ type MyPageConference = {
 
 type MyPageConferenceList = {
   list: MyPageConference[];
+  total: string;
+  currentPage: string;
+  page_cnt: number;
+  code: string;
+  msg: string;
+};
+
+type Product = {
+  rnum: string;
+  pp_seq: string;
+  pp_title: string;
+  pp_amount: string;
+  pp_date: string;
+};
+
+type ProductList = {
+  productList: Product[];
   total: string;
   currentPage: string;
   page_cnt: number;

@@ -38,13 +38,13 @@ export function getVideoId(videoUrl: string) {
 export function getMyPagePaymentType(typeNumber: string) {
   switch (typeNumber) {
     case "1":
-      return "신용카드";
+      return "무통장";
     case "2":
-      return "계좌이체";
+      return "신용카드";
     case "3":
-      return "가상계좌";
+      return "계좌이체";
     case "4":
-      return "휴대폰";
+      return "가상계좌";
     default:
       return "";
   }
