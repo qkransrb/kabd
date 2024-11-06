@@ -177,7 +177,7 @@ export const isRegularMember = async () => {
     if (token) {
       const payload: any = jwt.verify(token, process.env.JWT_SECRET!);
 
-      if (payload.data.m_regular === "Y") {
+      if (payload.data.m_regular !== "N") {
         return true;
       } else {
         return false;
