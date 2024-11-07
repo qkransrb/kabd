@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { findPassword } from "@/actions/find-actions";
+import { resetPassword } from "@/actions/find-actions";
 import { useState } from "react";
 import { authCodeConfirm, sendAuthCode } from "@/actions/auth-actions";
 
@@ -63,7 +63,7 @@ const Content = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const result = await findPassword(values);
+    const result = await resetPassword(values);
 
     if (result.code === "000" && result.msg === "success") {
       router.push("/find-password/confirm");
