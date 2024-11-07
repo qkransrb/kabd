@@ -38,11 +38,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Pagination from "@/components/pagination";
+import { registProduct } from "@/actions/my-page-actions";
 import { cn, getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
-import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
-import { registProduct } from "@/actions/my-page-actions";
+import receiptKabd from "@/assets/images/receipt/receipt-kabd.png";
 
 const formSchema = z.object({
   type: z.string().min(1),
@@ -333,20 +333,20 @@ const MyPayment = ({ productList, paymentList }: Props) => {
                                   일
                                 </span>
                               </div>
-                              <div className="w-full flex items-center justify-center relative">
-                                <Image
-                                  src={receiptCircle}
-                                  alt="kabd"
-                                  width={71}
-                                  height={71}
-                                  className="w-[71px] h-[71px] object-contain"
-                                />
+                              <div className="w-full flex items-center justify-center relative h-[70px]">
                                 <Image
                                   src={receiptPhrase}
                                   alt="kabd"
                                   width={143}
                                   height={20}
                                   className="absolute w-[143px] h-[20px] object-contain"
+                                />
+                                <Image
+                                  src={receiptKabd}
+                                  alt="kabd"
+                                  width={80}
+                                  height={80}
+                                  className="absolute w-[80px] h-[80px] object-contain right-0"
                                 />
                               </div>
                             </div>

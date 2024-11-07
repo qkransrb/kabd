@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useReactToPrint } from "react-to-print";
+import { Printer } from "lucide-react";
 
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -24,12 +25,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { cancelConference } from "@/actions/conference-actions";
+import { getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
-import receiptCircle from "@/assets/images/receipt/receipt-circle.png";
-import { getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
-import { Printer } from "lucide-react";
-import { cancelConference } from "@/actions/conference-actions";
+import receiptKabd from "@/assets/images/receipt/receipt-kabd.png";
 
 interface Props {
   conferenceList: MyPageConferenceList;
@@ -177,20 +177,20 @@ const MyPageConference = ({ conferenceList }: Props) => {
                                   일
                                 </span>
                               </div>
-                              <div className="w-full flex items-center justify-center relative">
-                                <Image
-                                  src={receiptCircle}
-                                  alt="kabd"
-                                  width={71}
-                                  height={71}
-                                  className="w-[71px] h-[71px] object-contain"
-                                />
+                              <div className="w-full flex items-center justify-center relative h-[70px]">
                                 <Image
                                   src={receiptPhrase}
                                   alt="kabd"
                                   width={143}
                                   height={20}
                                   className="absolute w-[143px] h-[20px] object-contain"
+                                />
+                                <Image
+                                  src={receiptKabd}
+                                  alt="kabd"
+                                  width={80}
+                                  height={80}
+                                  className="absolute w-[80px] h-[80px] object-contain right-0"
                                 />
                               </div>
                             </div>
