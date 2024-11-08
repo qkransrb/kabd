@@ -187,7 +187,7 @@ const DentistForm = () => {
       license: "",
       university: "",
       major: [],
-      type: "K",
+      type: "S",
       addressType: "J", // H: 집, J: 근무처
       addressName: "", // 근무처 이름
       addressTel: "", // 근무처 연락처
@@ -1041,7 +1041,7 @@ const DentistForm = () => {
                     />
                     <AccordionTrigger />
                   </div>
-                  <AccordionContent className="space-y-5 text-lg custom-letter-spacing leading-[21px] font-normal max-h-[300px] overflow-auto">
+                  <AccordionContent className="space-y-5 text-lg custom-letter-spacing leading-[21px] font-normal max-h-[300px] overflow-auto scrollbar-hide">
                     <p className="font-bold pt-5">
                       한국생체모방치의학회 회원가입 이용약관
                     </p>
@@ -1280,7 +1280,7 @@ const DentistForm = () => {
                     />
                     <AccordionTrigger />
                   </div>
-                  <AccordionContent className="space-y-5 text-lg custom-letter-spacing leading-[21px] font-normal max-h-[300px] overflow-auto">
+                  <AccordionContent className="space-y-5 text-lg custom-letter-spacing leading-[21px] font-normal max-h-[300px] overflow-auto scrollbar-hide">
                     <p className="font-bold pt-5">
                       개인정보 수집 및 이용 동의서
                     </p>

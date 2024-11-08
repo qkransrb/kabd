@@ -120,7 +120,7 @@ const ScheduleContent = ({ scheduleListForMonth }: Props) => {
             </div>
           ))}
         </div>
-        <div className="w-[575px] border-t-[3px] border-black max-h-[650px] overflow-auto">
+        <div className="w-[575px] border-t-[3px] border-black max-h-[650px] overflow-auto scrollbar-hide">
           <div className="pt-5 space-y-5">
             {scheduleList.map((schedule) => (
               <div

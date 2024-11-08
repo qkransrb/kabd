@@ -13,6 +13,7 @@ import kwon from "@/assets/images/kwon.png";
 import kim from "@/assets/images/kim.png";
 import song from "@/assets/images/song.png";
 import map from "@/assets/images/map.png";
+import Regulations from "@/components/introduction/regulations";
 
 export const dynamic = "force-dynamic";
 
@@ -179,9 +180,7 @@ const Introduction = () => {
             <Image src={Download} alt="Download" width={18} height={19} />
           </a>
         </div>
-        <div className="w-full min-h-[724px] overflow-auto py-[50px] px-14 border border-[#D2D2D2] rounded-[20px] custom-letter-spacing">
-          <h5 className="text-[26px] font-bold">{`<(사)한국생체모방치의학회 정관>`}</h5>
-        </div>
+        <Regulations />
       </section>
       <section className="max-w-screen-xl mx-auto mb-[200px]" id="executive">
         <div className="mb-9">

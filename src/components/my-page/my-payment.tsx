@@ -346,7 +346,7 @@ const MyPayment = ({ productList, paymentList }: Props) => {
                                   alt="kabd"
                                   width={80}
                                   height={80}
-                                  className="absolute w-[80px] h-[80px] object-contain right-0"
+                                  className="absolute w-[80px] h-[80px] object-contain right-[52px]"
                                 />
                               </div>
                             </div>
