@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "vumbnail.com",
       },
+      {
+        protocol: "https",
+        hostname: "i.vimeocdn.com",
+      },
     ],
   },
   eslint: {
