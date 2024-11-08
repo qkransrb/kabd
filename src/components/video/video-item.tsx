@@ -41,7 +41,7 @@ const VideoItem = ({ video, setSelectedVideo }: Props) => {
         {thumbnail ? (
           <Image
             src={thumbnail}
-            alt=""
+            alt={video.b_title}
             width={556}
             height={292}
             className="w-[556px] h-[292px] rounded-[20px] object-cover"
