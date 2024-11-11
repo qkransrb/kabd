@@ -21,6 +21,7 @@ interface Props {
     ac_seq: string;
     amount: string;
     r_amount: string;
+    display: string;
     code: string;
     msg: string;
   };
@@ -68,6 +69,7 @@ const ConferencePaymentButton = ({ id, conference }: Props) => {
           onClick={payment}
           disabled={isPending}
           className="w-[269px] h-[56px] flex items-center justify-center rounded-[10px] mb-[100px]"
+          hidden={conference.display !== "Y"}
         >
           {isPending ? (
             <Loader className="animate-spin !size-5" />
@@ -88,6 +90,7 @@ const ConferencePaymentButton = ({ id, conference }: Props) => {
               onClick={payment}
               disabled={isPending}
               className="w-[269px] h-[56px] flex items-center justify-center rounded-[10px] mb-[100px]"
+              hidden={conference.display !== "Y"}
             >
               {isPending ? (
                 <Loader className="animate-spin !size-5" />

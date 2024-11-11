@@ -12,6 +12,7 @@ interface Props {
     ac_seq: string;
     amount: string;
     r_amount: string;
+    display: string;
     code: string;
     msg: string;
   };
@@ -38,7 +39,10 @@ const AcademicConferenceDetails = ({ id, conference }: Props) => {
           />
         </div>
 
-        <ConferencePaymentButton id={id} conference={conference} />
+        {conference.display === "Y" ? (
+          <ConferencePaymentButton id={id} conference={conference} />
+        ) : null}
+
         <Separator className="bg-[#626262] mb-[100px]" />
         <Link
           href="/conference"
