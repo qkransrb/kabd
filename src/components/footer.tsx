@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#2C2C2C] w-full h-[420px] p-16">
       <div className="max-w-screen-xl h-full mx-auto flex flex-col justify-between">
-        <Image src={Logo} alt="" width={278} height={49} />
+        <Image src={Logo} alt="" width={272} height={56} />
         <div className="flex items-center gap-x-4">
           <Link href="/privacy-policy" className="footer-link">
             개인정보처리방침

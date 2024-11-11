@@ -20,7 +20,7 @@ const Header = async () => {
             src={Logo}
             alt="THE KOREAN ACADEMY OF BIOMIMETIC DENTISTRY"
             width={272}
-            height={48}
+            height={56}
             priority
           />
         </Link>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import AuthProvider from "@/components/auth-provider";
 
 const pretendardRegular = localFont({
   src: "./fonts/Pretendard-Regular.woff",
@@ -26,10 +27,12 @@ export default function RootLayout({
       <body
         className={`${pretendardRegular.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Toaster />
+        <AuthProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

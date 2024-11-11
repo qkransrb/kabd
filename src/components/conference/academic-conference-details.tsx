@@ -38,7 +38,7 @@ const AcademicConferenceDetails = ({ id, conference }: Props) => {
           />
         </div>
 
-        <ConferencePaymentButton id={id} amount={conference.r_amount} />
+        <ConferencePaymentButton id={id} conference={conference} />
         <Separator className="bg-[#626262] mb-[100px]" />
         <Link
           href="/conference"

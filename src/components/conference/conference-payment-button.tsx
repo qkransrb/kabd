@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Loader } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -10,14 +10,25 @@ import {
 } from "@/components/ui/popover";
 import { useEffect, useState } from "react";
 import { registConference } from "@/actions/conference-actions";
+import { isAuthenticated } from "@/actions/auth-actions";
 
 interface Props {
   id: string;
-  amount: string;
+  conference: {
+    ac_file1: string;
+    ac_date: string;
+    ac_title: string;
+    ac_seq: string;
+    amount: string;
+    r_amount: string;
+    code: string;
+    msg: string;
+  };
 }
 
-const ConferencePaymentButton = ({ id, amount }: Props) => {
+const ConferencePaymentButton = ({ id, conference }: Props) => {
   const [user, setUser] = useState<LocalStorageUser | null>(null);
+  const [isPending, setIsPending] = useState<boolean>(false);
 
   useEffect(() => {
     if (!user) {
@@ -25,37 +36,69 @@ const ConferencePaymentButton = ({ id, amount }: Props) => {
     }
   }, [user]);
 
+  const payment = async () => {
+    setIsPending(true);
+    const authenticated = await isAuthenticated();
+
+    if (!authenticated || !user) {
+      setIsPending(false);
+      return;
+    }
+
+    const amount =
+      authenticated && user && user.grade !== "N"
+        ? conference.r_amount
+        : conference.amount;
+
+    const result = await registConference(id, amount);
+    if (result.code === "000" && result.msg === "success") {
+      setIsPending(false);
+      window.alert("신청이 완료되었습니다.");
+    } else {
+      setIsPending(false);
+      window.alert(result.msg);
+    }
+  };
+
   return (
     <div>
-      {user?.grade !== "N" ? (
+      {user && user.grade !== "N" ? (
         <Button
           type="button"
-          onClick={async () => {
-            const result = await registConference(id, amount);
-            if (result.code === "000" && result.msg === "success") {
-              window.alert("신청이 완료되었습니다.");
-            } else {
-              window.alert(result.msg);
-            }
-          }}
+          onClick={payment}
+          disabled={isPending}
           className="w-[269px] h-[56px] flex items-center justify-center rounded-[10px] mb-[100px]"
         >
-          <span className="text-lg text-white font-semibold leading-[21.48px] pl-2">
-            결제하기
-          </span>
-          <ChevronRight size={20} className="mb-0.5" />
+          {isPending ? (
+            <Loader className="animate-spin !size-5" />
+          ) : (
+            <>
+              <span className="text-lg text-white font-semibold leading-[21.48px] pl-2">
+                결제하기
+              </span>
+              <ChevronRight size={20} className="mb-0.5" />
+            </>
+          )}
         </Button>
       ) : (
         <Popover>
           <PopoverTrigger asChild>
             <Button
               type="button"
+              onClick={payment}
+              disabled={isPending}
               className="w-[269px] h-[56px] flex items-center justify-center rounded-[10px] mb-[100px]"
             >
-              <span className="text-lg text-white font-semibold leading-[21.48px] pl-2">
-                결제하기
-              </span>
-              <ChevronRight size={20} className="mb-0.5" />
+              {isPending ? (
+                <Loader className="animate-spin !size-5" />
+              ) : (
+                <>
+                  <span className="text-lg text-white font-semibold leading-[21.48px] pl-2">
+                    결제하기
+                  </span>
+                  <ChevronRight size={20} className="mb-0.5" />
+                </>
+              )}
             </Button>
           </PopoverTrigger>
           <PopoverContent
