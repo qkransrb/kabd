@@ -31,7 +31,14 @@ const MainPopup = () => {
           <AlertDialogHeader>
             <AlertDialogTitle hidden />
             <AlertDialogDescription>
-              <Image src={popupImage} alt="" height={1080} width={1080} />
+              <Image
+                src={popupImage}
+                alt="Announcement"
+                height={1080}
+                width={1080}
+                priority
+                className="w-[1080px] h-auto"
+              />
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
