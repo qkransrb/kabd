@@ -58,7 +58,7 @@ export async function registConference(id: string, amount: string) {
       {
         a_ac_seq: id, //학술대회 시퀀스
         a_amount: amount, //학술대회 금액
-        a_pay_type: "2", //결제타입 (1:신용카드, 2:계좌이체, 3:가상계좌, 4:휴대폰)
+        a_pay_type: "1", //결제타입 (1:무통장, 2:신용카드, 3:계좌이체, 4:가상계좌)
         a_pay_tid: "", //결제tid
         a_pay_status: "N", //결제상태 (Y:결제완료,N:결제대기,S:결제실패,W:취소신청,C:취소완료)
       },

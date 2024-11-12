@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import Logo from "@/assets/images/logo.png";
+import Logo from "@/assets/images/kabd-header-logo.png";
 import Avatar from "@/assets/images/avatar.png";
 import { Button } from "@/components/ui/button";
 import HeaderLinkButton from "@/components/header-link-button";

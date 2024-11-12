@@ -62,6 +62,8 @@ const LoginForm = () => {
       );
 
       router.push("/");
+    } else {
+      window.alert(user.msg);
     }
   };
 

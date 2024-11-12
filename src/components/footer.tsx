@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Logo from "@/assets/images/footer-logo.png";
+import Logo from "@/assets/images/kabd-footer-logo.png";
 import Link from "next/link";
 
 const Footer = () => {
