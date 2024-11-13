@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
 
 import {
   AlertDialog,
@@ -16,12 +15,36 @@ import {
 import popupImage from "@/assets/images/main-popup.jpeg";
 
 const MainPopup = () => {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const now = new Date().getTime();
+    const expires = window.localStorage.getItem("popup_expires");
+
+    if (expires) {
+      if (now > Number(expires)) {
+        setOpen(true);
+      }
+    } else {
+      setOpen(true);
+    }
+  }, []);
 
   const onOpenChange = () => {
     if (open) {
       setOpen(false);
     }
+  };
+
+  const closeToday = () => {
+    const expires = new Date();
+    expires.setHours(expires.getHours() + 24);
+    window.localStorage.setItem("popup_expires", String(expires.getTime()));
+    setOpen(false);
+  };
+
+  const onClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -42,8 +65,17 @@ const MainPopup = () => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction className="absolute top-2 right-4 bg-transparent hover:bg-transparent p-0">
-              <X color="#000" className="!size-6" />
+            <AlertDialogAction
+              onClick={closeToday}
+              className="w-full font-semibold"
+            >
+              오늘하루 열지않기
+            </AlertDialogAction>
+            <AlertDialogAction
+              onClick={onClose}
+              className="w-full font-semibold"
+            >
+              확인
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
