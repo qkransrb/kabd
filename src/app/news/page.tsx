@@ -1,9 +1,7 @@
-import { isRegularMember } from "@/actions/auth-actions";
 import { getNewsList } from "@/actions/news-actions";
 import NewsTable from "@/components/news/news-table";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
-import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -12,9 +10,6 @@ interface Props {
 }
 
 const News = async ({ searchParams: { q, page } }: Props) => {
-  const regularMember = await isRegularMember();
-  if (!regularMember) return redirect("/");
-
   const newsList = await getNewsList(q, page);
 
   return (

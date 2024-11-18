@@ -110,11 +110,12 @@ const Header = async () => {
                 />
               </li>
               <li className="w-full text-center">
-                <HeaderLinkButton
-                  label="보도자료"
+                <Link
                   href="/news"
-                  isRegularMember={regularMember}
-                />
+                  className="text-lg leading-[21.6px] text-[#595959] custom-letter-spacing font-semibold hover:text-black hover:underline underline-offset-4"
+                >
+                  보도자료
+                </Link>
               </li>
               <li className="w-full text-center">
                 <HeaderLinkButton
