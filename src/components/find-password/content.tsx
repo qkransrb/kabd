@@ -81,26 +81,26 @@ const Content = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto h-[calc(100vh_-_140px)]">
-      <div className="flex items-center justify-center flex-col mt-[118px]">
-        <h2 className="text-[30px] font-bold leading-[35.8px] custom-letter-spacing mb-[30px]">
+    <div className="max-w-screen-xl mx-auto h-auto lg:h-[calc(100vh_-_140px)] px-5 lg:px-0">
+      <div className="flex items-center justify-center flex-col mt-16 lg:mt-[118px]">
+        <h2 className="text-[25px] lg:text-[30px] font-bold lg:leading-[35.8px] custom-letter-spacing mb-[30px]">
           아이디/비밀번호 찾기
         </h2>
         {fetchSuccess ? (
-          <p className="mb-5 text-lg text-[#626262] font-semibold">
+          <p className="mb-3 lg:mb-5 text-sm lg:text-lg text-[#626262] font-semibold">
             비밀번호를 재설정 해주세요.
           </p>
         ) : (
-          <div className="max-w-[520px] mx-auto w-full flex items-center justify-between gap-5 mb-6">
+          <div className="max-w-[300px] lg:max-w-[520px] mx-auto w-full flex items-center justify-between gap-2 lg:gap-5 mb-[18px] lg:mb-6">
             <Link
               href="/find-id"
-              className="flex items-center justify-center w-1/2 bg-[#F4F5FA] h-[56px] rounded-[10px] text-lg text-black font-semibold custom-letter-spacing border border-[#D2D2D2]"
+              className="flex items-center justify-center w-1/2 bg-[#F4F5FA] h-11 lg:h-[56px] rounded-[10px] text-sm lg:text-lg text-black font-semibold custom-letter-spacing border border-[#D2D2D2]"
             >
               아이디 찾기
             </Link>
             <Link
               href="/find-password"
-              className="flex items-center justify-center w-1/2 bg-[#2C2C2C] h-[56px] rounded-[10px] text-lg text-white font-semibold custom-letter-spacing"
+              className="flex items-center justify-center w-1/2 bg-[#2C2C2C] h-11 lg:h-[56px] rounded-[10px] text-sm lg:text-lg text-white font-semibold custom-letter-spacing"
             >
               비밀번호 찾기
             </Link>
@@ -110,10 +110,10 @@ const Content = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="max-w-[520px] w-full"
+            className="max-w-[300px] lg:max-w-[520px] w-full"
           >
             <div hidden={fetchSuccess}>
-              <div className="mb-3">
+              <div className="mb-2 lg:mb-3">
                 <FormField
                   control={form.control}
                   name="userId"
@@ -123,14 +123,14 @@ const Content = () => {
                         <Input
                           {...field}
                           placeholder="아이디"
-                          className="h-[56px] rounded-[10px] w-full px-5"
+                          className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                         />
                       </FormControl>
                     </FormItem>
                   )}
                 />
               </div>
-              <div className="mb-3">
+              <div className="mb-2 lg:mb-3">
                 <FormField
                   control={form.control}
                   name="username"
@@ -140,14 +140,14 @@ const Content = () => {
                         <Input
                           {...field}
                           placeholder="이름"
-                          className="h-[56px] rounded-[10px] w-full px-5"
+                          className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                         />
                       </FormControl>
                     </FormItem>
                   )}
                 />
               </div>
-              <div className="mb-3 flex items-center gap-3">
+              <div className="mb-2 lg:mb-3 flex items-center gap-2 lg:gap-3">
                 <FormField
                   control={form.control}
                   name="phone"
@@ -157,7 +157,7 @@ const Content = () => {
                         <Input
                           {...field}
                           placeholder="휴대전화번호"
-                          className="h-[56px] rounded-[10px] w-full px-5"
+                          className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                         />
                       </FormControl>
                     </FormItem>
@@ -173,12 +173,12 @@ const Content = () => {
                       window.alert("인증번호 발송에 실패하였습니다.");
                     }
                   }}
-                  className="min-w-[120px] bg-[#2C2C2C] text-white h-[56px] rounded-[10px] px-4 font-medium"
+                  className="min-w-[120px] bg-[#2C2C2C] text-sm lg:text-base text-white h-[50px] lg:h-[56px] rounded-[10px] px-4 font-medium"
                 >
                   인증번호 발송
                 </button>
               </div>
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-4 lg:mb-6 flex items-center gap-2 lg:gap-3">
                 <FormField
                   control={form.control}
                   name="confirmNumber"
@@ -188,7 +188,7 @@ const Content = () => {
                         <Input
                           {...field}
                           placeholder="인증번호"
-                          className="h-[56px] rounded-[10px] w-full px-5"
+                          className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                         />
                       </FormControl>
                     </FormItem>
@@ -209,7 +209,7 @@ const Content = () => {
                       window.alert("인증 실패하였습니다.");
                     }
                   }}
-                  className="min-w-[120px] bg-[#2C2C2C] text-white h-[56px] rounded-[10px] px-4 font-medium"
+                  className="min-w-[120px] bg-[#2C2C2C] text-sm lg:text-base text-white h-[50px] lg:h-[56px] rounded-[10px] px-4 font-medium"
                 >
                   확인
                 </button>
@@ -218,7 +218,7 @@ const Content = () => {
                 <Button
                   type="button"
                   onClick={handleNextStep}
-                  className="h-[56px] w-[345px] rounded-[10px] flex items-center justify-center text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
+                  className="h-[50px] lg:h-[56px] w-[300px] lg:w-[345px] rounded-[10px] flex items-center justify-center text-base lg:text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
                   disabled={fetchSuccess}
                 >
                   다음 단계
@@ -226,7 +226,7 @@ const Content = () => {
               </div>
             </div>
             <div hidden={!fetchSuccess}>
-              <div className="mb-3">
+              <div className="mb-2 lg:mb-3">
                 <FormField
                   control={form.control}
                   name="password"
@@ -236,7 +236,7 @@ const Content = () => {
                         <Input
                           type="password"
                           placeholder="비밀번호"
-                          className="h-[56px] rounded-[10px] w-full px-5"
+                          className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                           {...field}
                         />
                       </FormControl>
@@ -244,7 +244,7 @@ const Content = () => {
                   )}
                 />
               </div>
-              <div className="mb-3">
+              <div className="mb-4">
                 <FormField
                   control={form.control}
                   name="confirmPassword"
@@ -254,7 +254,7 @@ const Content = () => {
                         <Input
                           type="password"
                           placeholder="비밀번호 확인"
-                          className="h-[56px] rounded-[10px] w-full px-5"
+                          className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                           {...field}
                         />
                       </FormControl>
@@ -265,7 +265,7 @@ const Content = () => {
               <div className="flex items-center justify-center">
                 <Button
                   type="submit"
-                  className="h-[56px] w-[345px] rounded-[10px] flex items-center justify-center text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
+                  className="h-[50px] lg:h-[56px] w-[300px] lg:w-[345px] rounded-[10px] flex items-center justify-center text-base lg:text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
                 >
                   확인
                 </Button>

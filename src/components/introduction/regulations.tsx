@@ -1,26 +1,26 @@
 const Regulations = () => {
   return (
-    <div className="w-full max-h-[724px] overflow-auto py-[50px] px-14 border border-[#D2D2D2] rounded-[20px] custom-letter-spacing scrollbar-hide">
-      <h5 className="text-[26px] font-bold mb-10">{`<(사)한국생체모방치의학회 정관>`}</h5>
-      <div className="space-y-10 text-xl leading-[30px] mb-32">
+    <div className="w-full max-h-[500px] lg:max-h-[724px] overflow-auto py-9 lg:py-[50px] px-5 lg:px-14 border border-[#D2D2D2] rounded-[20px] custom-letter-spacing scrollbar-hide">
+      <h5 className="text-[20px] lg:text-[26px] font-bold mb-7 lg:mb-10">{`<(사)한국생체모방치의학회 정관>`}</h5>
+      <div className="space-y-7 lg:space-y-10 text-[15px] lg:text-xl leading-[30px] mb-14 lg:mb-32">
         <strong className="inline-block">제1장 총 칙</strong>
         <div>
           <span>제1조 (명칭)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             본 법인은 “사단법인 한국 생체모방치의학회”(이하 ”본회“라 한다)라
             한다.
           </p>
         </div>
         <div>
           <span>제2조 (목적)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             이 법인은 생체 모방형 치의학 및 그 응용에 관한 학술과 기술의 발전 및
             보급에 기여함으로써 치의학과 기술의 진흥에 이바지함을 목적으로 한다.
           </p>
         </div>
         <div>
           <span>제3조 (사무소의 소재지)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 본회의 사무소는 서울특별시에 둔다.</li>
             <li>
               2. 법인은 이사회의 결의로 해외 및 국내 각지에 지점을 둘 수 있으며,
@@ -31,7 +31,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제4조 (운영준칙)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 법인은 제2조의 설립 목적을 원활히 달성하기 위하여 노력한다.
             </li>
@@ -51,11 +51,11 @@ const Regulations = () => {
         <strong className="inline-block">제2장 사 업</strong>
         <div>
           <span>제5조 (사업)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회는 제2조의 목적을 달성하기 위하여 다음 각 호의 목적 사업을
               서울시 내에서 행한다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>
                   가. 생체모방형 치의학에 관한 학술과 기술의 개발 및
                   보급(연구발표회, 강연회, 강습회 및 전시회 등의 개최)
@@ -79,7 +79,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제6조 (위원회와 지부 및 분회)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             본회는 제5조의 사업을 효율적으로 운영하기 위하여 이사회의 의결을
             거쳐 관련 위원회, 지부 및 분회를 둘 수 있다.
           </p>
@@ -88,14 +88,14 @@ const Regulations = () => {
         <strong className="inline-block">제3장 회 원</strong>
         <div>
           <span>제7조 (회원 자격)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회의 회원은 본 회의 취지에 찬동하여 소정의 입회원서를
               제출하고 이사회의 승인을 얻어야 한다.
             </li>
             <li>
               2. 본회에는 개인뿐만 아니라 단체도 회원으로 가입할 수 있다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>
                   가. 정회원: 생체 모방형 치의학 관련 분야에 전문적인 학식과
                   경험을 가진 자. 단, 종신회비를 납 부한 자는 종신회원이라 한다.
@@ -121,7 +121,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제8조 (회원의 권리와 의무)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회의 회원은 이사회가 정하는 회비를 납입해야 본 정관에 의한
               권리와 의무를 갖는다.
@@ -134,14 +134,14 @@ const Regulations = () => {
         </div>
         <div>
           <span>제9조 (회원의 탈퇴)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             본회의 회원은 회장에게 탈퇴서를 제출함으로써 자유롭게 탈퇴할 수
             있다.
           </p>
         </div>
         <div>
           <span>제10조 (회원의 제명)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회 회원은 연속 3년간 회원의 의무를 이행하지 않을 경우
               자동적으로 회원의 자격이 상실되 는 것으로 한다.
@@ -156,7 +156,7 @@ const Regulations = () => {
         <strong className="inline-block">제4장 임 원</strong>
         <div>
           <span>제11조 (임원의 종류와 정수) 본회에는 다음의 임원을 둔다.</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 회장 1인</li>
             <li>2. 수석부회장 1인, 부회장 1인</li>
             <li>
@@ -166,7 +166,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제12조 (임원의 임기)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 임원의 임기는 2년으로 하며 회장과 부회장을 제외한 임원은 연임할
               수 있다. 단, 부회장의 연 임은 동일 보직에서는 1회 원칙으로 한다.
@@ -179,7 +179,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제13조 (임원의 선임)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 제11조에서 정한 본회 모든 임원은 이사회의 추천을 받아 총회에서
               선임하고 그 취임에 관 하여 지체없이 주무관청에 보고하여야 한다.
@@ -209,7 +209,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제14조 (회장, 부회장 및 이사의 직무)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 회장은 본회를 대표하고 본회의 업무를 총괄하여 관리, 운영하며
               이사회 및 총회의 의장이 된다.
@@ -226,7 +226,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제15조 (회장 직무 대행자의 지명)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 회장 유고시에는 수석부회장이 그 직무를 대행하며, 이 기간은 연임
               제한 규정의 적용을 받지 않는다.
@@ -240,7 +240,7 @@ const Regulations = () => {
         <div>
           <span>제16조 (감사의 직무)</span>
           <p>감사는 다음 각 호의 직무를 행한다.</p>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 법인의 재무 및 재산 상황을 감사하는 일</li>
             <li>2. 이사회의 운영과 그 업무에 관한 사항을 감사하는 일</li>
             <li>
@@ -261,7 +261,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제17조 (임원의 보수)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회의 임원은 상근임원을 제외하고 무보수로 한다. 단, 규정이
               정하는 바에 따라 공적인 업무 집행을 위한 경우에는 여비 및 기타
@@ -274,14 +274,14 @@ const Regulations = () => {
         <strong className="inline-block">제5장 총 회</strong>
         <div>
           <span>제18조 (총회의 구성)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             총회는 본회의 최고 의결기관이며 정회원으로 구성한다.
           </p>
         </div>
         <div>
           <span>제19조 (총회의 기능)</span>
-          <p className="pl-2">총회는 다음 각 호의 사항을 의결한다.</p>
-          <ul className="pl-2">
+          <p className="lg:pl-2">총회는 다음 각 호의 사항을 의결한다.</p>
+          <ul className="lg:pl-2">
             <li>1. 정관 변경에 관한 사항</li>
             <li>2. 법인의 해산에 관한 사항</li>
             <li>3. 기본 재산의 처분에 관한 사항</li>
@@ -293,7 +293,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제20조 (총회의 소집)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 총회는 정기총회와 임시총회로 나누되 정기총회는 년 1회(후반기
               학술대회) 개최하며, 임시총회 는 회장이 필요하다고 인정할 때
@@ -308,7 +308,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제21조 (총회의 개회 및 의결)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 총회는 재적회원 과반수의 출석으로 개회되며, 출석회원 과반수의
               찬성으로 의결한다.
@@ -321,11 +321,11 @@ const Regulations = () => {
         </div>
         <div>
           <span>제22조 (총회 소집의 특례)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 회장은 다음 각 호에 해당하는 소집 요구가 있을 때에는 소집
               요구일로부터 20일 이내에 총회를 소집하여야 한다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>
                   가. 재적 이사 과반수가 회의의 목적을 제시하여 소집을 요구한 때
                 </li>
@@ -351,11 +351,11 @@ const Regulations = () => {
         </div>
         <div>
           <span>제23조 (총회 의결 제척 사유)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             의장 또는 회원이 다음 각 호에 해당할 때에는 그 의결에 참여하지
             못한다.
           </p>
-          <ul className="pl-4">
+          <ul className="lg:pl-4">
             <li>1. 임원 취임 및 해임에 있어 자신에 관한 사항</li>
             <li>
               2. 금전 및 자산의 수수를 수반하는 사항으로 회원 자신과 본회의
@@ -365,7 +365,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제24조 (총회 회의록)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 총회의 의사에 관하여는 의사록을 작성하여야 한다.</li>
             <li>
               2. 의사록에는 의사의 경과, 요령 및 결과를 기재하고 의장 및 출석한
@@ -375,7 +375,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제25조 (평의원회)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회의 제반 운영에 대한 회원의 의사를 적절히 반영하기 위하여
               평의원회를 둘 수 있다. 2. 평의원회의 구성, 기능, 자격, 소집, 의결
@@ -387,14 +387,14 @@ const Regulations = () => {
         <strong className="inline-block">제6장 이사회</strong>
         <div>
           <span>제26조 (이사회의 구성)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             이사회는 이사로 구성하며, 회장이 그 의장이 된다.
           </p>
         </div>
         <div>
           <span>제27조 (이사회의 기능)</span>
-          <p className="pl-2">본회 이사회는 다음의 사항을 심의, 의결한다.</p>
-          <ul className="pl-4">
+          <p className="lg:pl-2">본회 이사회는 다음의 사항을 심의, 의결한다.</p>
+          <ul className="lg:pl-4">
             <li>1. 임원의 임면에 관한 사항</li>
             <li>2. 사업 계획 운영 및 집행에 관한 사항</li>
             <li>
@@ -420,11 +420,11 @@ const Regulations = () => {
         </div>
         <div>
           <span>제29조 (의결제척 사유)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             의장 또는 이사가 다음 각 호에 해당하는 때에는 그 의결에 참여하지
             못한다.
           </p>
-          <ul className="pl-4">
+          <ul className="lg:pl-4">
             <li>1. 임원의 취임 및 해임에 있어 본인에 관한 사항을 의결할 때</li>
             <li>
               2. 금전 및 재산의 수수를 수반하는 사항 등 본인과 법인의 이해가
@@ -434,7 +434,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제30조 (이사회의 소집)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 회장은 필요할 때 이사회를 소집하고 그 의장이 된다.</li>
             <li>
               2. 회장은 이사회를 소집하고자 할 때에는 이사회 개최일 7일 전에
@@ -449,11 +449,11 @@ const Regulations = () => {
         </div>
         <div>
           <span>제31조 (이사회 소집의 특례)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 회장은 다음 각 호에 해당하는 소집 요구가 있을 때에는 그 소집
               요구일로부터 20일 이내에 이 사회를 소집하여야 한다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>
                   가. 재적 이사 과반수가 회의의 목적을 제시하여 소집을 요구한 때
                 </li>
@@ -475,18 +475,18 @@ const Regulations = () => {
         </div>
         <div>
           <span>제32조 (서면결의 금지)</span>
-          <p className="pl-2">이사회의 의사는 서면 결의에 의할 수 없다.</p>
+          <p className="lg:pl-2">이사회의 의사는 서면 결의에 의할 수 없다.</p>
         </div>
 
         <strong className="inline-block">제7장 재산 및 회계</strong>
         <div>
           <span>제33조 (재산의 구분)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 법인의 재산은 기본 재산과 보통 재산으로 구분한다.</li>
             <li>
               2. 다음 각 호의 각 항에 해당하는 재산은 이를 기본 재산으로 하고,
               기본 재산 이외의 일체의 재 산은 보통 재산으로 한다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>가. 설립 당시 기본 재산으로 출연한 재산</li>
                 <li>
                   나. 기부에 의하거나 기타 무상으로 취득한 재산. 다만, 기부
@@ -505,7 +505,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제34조 (재산의 관리)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 제33조 제3항의 기본 재산을 매도, 증여, 임대, 교환하거나 담보
               제공, 용도변경, 의무 부담 또 는 권리의 포기를 하고자 할 때에는
@@ -525,20 +525,20 @@ const Regulations = () => {
 
         <div>
           <span>제35조 (재산의 평가)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             법인의 모든 재산의 평가는 취득 당시의 시가에 의한다.
           </p>
         </div>
         <div>
           <span>제36조 (경비의 조달방법 등)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             법인의 유지 및 운영에 필요한 경비는 기본 재산의 과실, 사업 수익,
             회원의 회비, 연회비 및 기타의 수입으로 조달한다.
           </p>
         </div>
         <div>
           <span>제37조 (회계의 구분)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>1. 법인의 회계는 목적사업 회계와 수익사업 회계로 구분한다.</li>
             <li>
               2. 제1항의 경우에 법인세법의 규정에 의한 법인세 과세 대상이 되는
@@ -553,16 +553,16 @@ const Regulations = () => {
         </div>
         <div>
           <span>제38조 (회계 연도)</span>
-          <p className="pl-2">본회의 회계 연도는 정부 회계 연도에 따른다.</p>
+          <p className="lg:pl-2">본회의 회계 연도는 정부 회계 연도에 따른다.</p>
         </div>
         <div>
           <span>제39조 (세입세출 예산 및 결산서 제출)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회의 세입세출 예산은 매 회계 연도 개시 1개월 전까지 사업
               계획서와 함께 다음 각 호의 서 류를 이사회의 의결을 거친 후 총회의
               승인을 얻어 주무관청에 제출한다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>가. 추정대차대조표 및 그 부속명세서</li>
                 <li>나. 추정손익계산서 및 그 부속명세서</li>
               </ul>
@@ -571,7 +571,7 @@ const Regulations = () => {
               2. 본회의 세입세출 결산은 회계연도 종료 후 3개월 이내에 사업
               실적과 함께 다음 각 호의 서류를 이사회의 의결을 거친 후 총회의
               승인을 얻어야 한다.
-              <ul className="pl-2">
+              <ul className="lg:pl-2">
                 <li>가. 대차대조표 및 그 부속명세서</li>
                 <li>나. 손익계산서 및 그 부속명세서</li>
               </ul>
@@ -580,7 +580,7 @@ const Regulations = () => {
         </div>
         <div>
           <span>제40조 (예산 외의 채무부담 등)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             예산 외의 채무의 부담이나 채권의 포기는 이사회의 의결과 총회의
             승인을 거쳐 주무관청의 허가를 받 아야 한다.
           </p>
@@ -589,12 +589,12 @@ const Regulations = () => {
         <strong className="inline-block">제8장 보 칙</strong>
         <div>
           <span>제41조 (정관 변경)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             본정관을변경하고자할때에는총회에서
             재적회원3분의2이상의찬성으로의결하여다음각호의서 류를 첨부하여
             주무관청의 허가를 받아야 한다.
           </p>
-          <ul className="pl-4">
+          <ul className="lg:pl-4">
             <li>1. 정관변경사유서 1부</li>
             <li>2. 정관개정안(신, 구 대조표를 포함한다) 1부</li>
             <li>3. 정관의 변경에 관한 이사회 회의록 등 관련 서류 1부</li>
@@ -604,7 +604,7 @@ const Regulations = () => {
 
         <div>
           <span>제42조 (해산 및 재산 귀속)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 본회를 해산하고자 할 때에는 총회에서 재적회원 3분의 2이상의
               찬성으로 의결하여 주무관청의 허가를 받아야 한다.
@@ -618,14 +618,14 @@ const Regulations = () => {
         </div>
         <div>
           <span>제43조 (시행세칙)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             본 정관의 시행에 필요한 세부적인 사항은 이사회에서 의결하여 총회의
             승인을 얻어야 한다.
           </p>
         </div>
         <div>
           <span>제44조 (기타)</span>
-          <ul className="pl-2">
+          <ul className="lg:pl-2">
             <li>
               1. 이 정관에 명시되지 아니한 사항은 민법(법인 관계 규정)을
               준용한다
@@ -640,13 +640,13 @@ const Regulations = () => {
         <strong className="inline-block">■ 부 칙</strong>
         <div>
           <span>제1조 (시행일)</span>
-          <p className="pl-2">
+          <p className="lg:pl-2">
             이 정관은 주무관청의 허가를 받아 법원에 등기를 한 날부터 시행한다.
           </p>
         </div>
       </div>
 
-      <div className="flex items-center justify-center flex-col text-xl gap-10 mb-20 leading-[30px]">
+      <div className="flex items-center justify-center flex-col text-base lg:text-xl gap-10 mb-7 lg:mb-20 leading-[30px]">
         <div className="flex items-center gap-6">
           <span>2024년</span>
           <span>9월</span>

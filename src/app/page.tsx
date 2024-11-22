@@ -4,6 +4,7 @@ import Announcement from "@/components/home/announcement";
 import LoginForm from "@/components/home/login-form";
 import MainCarousel from "@/components/home/main-carousel";
 import MainPopup from "@/components/home/main-popup";
+import MobileMainCarousel from "@/components/home/mobile-main-carousel";
 import PressRelease from "@/components/home/press-release";
 import UserProfile from "@/components/home/user-profile";
 
@@ -15,10 +16,15 @@ export default async function Home() {
 
   return (
     <div className="relative">
-      <div className="mt-[38px] max-w-screen-xl mx-auto mb-[190px]">
-        <section className="flex justify-between">
+      <div className="lg:mt-[38px] max-w-screen-xl mx-auto mb-[90px] lg:mb-[190px]">
+        {/* DESKTOP */}
+        <section className="hidden lg:flex justify-between">
           <MainCarousel />
           {authenticated ? <UserProfile /> : <LoginForm />}
+        </section>
+        {/* MOBILE */}
+        <section className="lg:hidden">
+          <MobileMainCarousel />
         </section>
       </div>
 
@@ -37,7 +43,7 @@ export default async function Home() {
         </section>
       </div>
 
-      <div className="w-full h-[344px] absolute top-[180px] bg-[#F4F5FA] -z-10" />
+      <div className="w-full h-[344px] absolute top-[180px] bg-[#F4F5FA] -z-10 hidden lg:block" />
 
       <MainPopup />
     </div>

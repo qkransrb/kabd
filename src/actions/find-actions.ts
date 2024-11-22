@@ -14,6 +14,8 @@ export async function findId(values: FindIdValues) {
       }
     );
 
+    console.log("data: ", data);
+
     return data;
   } catch (error) {
     console.log(error);

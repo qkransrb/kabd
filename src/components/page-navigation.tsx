@@ -9,13 +9,20 @@ interface Props {
 const PageNavigation = ({ first, second, third }: Props) => {
   return (
     <div className="w-full flex items-end justify-end h-[19px]">
-      <span className="page-navigation uppercase">{first}</span>
-      <ChevronRight size={16} className="h-4 w-4 self-start" />
-      <span className="page-navigation">{second}</span>
+      <span className="page-navigation uppercase text-[10px] lg:text-base leading-tight lg:leading-[19.2px]">
+        {first}
+      </span>
+      <ChevronRight className="size-4 self-start hidden lg:block" />
+      <ChevronRight className="size-3 self-start mt-1.5 lg:hidden" />
+      <span className="page-navigation text-[10px] lg:text-base leading-tight lg:leading-[19.2px]">
+        {second}
+      </span>
       {third ? (
         <>
           <ChevronRight size={16} className="h-4 w-4 self-start" />
-          <span className="page-navigation">{third}</span>
+          <span className="page-navigation text-[10px] lg:text-base leading-tight lg:leading-[19.2px]">
+            {third}
+          </span>
         </>
       ) : null}
     </div>

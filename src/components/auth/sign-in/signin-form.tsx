@@ -74,16 +74,19 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="min-screen-height py-[118px] max-w-screen-xl mx-auto flex flex-col items-center">
-      <h2 className="text-[30px] font-bold leading-[36px] text-center mb-[60px]">
+    <div className="min-screen-height py-16 lg:py-[118px] max-w-screen-xl mx-auto flex flex-col items-center px-5 lg:px-0">
+      <h2 className="text-[25px] lg:text-[30px] font-bold leading-tight lg:leading-[36px] text-center mb-[26px] lg:mb-[60px]">
         회원님
         <br />
         로그인을 해주세요.
       </h2>
-      <div className="w-[345px]">
+      <div className="w-[300px] lg:w-[345px]">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full mb-11">
-            <div className="mb-2.5">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full mb-5 lg:mb-11"
+          >
+            <div className="mb-2 lg:mb-2.5">
               <FormField
                 control={form.control}
                 name="userId"
@@ -93,7 +96,7 @@ const SignInForm = () => {
                       <FormControl>
                         <Input
                           placeholder="아이디 입력"
-                          className="h-14 text-base placeholder:text-[#828282] font-medium border-[#D2D2D2] rounded-[10px]"
+                          className="h-[50px] lg:h-14 text-base placeholder:text-[#828282] font-medium border-[#D2D2D2] rounded-[10px]"
                           {...field}
                         />
                       </FormControl>
@@ -107,7 +110,9 @@ const SignInForm = () => {
                           fill={saveUserId ? "#000000" : "#D2D2D2"}
                           color="#FFFFFF"
                         />
-                        <span className="text-base font-medium">저장</span>
+                        <span className="text-sm lg:text-base font-medium">
+                          저장
+                        </span>
                       </button>
                     </div>
                   </FormItem>
@@ -126,7 +131,7 @@ const SignInForm = () => {
                         <Input
                           type="password"
                           placeholder="비밀번호 입력"
-                          className="h-14 text-base placeholder:text-[#828282] font-medium border-[#D2D2D2] rounded-[10px]"
+                          className="h-[50px] lg:h-14 text-base placeholder:text-[#828282] font-medium border-[#D2D2D2] rounded-[10px]"
                           {...field}
                         />
                       </FormControl>
@@ -138,33 +143,38 @@ const SignInForm = () => {
 
             <Button
               type="submit"
-              className="h-14 text-lg font-semibold w-full rounded-[10px]"
+              className="h-[50px] lg:h-14 text-base lg:text-lg font-semibold w-full rounded-[10px]"
             >
               로그인
             </Button>
           </form>
         </Form>
 
-        <div className="flex items-center justify-between mb-[70px]">
+        <div className="flex items-center justify-between mb-10 lg:mb-[70px]">
           <Link
             href="/find-id"
-            className="text-base font-medium leading-[19.2px] custom-letter-spacing"
+            className="text-sm lg:text-base font-medium lg:leading-[19.2px] custom-letter-spacing"
           >
             아이디/비밀번호 찾기
           </Link>
           <Link
             href="/sign-up"
-            className="text-base font-medium leading-[19.2px] custom-letter-spacing"
+            className="text-sm lg:text-base font-medium lg:leading-[19.2px] custom-letter-spacing"
           >
             회원가입
           </Link>
         </div>
 
-        <p className="text-[15px] leading-[18px] font-medium text-[#595959] custom-letter-spacing mb-[30px] whitespace-nowrap">
+        <p className="text-[15px] leading-[18px] font-medium text-[#595959] custom-letter-spacing mb-[30px] whitespace-nowrap hidden lg:block">
           * 로그인 오류 시 070-5153-2795으로 문의주시기 바랍니다.
         </p>
 
-        <Separator className="bg-[#D2D2D2] mb-[72px]" />
+        <p className="text-sm leading-tight font-medium text-[#595959] custom-letter-spacing mb-[30px] whitespace-nowrap lg:hidden text-center">
+          * 로그인 오류 시<br />
+          070-5153-2795으로 문의주시기 바랍니다.
+        </p>
+
+        <Separator className="bg-[#D2D2D2] mb-0 lg:mb-[72px]" />
       </div>
     </div>
   );

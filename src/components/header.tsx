@@ -6,15 +6,25 @@ import Avatar from "@/assets/images/avatar.png";
 import { Button } from "@/components/ui/button";
 import HeaderLinkButton from "@/components/header-link-button";
 import { isAuthenticated, isRegularMember } from "@/actions/auth-actions";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
+import { Menu } from "lucide-react";
 
 const Header = async () => {
   const authenticated = await isAuthenticated();
   const regularMember = await isRegularMember();
 
   return (
-    <header className="max-w-[1920px] h-[140px] flex items-center w-full">
-      <nav className="max-w-screen-xl mx-auto w-full flex items-center justify-between h-full">
-        <Link href="/" className="flex-shrink-0">
+    <header className="max-w-[1920px] h-[86px] lg:h-[140px] flex items-center w-full px-5 lg:px-0 shadow-md lg:shadow-none">
+      {/* DESKTOP NAV */}
+      <nav className="max-w-screen-xl mx-auto w-full items-center justify-between h-full hidden lg:flex">
+        <Link href="/" className="flex-shrink-0 hidden lg:block">
           <h1 hidden>한국생체모방치의학회</h1>
           <Image
             src={Logo}
@@ -171,6 +181,44 @@ const Header = async () => {
             <Image src={Avatar} alt="마이페이지" width={45} height={45} />
           </Link>
         </Button>
+      </nav>
+      {/* MOBILE NAV */}
+      <nav className="max-w-screen-xl mx-auto w-full flex items-center justify-between lg:hidden">
+        <Link href="/" className="flex-shrink-0 lg:hidden">
+          <h1 hidden>한국생체모방치의학회</h1>
+          <Image
+            src={Logo}
+            alt="THE KOREAN ACADEMY OF BIOMIMETIC DENTISTRY"
+            width={167}
+            height={29}
+            priority
+          />
+        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/sign-in"
+            className="h-[34px] w-[65px] bg-[#2C2C2C] flex items-center justify-center text-[13px] text-white font-normal rounded-full"
+          >
+            로그인
+          </Link>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" className="p-0 hover:bg-transparent">
+                <Menu className="!size-7" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle>Edit profile</SheetTitle>
+                <SheetDescription>
+                  Make changes to your profile here. Click save when you're
+                  done.
+                </SheetDescription>
+              </SheetHeader>
+              <div className="grid gap-4 py-4">Content</div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </nav>
     </header>
   );

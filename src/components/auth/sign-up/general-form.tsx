@@ -142,21 +142,21 @@ const GeneralForm = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto py-24">
+    <div className="max-w-screen-xl mx-auto py-16 lg:py-24 px-5 lg:px-0">
       <div className="flex items-center justify-center mb-10">
         <SubTitle text="회원가입" />
       </div>
-      <h3 className="text-[26px] font-bold leading-[31.2px] mb-4">
+      <h3 className="text-sm lg:text-[26px] font-bold lg:leading-[31.2px] mb-2 lg:mb-4">
         가입정보(필수입력)
       </h3>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="border-t-[3px] border-t-[#111111]"
+          className="border-t-[2px] lg:border-t-[3px] border-t-[#111111]"
         >
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 아이디
               </span>
             </div>
@@ -165,12 +165,12 @@ const GeneralForm = () => {
                 control={form.control}
                 name="userId"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center gap-3 px-[22px]">
+                  <FormItem className="h-full flex items-center gap-1 lg:gap-3 px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         placeholder="아이디 입력"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           (form.getFieldState(field.name).error ||
                             form.getFieldState("userIdConfirm").invalid) &&
                             "border-[#D00000]"
@@ -194,7 +194,7 @@ const GeneralForm = () => {
                         }
                       }}
                       className={cn(
-                        "h-10 rounded-full w-[93px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
+                        "h-[38px] lg:h-10 rounded-[6px] lg:rounded-full w-auto lg:w-[93px] text-xs lg:text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0 text-nowrap px-1 lg:px-0 pt-1 lg:pt-0",
                         form.getFieldState(field.name).invalid ||
                           form.getValues(field.name) === ""
                           ? "bg-[#828282]"
@@ -214,9 +214,9 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 비밀번호
               </span>
             </div>
@@ -225,20 +225,20 @@ const GeneralForm = () => {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center gap-3 px-[22px]">
+                  <FormItem className="h-full flex items-center gap-3 px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="비밀번호 입력"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
                         {...field}
                       />
                     </FormControl>
-                    <p className="text-sm text-[#828282] font-medium leading-[16.8px] custom-letter-spacing">
+                    <p className="text-sm text-[#828282] font-medium leading-[16.8px] custom-letter-spacing hidden lg:block">
                       8~16자의 영문/숫자를 조합하여 입력
                     </p>
                   </FormItem>
@@ -247,9 +247,9 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 비밀번호 확인
               </span>
             </div>
@@ -258,13 +258,13 @@ const GeneralForm = () => {
                 control={form.control}
                 name="confirmPassword"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center px-[22px]">
+                  <FormItem className="h-full flex items-center px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="비밀번호 확인"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -280,23 +280,23 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-auto lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 이름
               </span>
             </div>
-            <div className="w-full flex items-center gap-x-3">
+            <div className="w-full flex flex-col lg:flex-row items-start lg:items-center gap-y-2 lg:gap-y-0 gap-x-3">
               <FormField
                 control={form.control}
                 name="koreanName"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pt-2 lg:pt-0 pl-2 lg:pl-[22px]">
                     <FormControl>
                       <Input
                         placeholder="국문 이름"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -310,12 +310,12 @@ const GeneralForm = () => {
                 control={form.control}
                 name="englishName"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pr-[22px]">
+                  <FormItem className="h-full flex items-center pb-2 lg:pb-0 pl-2 lg:pl-0 lg:pr-[22px]">
                     <FormControl>
                       <Input
                         placeholder="영문 이름"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -328,9 +328,9 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 생년월일
               </span>
             </div>
@@ -339,12 +339,12 @@ const GeneralForm = () => {
                 control={form.control}
                 name="birth"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <Input
                         placeholder="생년월일 8자리"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -357,9 +357,9 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 성별
               </span>
             </div>
@@ -368,18 +368,18 @@ const GeneralForm = () => {
                 control={form.control}
                 name="gender"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
                         defaultValue="M"
-                        className="flex items-center gap-[54px]"
+                        className="flex items-center gap-4 lg:gap-[54px]"
                       >
                         <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="M" />
                           </FormControl>
-                          <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base pt-0.5 lg:pt-0 font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                             남자
                           </FormLabel>
                         </FormItem>
@@ -387,7 +387,7 @@ const GeneralForm = () => {
                           <FormControl>
                             <RadioGroupItem value="F" />
                           </FormControl>
-                          <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base pt-0.5 lg:pt-0 font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
                             여자
                           </FormLabel>
                         </FormItem>
@@ -399,23 +399,23 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-auto lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 휴대전화
               </span>
             </div>
-            <div className="w-full flex items-center gap-x-8">
+            <div className="w-full flex flex-col lg:flex-row items-start lg:items-center gap-x-8 pl-2 lg:pl-0 gap-y-2 lg:gap-y-0 pt-2 lg:pt-0 pb-2 lg:pb-0">
               <FormField
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px] gap-3">
+                  <FormItem className="h-full flex items-center pl-0 lg:pl-[22px] gap-1 lg:gap-3">
                     <FormControl>
                       <Input
                         placeholder="번호 입력"
                         className={cn(
-                          "min-w-[249px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[135px] lg:min-w-[249px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -433,7 +433,7 @@ const GeneralForm = () => {
                         }
                       }}
                       className={cn(
-                        "h-10 rounded-full min-w-[116px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
+                        "h-[38px] lg:h-10 rounded-[6px] lg:rounded-full w-auto lg:min-w-[116px] text-xs lg:text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0 text-nowrap px-1 lg:px-0",
                         form.getFieldState(field.name).invalid ||
                           form.getValues(field.name) === ""
                           ? "bg-[#828282]"
@@ -449,12 +449,12 @@ const GeneralForm = () => {
                 control={form.control}
                 name="confirmNumber"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pr-[22px] gap-3">
+                  <FormItem className="h-full flex items-center pr-0 lg:pr-[22px] gap-1 lg:gap-3">
                     <FormControl>
                       <Input
                         placeholder="인증번호 6자리 입력"
                         className={cn(
-                          "min-w-[202px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[135px] lg:min-w-[202px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -478,7 +478,7 @@ const GeneralForm = () => {
                         }
                       }}
                       className={cn(
-                        "h-10 rounded-full min-w-[116px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
+                        "h-[38px] lg:h-10 rounded-[6px] lg:rounded-full w-auto lg:min-w-[116px] text-xs lg:text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0 text-nowrap px-3 lg:px-0",
                         form.getFieldState(field.name).invalid ||
                           form.getValues(field.name) === ""
                           ? "bg-[#828282]"
@@ -493,9 +493,9 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 이메일
               </span>
             </div>
@@ -504,12 +504,12 @@ const GeneralForm = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center px-[22px]">
+                  <FormItem className="h-full flex items-center px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         placeholder="이메일 입력"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -522,23 +522,28 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="hidden lg:block text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 학회공지수신방법
               </span>
+              <span className="lg:hidden text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
+                학회공지
+                <br />
+                수신방법
+              </span>
             </div>
-            <div className="w-full flex items-center gap-x-3">
+            <div className="w-full flex items-center gap-x-2 lg:gap-x-3">
               <FormField
                 control={form.control}
                 name="type"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
                         defaultValue="S"
-                        className="flex items-center gap-[54px]"
+                        className="flex items-center gap-6 lg:gap-[54px]"
                       >
                         {/* <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
@@ -552,7 +557,7 @@ const GeneralForm = () => {
                           <FormControl>
                             <RadioGroupItem value="S" />
                           </FormControl>
-                          <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base pt-0.5 lg:pt-0 font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
                             문자
                           </FormLabel>
                         </FormItem>
@@ -560,7 +565,7 @@ const GeneralForm = () => {
                           <FormControl>
                             <RadioGroupItem value="E" />
                           </FormControl>
-                          <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base pt-0.5 lg:pt-0 font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
                             이메일
                           </FormLabel>
                         </FormItem>
@@ -575,21 +580,26 @@ const GeneralForm = () => {
           <div
             className={cn(
               "flex border-b border-b-[#D2D2D2]",
-              addressType === "H" ? "h-[190px]" : "h-[250px]"
+              addressType === "H"
+                ? "h-auto lg:h-[190px]"
+                : "h-auto lg:h-[250px]"
             )}
           >
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex flex-col items-start pt-6">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing mb-3">
+            <div className="bg-[#F4F5FA] min-w-[102px] lg:min-w-[206px] px-2 lg:px-[22px] flex flex-col items-start pt-2 lg:pt-6">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing mb-3">
                 우편물 수령지
               </span>
-              <p className="text-[11px] font-semibold leading-[13px] max-w-[150px] custom-letter-spacing">
+              <p className="hidden lg:block text-[11px] font-semibold leading-[13px] max-w-[150px] custom-letter-spacing">
                 * 올바른 입회 승인을 위해
                 <br />
                 가급적 근무처로 기입 부탁드립니다.
               </p>
+              <p className="lg:hidden text-[10px] font-semibold custom-letter-spacing">
+                * 올바른 입회 승인을 위해 가급적 근무처로 기입 부탁드립니다.
+              </p>
             </div>
-            <div className="flex flex-col justify-between px-[22px] py-6">
-              <div className="w-full flex items-center gap-x-3">
+            <div className="flex flex-col justify-between px-2 lg:px-[22px] py-2 lg:py-6 space-y-2 lg:space-y-0">
+              <div className="w-full flex items-center gap-x-2 lg:gap-x-3">
                 <FormField
                   control={form.control}
                   name="addressType"
@@ -611,7 +621,7 @@ const GeneralForm = () => {
                               <FormControl>
                                 <RadioGroupItem value="H" />
                               </FormControl>
-                              <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
+                              <FormLabel className="text-xs lg:text-base pt-0.5 lg:pt-0 font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                                 자택
                               </FormLabel>
                             </FormItem>
@@ -619,7 +629,7 @@ const GeneralForm = () => {
                               <FormControl>
                                 <RadioGroupItem value="J" />
                               </FormControl>
-                              <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                              <FormLabel className="text-xs lg:text-base pt-0.5 lg:pt-0 font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                                 근무처
                               </FormLabel>
                             </FormItem>
@@ -631,7 +641,7 @@ const GeneralForm = () => {
                 />
               </div>
               <div
-                className="flex items-center gap-3"
+                className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-3"
                 hidden={addressType === "H"}
               >
                 <FormField
@@ -643,7 +653,7 @@ const GeneralForm = () => {
                         <Input
                           {...field}
                           placeholder="근무처명"
-                          className="h-12 w-[215px] rounded-[10px] border-[#D2D2D2]"
+                          className="h-[38px] lg:h-12 w-[150px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] placeholder:text-xs lg:placeholder:text-base"
                           disabled={addressType === "H"}
                         />
                       </FormControl>
@@ -659,7 +669,7 @@ const GeneralForm = () => {
                         <Input
                           {...field}
                           placeholder="근무처 전화번호"
-                          className="h-12 w-[215px] rounded-[10px] border-[#D2D2D2]"
+                          className="h-[38px] lg:h-12 w-[150px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] placeholder:text-xs lg:placeholder:text-base"
                           disabled={addressType === "H"}
                         />
                       </FormControl>
@@ -667,7 +677,7 @@ const GeneralForm = () => {
                   )}
                 />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 lg:gap-3">
                 <FormField
                   control={form.control}
                   name="zipcode"
@@ -678,7 +688,7 @@ const GeneralForm = () => {
                           {...field}
                           placeholder="우편번호"
                           className={cn(
-                            "h-12 w-[215px] rounded-[10px] border-[#D2D2D2]",
+                            "h-[38px] lg:h-12 w-[150px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] placeholder:text-xs lg:placeholder:text-base",
                             form.getFieldState(field.name).error &&
                               "border-[#D00000]"
                           )}
@@ -695,7 +705,7 @@ const GeneralForm = () => {
                   setZipcode={setZipcode}
                 />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-3">
                 <FormField
                   control={form.control}
                   name="address"
@@ -706,7 +716,7 @@ const GeneralForm = () => {
                           {...field}
                           placeholder="주소 입력"
                           className={cn(
-                            "h-12 w-[327px] rounded-[10px] border-[#D2D2D2]",
+                            "h-[38px] lg:h-12 w-[226px] lg:w-[327px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] placeholder:text-xs lg:placeholder:text-base",
                             form.getFieldState(field.name).error &&
                               "border-[#D00000]"
                           )}
@@ -726,7 +736,7 @@ const GeneralForm = () => {
                         <Input
                           {...field}
                           placeholder="상세 주소 입력"
-                          className="h-12 w-[327px] rounded-[10px] border-[#D2D2D2]"
+                          className="h-[38px] lg:h-12 w-[226px] lg:w-[327px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] placeholder:text-xs lg:placeholder:text-base"
                         />
                       </FormControl>
                     </FormItem>
@@ -736,7 +746,7 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="my-[100px]">
+          <div className="my-10 lg:my-[100px]">
             <div className="mb-5">
               <FormField
                 control={form.control}
@@ -755,11 +765,11 @@ const GeneralForm = () => {
                             form.setValue("term2", false);
                           }
                         }}
-                        className="size-5 rounded-none"
+                        className="size-4 lg:size-5 rounded-none"
                       />
                     </FormControl>
                     <div className="space-y-1 leading-none">
-                      <FormLabel className="text-[23px] font-bold">
+                      <FormLabel className="text-sm lg:text-[23px] font-bold">
                         전체 약관에 모두 동의합니다.
                       </FormLabel>
                     </div>
@@ -769,10 +779,14 @@ const GeneralForm = () => {
             </div>
 
             <div className="mb-2">
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-[335px] lg:w-full"
+              >
                 <AccordionItem
                   value="term1"
-                  className="border border-[#D2D2D2] p-2 px-5 rounded-[10px]"
+                  className="border border-[#D2D2D2] p-0 lg:p-2 px-3 lg:px-5 rounded-[10px]"
                 >
                   <div className="flex items-center justify-between">
                     <FormField
@@ -784,11 +798,11 @@ const GeneralForm = () => {
                             <Checkbox
                               checked={field.value}
                               onCheckedChange={field.onChange}
-                              className="size-[18px] rounded-none"
+                              className="size-4 lg:size-[18px] rounded-none"
                             />
                           </FormControl>
                           <div className="space-y-1 leading-none">
-                            <FormLabel className="text-[18px] font-medium custom-letter-spacing">
+                            <FormLabel className="text-sm lg:text-[18px] font-medium custom-letter-spacing">
                               [필수] 이용약관 동의
                             </FormLabel>
                           </div>
@@ -1008,10 +1022,14 @@ const GeneralForm = () => {
             </div>
 
             <div>
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-[335px] lg:w-full"
+              >
                 <AccordionItem
                   value="term2"
-                  className="border border-[#D2D2D2] p-2 px-5 rounded-[10px]"
+                  className="border border-[#D2D2D2] p-0 lg:p-2 px-3 lg:px-5 rounded-[10px]"
                 >
                   <div className="flex items-center justify-between">
                     <FormField
@@ -1023,11 +1041,11 @@ const GeneralForm = () => {
                             <Checkbox
                               checked={field.value}
                               onCheckedChange={field.onChange}
-                              className="size-[18px] rounded-none"
+                              className="size-4 lg:size-[18px] rounded-none"
                             />
                           </FormControl>
                           <div className="space-y-1 leading-none">
-                            <FormLabel className="text-[18px] font-medium custom-letter-spacing">
+                            <FormLabel className="text-sm lg:text-[18px] font-medium custom-letter-spacing">
                               [필수] 개인정보 수집 및 이용 동의
                             </FormLabel>
                           </div>
@@ -1156,10 +1174,10 @@ const GeneralForm = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center mb-[150px]">
+          <div className="flex items-center justify-center mb-[50px] lg:mb-[150px]">
             <Button
               type="submit"
-              className="w-[345px] h-[55px] rounded-[10px] text-[18px] font-semibold custom-letter-spacing"
+              className="w-[280px] lg:w-[345px] h-[50px] lg:h-[55px] rounded-[6px] lg:rounded-[10px] text-base lg:text-[18px] font-semibold custom-letter-spacing"
             >
               회원가입
             </Button>

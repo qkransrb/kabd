@@ -43,9 +43,9 @@ const Content = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto h-[calc(100vh_-_140px)]">
-      <div className="flex items-center justify-center flex-col mt-[118px]">
-        <h2 className="text-[30px] font-bold leading-[35.8px] custom-letter-spacing mb-[30px]">
+    <div className="max-w-screen-xl mx-auto h-auto lg:h-[calc(100vh_-_140px)] px-5 lg:px-0">
+      <div className="flex items-center justify-center flex-col mt-16 lg:mt-[118px]">
+        <h2 className="text-[25px] lg:text-[30px] font-bold lg:leading-[35.8px] custom-letter-spacing mb-[30px]">
           아이디/비밀번호 찾기
         </h2>
         {fetchSuccess ? (
@@ -53,16 +53,16 @@ const Content = () => {
             회원정보와 일치하는 아이디입니다.
           </p>
         ) : (
-          <div className="max-w-[520px] mx-auto w-full flex items-center justify-between gap-5 mb-6">
+          <div className="max-w-[300px] lg:max-w-[520px] mx-auto w-full flex items-center justify-between gap-2 lg:gap-5 mb-[18px] lg:mb-6">
             <Link
               href="/find-id"
-              className="flex items-center justify-center w-1/2 bg-[#2C2C2C] h-[56px] rounded-[10px] text-lg text-white font-semibold custom-letter-spacing"
+              className="flex items-center justify-center w-1/2 bg-[#2C2C2C] h-11 lg:h-[56px] rounded-[10px] text-sm lg:text-lg text-white font-semibold custom-letter-spacing"
             >
               아이디 찾기
             </Link>
             <Link
               href="/find-password"
-              className="flex items-center justify-center w-1/2 bg-[#F4F5FA] h-[56px] rounded-[10px] text-lg text-black font-semibold custom-letter-spacing border border-[#D2D2D2]"
+              className="flex items-center justify-center w-1/2 bg-[#F4F5FA] h-11 lg:h-[56px] rounded-[10px] text-sm lg:text-lg text-black font-semibold custom-letter-spacing border border-[#D2D2D2]"
             >
               비밀번호 찾기
             </Link>
@@ -71,9 +71,9 @@ const Content = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="max-w-[520px] w-full"
+            className="max-w-[300px] lg:max-w-[520px] w-full"
           >
-            <div className="mb-3 relative">
+            <div className="mb-2 lg:mb-3 relative">
               <FormField
                 control={form.control}
                 name="username"
@@ -83,7 +83,7 @@ const Content = () => {
                       <Input
                         {...field}
                         placeholder="이름"
-                        className="h-[56px] rounded-[10px] w-full px-5"
+                        className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                         readOnly={fetchSuccess}
                       />
                     </FormControl>
@@ -96,7 +96,7 @@ const Content = () => {
                 </p>
               ) : null}
             </div>
-            <div className="mb-6 relative">
+            <div className="mb-4 lg:mb-6 relative">
               <FormField
                 control={form.control}
                 name="phone"
@@ -105,8 +105,8 @@ const Content = () => {
                     <FormControl>
                       <Input
                         {...field}
-                        placeholder="휴대전화번호"
-                        className="h-[56px] rounded-[10px] w-full px-5"
+                        placeholder={fetchSuccess ? "가입일" : "휴대전화번호"}
+                        className="h-[50px] lg:h-[56px] rounded-[10px] w-full px-5"
                         readOnly={fetchSuccess}
                       />
                     </FormControl>
@@ -130,7 +130,7 @@ const Content = () => {
               ) : (
                 <Button
                   type="submit"
-                  className="h-[56px] w-[345px] rounded-[10px] flex items-center justify-center text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
+                  className="h-[50px] lg:h-[56px] w-[300px] lg:w-[345px] rounded-[10px] flex items-center justify-center text-base lg:text-lg font-semibold custom-letter-spacing bg-[#2C2C2C]"
                   disabled={fetchSuccess}
                 >
                   다음 단계

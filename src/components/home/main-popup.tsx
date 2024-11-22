@@ -60,20 +60,28 @@ const MainPopup = () => {
                 height={1080}
                 width={1080}
                 priority
-                className="w-[1080px] h-auto"
+                className="w-[1080px] h-auto hidden lg:block"
+              />
+              <Image
+                src={popupImage}
+                alt="Announcement"
+                height={1080}
+                width={375}
+                priority
+                className="w-[375px] h-auto lg:hidden"
               />
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
+          <AlertDialogFooter className="flex flex-row gap-x-2 lg:gap-0 items-center">
             <AlertDialogAction
               onClick={closeToday}
-              className="w-full font-semibold"
+              className="w-1/2 lg:w-full font-semibold text-xs lg:text-base"
             >
               오늘하루 열지않기
             </AlertDialogAction>
             <AlertDialogAction
               onClick={onClose}
-              className="w-full font-semibold"
+              className="w-1/2 lg:w-full font-semibold text-xs lg:text-base"
             >
               확인
             </AlertDialogAction>

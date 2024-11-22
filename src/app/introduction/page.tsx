@@ -19,24 +19,31 @@ export const dynamic = "force-dynamic";
 
 const Introduction = () => {
   return (
-    <div className="mt-[38px]">
-      <div className="max-w-screen-xl mx-auto" id="introduction">
+    <div className="mt-9 lg:mt-[38px]">
+      <div className="max-w-screen-xl mx-auto px-5 lg:px-0" id="introduction">
         <PageNavigation first="Home" second="학회소개" />
       </div>
 
-      <section className="mb-[200px] max-w-screen-xl mx-auto">
-        <SubTitle text="학회소개" className="mt-[30px] mb-[86px]" />
-        <div className="mb-[68px]">
-          <p className="text-[#595959] text-[21px] font-bold leading-[25.06px] mb-4">
+      <section className="mb-[100px] lg:mb-[200px] max-w-screen-xl mx-auto px-5 lg:px-0">
+        <SubTitle text="학회소개" className="mt-[30px] mb-9 lg:mb-[86px]" />
+        <div className="mb-7 lg:mb-[68px]">
+          <p className="text-[#595959] text-[15px] lg:text-[21px] font-bold lg:leading-[25.06px] mb-4">
             인사말
           </p>
-          <strong className="custom-letter-spacing text-[45px] leading-[60px]">
+          <strong className="custom-letter-spacing text-[45px] leading-[60px] hidden lg:block">
             함께 지식을 공유하고, 혁신적인 아이디어를 나누며,
             <br /> 치의학의 미래를 열어나가길 기대합니다.
           </strong>
+          <strong className="custom-letter-spacing text-[20px] leading-normal lg:hidden">
+            함께 지식을 공유하고,
+            <br />
+            혁신적인 아이디어를 나누며,
+            <br />
+            치의학의 미래를 열어나가길 기대합니다.
+          </strong>
         </div>
-        <div className="flex justify-between">
-          <article className="max-w-[653px] w-full space-y-10 text-lg custom-letter-spacing leading-[32px] font-normal">
+        <div className="flex flex-col-reverse lg:flex-row justify-between">
+          <article className="max-w-[653px] w-full space-y-7 lg:space-y-10 text-base lg:text-lg custom-letter-spacing leading-[32px] font-normal">
             <p>
               존경하는 한국생체모방치의학회 회원 여러분과 방문자 여러분,
               환영합니다!
@@ -73,7 +80,7 @@ const Introduction = () => {
               치의학의 미래를 열어나가길 기대합니다.
             </p>
             <p>감사합니다.</p>
-            <p className="flex justify-end items-baseline text-[26px] font-bold custom-letter-spacing">
+            <p className="flex justify-center lg:justify-end items-baseline text-[21px] lg:text-[26px] font-bold custom-letter-spacing pt-7 lg:pt-0">
               한국생체모방치의학회{" "}
               <span className="px-1 text-lg font-normal custom-letter-spacing ml-2">
                 회장
@@ -84,56 +91,66 @@ const Introduction = () => {
           <Image
             src={President}
             alt="President"
+            width={185}
+            height={232}
+            className="w-[185px] h-[232px] lg:hidden border border-[#D9D9D9] rounded-[20px] overflow-hidden mb-10 lg:mb-0"
+          />
+          <Image
+            src={President}
+            alt="President"
             width={556}
             height={698}
-            className="w-[556px] h-[698px]"
+            className="w-[556px] h-[698px] hidden lg:block"
           />
         </div>
       </section>
 
-      <section className="mb-[200px] max-w-screen-xl mx-auto" id="history">
+      <section
+        className="mb-[100px] lg:mb-[200px] max-w-screen-xl mx-auto px-5 lg:px-0"
+        id="history"
+      >
         <SubTitle text="연혁" className="mb-9" />
-        <div className="py-[50px] px-9 rounded-[20px] bg-[#F4F5FA] max-w-[471px] w-full">
+        <div className="p-6 py-10 lg:py-[50px] lg:px-9 rounded-[20px] bg-[#F4F5FA] max-w-[471px] w-full">
           <p className="text-[21px] font-bold mb-7">
             1대 <span className="text-[13px] font-normal">(2023년~2025년)</span>
           </p>
-          <ul className="grid grid-cols-2 gap-2">
-            <li className="flex justify-between pr-10 custom-letter-spacing text-[20px] leading-[30px]">
+          <ul className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+            <li className="flex justify-between pr-20 lg:pr-10 custom-letter-spacing text-base lg:text-[20px] leading-[30px]">
               <span className="font-bold flex items-center">
                 <Dot size={14} className="pb-1" />
                 회장
               </span>
               <span className="font-normal">홍성욱</span>
             </li>
-            <li className="flex justify-between pr-10 custom-letter-spacing text-[20px] leading-[30px]">
+            <li className="flex justify-between pr-20 lg:pr-10 custom-letter-spacing text-base lg:text-[20px] leading-[30px]">
               <span className="font-bold flex items-center">
                 <Dot size={14} className="pb-1" />
                 부회장
               </span>
               <span className="font-normal">최진호</span>
             </li>
-            <li className="flex justify-between pr-10 custom-letter-spacing text-[20px] leading-[30px]">
+            <li className="flex justify-between pr-20 lg:pr-10 custom-letter-spacing text-base lg:text-[20px] leading-[30px]">
               <span className="font-bold flex items-center">
                 <Dot size={14} className="pb-1" />
                 총무이사
               </span>
               <span className="font-normal">이지선</span>
             </li>
-            <li className="flex justify-between pr-10 custom-letter-spacing text-[20px] leading-[30px]">
+            <li className="flex justify-between pr-20 lg:pr-10 custom-letter-spacing text-base lg:text-[20px] leading-[30px]">
               <span className="font-bold flex items-center">
                 <Dot size={14} className="pb-1" />
                 학술이사
               </span>
               <span className="font-normal">권영선</span>
             </li>
-            <li className="flex justify-between pr-10 custom-letter-spacing text-[20px] leading-[30px]">
+            <li className="flex justify-between pr-20 lg:pr-10 custom-letter-spacing text-base lg:text-[20px] leading-[30px]">
               <span className="font-bold flex items-center">
                 <Dot size={14} className="pb-1" />
                 연구이사
               </span>
               <span className="font-normal">김경덕</span>
             </li>
-            <li className="flex justify-between pr-10 custom-letter-spacing text-[20px] leading-[30px]">
+            <li className="flex justify-between pr-20 lg:pr-10 custom-letter-spacing text-base lg:text-[20px] leading-[30px]">
               <span className="font-bold flex items-center">
                 <Dot size={14} className="pb-1" />
                 감사
@@ -143,17 +160,34 @@ const Introduction = () => {
           </ul>
         </div>
       </section>
-      <section className="bg-[#F4F5FA] h-[833px] mb-[200px]" id="purpose">
-        <div className="max-w-screen-xl mx-auto flex justify-between">
+
+      <section
+        className="bg-[#F4F5FA] h-[833px] mb-[100px] lg:mb-[200px] px-5 lg:px-0"
+        id="purpose"
+      >
+        <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row justify-between">
           <div>
-            <SubTitle text="설립 목적" className="pt-[110px] mb-9" />
-            <p className="max-w-[653px] custom-letter-spacing text-lg leading-[32px] font-normal whitespace-nowrap">
-              최근 대두되는 생체모방이론에 입각한 과학적 근거을 정립하고,
+            <SubTitle text="설립 목적" className="pt-20 lg:pt-[110px] mb-9" />
+            <p className="max-w-[653px] custom-letter-spacing text-lg leading-[32px] font-normal whitespace-nowrap hidden lg:block">
+              최근 대두되는 생체모방이론에 입각한 과학적 근거를 정립하고,
               <br />
               임상적으로 응용 가능하도록 하는 것에 목적을 두고 있습니다.
               <br /> 학술적 발전과 기술적 보급은 과학계와 산업계의 교류와 협력에
               의해 이뤄질 것이며
               <br /> 본 학회는 그 터를 제공하고자 합니다.
+            </p>
+            <p className="max-w-[330px] custom-letter-spacing text-base font-normal whitespace-nowrap lg:hidden">
+              최근 대두되는 생체모방이론에 입각한 과학적 근거를
+              <br />
+              정립하고, 임상적으로 응용 가능하도록 하는 것에 목적을
+              <br />
+              두고 있습니다.
+              <br />
+              <br />
+              학술적 발전과 기술적 보급은 과학계와 산업계의 교류와
+              <br />
+              협력에 의해 이뤄질 것이며
+              <br />본 학회는 그 터를 제공하고자 합니다.
             </p>
           </div>
           <Image
@@ -161,20 +195,30 @@ const Introduction = () => {
             alt=""
             width={633}
             height={578.45}
-            className="pt-[110px]"
+            className="pt-[110px] hidden lg:block"
+          />
+          <Image
+            src={Intro}
+            alt=""
+            width={338}
+            height={309}
+            className="pt-20 lg:hidden"
           />
         </div>
       </section>
 
-      <section className="max-w-screen-xl mx-auto mb-[200px]" id="regulations">
-        <div className="flex items-center gap-5 mb-9">
+      <section
+        className="max-w-screen-xl mx-auto mb-[100px] lg:mb-[200px] px-5 lg:px-0"
+        id="regulations"
+      >
+        <div className="flex items-center justify-between lg:justify-start gap-5 mb-9">
           <SubTitle text="회칙" />
           <a
             href="/pdf/kabd.pdf"
             download
             className="border border-[#D2D2D2] rounded-[10px] w-[162px] h-[35px] flex items-center justify-center gap-2"
           >
-            <span className="text-lg font-medium text-[#595959] leading-[21.6px]">
+            <span className="text-base lg:text-lg font-medium text-[#595959] leading-[21.6px]">
               회칙 다운로드
             </span>
             <Image src={Download} alt="Download" width={18} height={19} />
@@ -182,191 +226,381 @@ const Introduction = () => {
         </div>
         <Regulations />
       </section>
-      <section className="max-w-screen-xl mx-auto mb-[200px]" id="executive">
+
+      <section
+        className="max-w-screen-xl mx-auto mb-[100px] lg:mb-[200px] px-5 lg:px-0"
+        id="executive"
+      >
         <div className="mb-9">
           <SubTitle text="임원진 안내" />
         </div>
-        <div className="flex items-center gap-4 mb-8">
-          <div>
-            <Image
-              src={hong}
-              alt="회장 홍성욱"
-              width={240}
-              height={240}
-              className="rounded-[20px] w-[240px] h-[240px] mb-3"
-            />
-            <p className="text-[26px] font-bold custom-letter-spacing text-center">
-              <span className="text-lg font-normal mr-3">회장</span>
-              홍&nbsp;&nbsp;성&nbsp;&nbsp;욱
-            </p>
+
+        {/* MOBILE */}
+        <div className="lg:hidden space-y-7">
+          <div className="flex items-center gap-x-2">
+            <div>
+              <Image
+                src={hong}
+                alt="회장 홍성욱"
+                width={160}
+                height={160}
+                className="rounded-[10px] w-[160px] h-[160px] mb-2"
+              />
+              <p className="text-lg lg:text-[26px] font-bold custom-letter-spacing text-center text-nowrap">
+                <span className="text-base lg:text-lg font-normal mr-3">
+                  회장
+                </span>
+                홍&nbsp;&nbsp;성&nbsp;&nbsp;욱
+              </p>
+            </div>
+            <div>
+              <Image
+                src={choi}
+                alt="부회장 최진호"
+                width={160}
+                height={160}
+                className="rounded-[10px] w-[160px] h-[160px] mb-2"
+              />
+              <p className="text-lg lg:text-[26px] font-bold custom-letter-spacing text-center text-nowrap">
+                <span className="text-base lg:text-lg font-normal mr-3">
+                  부회장
+                </span>
+                최&nbsp;&nbsp;진&nbsp;&nbsp;호
+              </p>
+            </div>
           </div>
-          <div>
-            <Image
-              src={choi}
-              alt="부회장 최진호"
-              width={240}
-              height={240}
-              className="rounded-[20px] w-[240px] h-[240px] mb-3"
-            />
-            <p className="text-[26px] font-bold custom-letter-spacing text-center">
-              <span className="text-lg font-normal mr-3">부회장</span>
-              최&nbsp;&nbsp;진&nbsp;&nbsp;호
-            </p>
+
+          <div className="flex items-center gap-x-2">
+            <div>
+              <Image
+                src={lee}
+                alt="총무이사 이지선"
+                width={160}
+                height={160}
+                className="rounded-[10px] w-[160px] h-[160px] mb-2"
+              />
+              <p className="text-lg lg:text-[26px] font-bold custom-letter-spacing text-center text-nowrap">
+                <span className="text-base lg:text-lg font-normal mr-3">
+                  총무이사
+                </span>
+                이&nbsp;&nbsp;지&nbsp;&nbsp;선
+              </p>
+            </div>
+            <div>
+              <Image
+                src={kwon}
+                alt="학술이사 권영선"
+                width={160}
+                height={160}
+                className="rounded-[10px] w-[160px] h-[160px] mb-2"
+              />
+              <p className="text-lg lg:text-[26px] font-bold custom-letter-spacing text-center text-nowrap">
+                <span className="text-base lg:text-lg font-normal mr-3">
+                  학술이사
+                </span>
+                권&nbsp;&nbsp;영&nbsp;&nbsp;선
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="flex items-center gap-4 mb-[84px]">
-          <div>
-            <Image
-              src={lee}
-              alt="총무이사 이지선"
-              width={240}
-              height={240}
-              className="rounded-[20px] w-[240px] h-[240px] mb-3"
-            />
-            <p className="text-[26px] font-bold custom-letter-spacing text-center">
-              <span className="text-lg font-normal mr-3">총무이사</span>
-              이&nbsp;&nbsp;지&nbsp;&nbsp;선
-            </p>
+
+          <div className="flex items-center gap-x-2">
+            <div>
+              <Image
+                src={kim}
+                alt="연구이사 김경덕"
+                width={160}
+                height={160}
+                className="rounded-[10px] w-[160px] h-[160px] mb-2"
+              />
+              <p className="text-lg lg:text-[26px] font-bold custom-letter-spacing text-center text-nowrap">
+                <span className="text-base lg:text-lg font-normal mr-3">
+                  연구이사
+                </span>
+                김&nbsp;&nbsp;경&nbsp;&nbsp;덕
+              </p>
+            </div>
+            <div>
+              <Image
+                src={song}
+                alt="감사 송치웅"
+                width={160}
+                height={160}
+                className="rounded-[10px] w-[160px] h-[160px] mb-2"
+              />
+              <p className="text-lg lg:text-[26px] font-bold custom-letter-spacing text-center text-nowrap">
+                <span className="text-base lg:text-lg font-normal mr-3">
+                  감사
+                </span>
+                송&nbsp;&nbsp;치&nbsp;&nbsp;웅
+              </p>
+            </div>
           </div>
-          <div>
-            <Image
-              src={kwon}
-              alt="학술이사 권영선"
-              width={240}
-              height={240}
-              className="rounded-[20px] w-[240px] h-[240px] mb-3"
-            />
-            <p className="text-[26px] font-bold custom-letter-spacing text-center">
-              <span className="text-lg font-normal mr-3">학술이사</span>
-              권&nbsp;&nbsp;영&nbsp;&nbsp;선
-            </p>
-          </div>
-          <div>
-            <Image
-              src={kim}
-              alt="연구이사 김경덕"
-              width={240}
-              height={240}
-              className="rounded-[20px] w-[240px] h-[240px] mb-3"
-            />
-            <p className="text-[26px] font-bold custom-letter-spacing text-center">
-              <span className="text-lg font-normal mr-3">연구이사</span>
-              김&nbsp;&nbsp;경&nbsp;&nbsp;덕
-            </p>
-          </div>
-          <div>
-            <Image
-              src={song}
-              alt="감사 송치웅"
-              width={240}
-              height={240}
-              className="rounded-[20px] w-[240px] h-[240px] mb-3"
-            />
-            <p className="text-[26px] font-bold custom-letter-spacing text-center">
-              <span className="text-lg font-normal mr-3">감사</span>
-              송&nbsp;&nbsp;치&nbsp;&nbsp;웅
-            </p>
-          </div>
-        </div>
-        <div className="space-y-7">
-          <div className="flex items-center">
-            <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+
+          <div className="flex items-start pt-7">
+            <strong className="text-base font-bold flex items-center w-fit custom-letter-spacing mr-7">
               <Dot size={14} className="pb-1" />
               연구부
             </strong>
-            <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
-              <li>김민수</li>
-              <li>정지안</li>
-              <li>이남권</li>
-              <li>한혜린</li>
-              <li>김현주</li>
-              <li>황유림</li>
-              <li>안중현</li>
-              <li>김성룡</li>
-            </ul>
+            <div>
+              <ul className="flex items-center gap-x-2">
+                <li>김민수</li>
+                <li>정지안</li>
+                <li>이남권</li>
+                <li>한혜린</li>
+                <li>김현주</li>
+              </ul>
+              <ul className="flex items-center gap-x-2">
+                <li>황유림</li>
+                <li>안중현</li>
+                <li>김성룡</li>
+              </ul>
+            </div>
           </div>
           <div className="flex items-start">
-            <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+            <strong className="text-base font-bold flex items-center w-fit custom-letter-spacing mr-7">
               <Dot size={14} className="pb-1" />
               학술부
             </strong>
             <div>
-              <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+              <ul className="flex items-center gap-x-2">
                 <li>김호연</li>
                 <li>김성호</li>
                 <li>나인채</li>
                 <li>이상길</li>
                 <li>박종하</li>
+              </ul>
+              <ul className="flex items-center gap-x-2">
                 <li>이지애</li>
                 <li>박준석</li>
                 <li>박종훈</li>
                 <li>박혜신</li>
                 <li>백지연</li>
-                <li>이승훈</li>
               </ul>
-              <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+              <ul className="flex items-center gap-x-2">
+                <li>이승훈</li>
                 <li>우승석</li>
                 <li>정희경</li>
                 <li>성민재</li>
                 <li>김태윤</li>
+              </ul>
+              <ul className="flex items-center gap-x-2">
                 <li>이영진</li>
                 <li>이태훈</li>
                 <li>이애나</li>
                 <li>조광범</li>
                 <li>곽해성</li>
+              </ul>
+              <ul className="flex items-center gap-x-2">
                 <li>이정은</li>
                 <li>나선혜</li>
-              </ul>
-              <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
                 <li>이주홍</li>
                 <li>최은영</li>
               </ul>
             </div>
           </div>
-          <div className="flex items-center">
-            <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+          <div className="flex items-start">
+            <strong className="text-base font-bold flex items-center w-fit custom-letter-spacing mr-7">
               <Dot size={14} className="pb-1" />
               총무부
             </strong>
-            <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
-              <li>김현서</li>
-              <li>홍준기</li>
-              <li>박강남</li>
-              <li>송준용</li>
-            </ul>
+            <div>
+              <ul className="flex items-center gap-x-2">
+                <li>김현서</li>
+                <li>홍준기</li>
+                <li>박강남</li>
+                <li>송준용</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP */}
+        <div className="hidden lg:block">
+          <div className="flex items-center gap-4 mb-8">
+            <div>
+              <Image
+                src={hong}
+                alt="회장 홍성욱"
+                width={240}
+                height={240}
+                className="rounded-[20px] w-[240px] h-[240px] mb-3"
+              />
+              <p className="text-[26px] font-bold custom-letter-spacing text-center">
+                <span className="text-lg font-normal mr-3">회장</span>
+                홍&nbsp;&nbsp;성&nbsp;&nbsp;욱
+              </p>
+            </div>
+            <div>
+              <Image
+                src={choi}
+                alt="부회장 최진호"
+                width={240}
+                height={240}
+                className="rounded-[20px] w-[240px] h-[240px] mb-3"
+              />
+              <p className="text-[26px] font-bold custom-letter-spacing text-center">
+                <span className="text-lg font-normal mr-3">부회장</span>
+                최&nbsp;&nbsp;진&nbsp;&nbsp;호
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 mb-[84px]">
+            <div>
+              <Image
+                src={lee}
+                alt="총무이사 이지선"
+                width={240}
+                height={240}
+                className="rounded-[20px] w-[240px] h-[240px] mb-3"
+              />
+              <p className="text-[26px] font-bold custom-letter-spacing text-center">
+                <span className="text-lg font-normal mr-3">총무이사</span>
+                이&nbsp;&nbsp;지&nbsp;&nbsp;선
+              </p>
+            </div>
+            <div>
+              <Image
+                src={kwon}
+                alt="학술이사 권영선"
+                width={240}
+                height={240}
+                className="rounded-[20px] w-[240px] h-[240px] mb-3"
+              />
+              <p className="text-[26px] font-bold custom-letter-spacing text-center">
+                <span className="text-lg font-normal mr-3">학술이사</span>
+                권&nbsp;&nbsp;영&nbsp;&nbsp;선
+              </p>
+            </div>
+            <div>
+              <Image
+                src={kim}
+                alt="연구이사 김경덕"
+                width={240}
+                height={240}
+                className="rounded-[20px] w-[240px] h-[240px] mb-3"
+              />
+              <p className="text-[26px] font-bold custom-letter-spacing text-center">
+                <span className="text-lg font-normal mr-3">연구이사</span>
+                김&nbsp;&nbsp;경&nbsp;&nbsp;덕
+              </p>
+            </div>
+            <div>
+              <Image
+                src={song}
+                alt="감사 송치웅"
+                width={240}
+                height={240}
+                className="rounded-[20px] w-[240px] h-[240px] mb-3"
+              />
+              <p className="text-[26px] font-bold custom-letter-spacing text-center">
+                <span className="text-lg font-normal mr-3">감사</span>
+                송&nbsp;&nbsp;치&nbsp;&nbsp;웅
+              </p>
+            </div>
+          </div>
+          <div className="space-y-7">
+            <div className="flex items-center">
+              <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+                <Dot size={14} className="pb-1" />
+                연구부
+              </strong>
+              <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+                <li>김민수</li>
+                <li>정지안</li>
+                <li>이남권</li>
+                <li>한혜린</li>
+                <li>김현주</li>
+                <li>황유림</li>
+                <li>안중현</li>
+                <li>김성룡</li>
+              </ul>
+            </div>
+            <div className="flex items-start">
+              <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+                <Dot size={14} className="pb-1" />
+                학술부
+              </strong>
+              <div>
+                <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+                  <li>김호연</li>
+                  <li>김성호</li>
+                  <li>나인채</li>
+                  <li>이상길</li>
+                  <li>박종하</li>
+                  <li>이지애</li>
+                  <li>박준석</li>
+                  <li>박종훈</li>
+                  <li>박혜신</li>
+                  <li>백지연</li>
+                  <li>이승훈</li>
+                </ul>
+                <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+                  <li>우승석</li>
+                  <li>정희경</li>
+                  <li>성민재</li>
+                  <li>김태윤</li>
+                  <li>이영진</li>
+                  <li>이태훈</li>
+                  <li>이애나</li>
+                  <li>조광범</li>
+                  <li>곽해성</li>
+                  <li>이정은</li>
+                  <li>나선혜</li>
+                </ul>
+                <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+                  <li>이주홍</li>
+                  <li>최은영</li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+                <Dot size={14} className="pb-1" />
+                총무부
+              </strong>
+              <ul className="flex items-center gap-x-4 text-[20px] font-normal custom-letter-spacing">
+                <li>김현서</li>
+                <li>홍준기</li>
+                <li>박강남</li>
+                <li>송준용</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="max-w-screen-xl mx-auto mb-[200px]" id="location">
+      <section
+        className="max-w-screen-xl mx-auto mb-[100px] lg:mb-[200px] px-5 lg:px-0"
+        id="location"
+      >
         <div className="mb-9">
           <SubTitle text="사무국 안내" />
         </div>
-        <div className="space-y-2 mb-9">
-          <div className="flex items-center">
-            <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+        <div className="space-y-2 mb-7 lg:mb-9">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center">
+            <strong className="text-base lg:text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
               <Dot size={14} className="pb-1" />
               사무국 주소
             </strong>
-            <p className="text-[20px] font-normal custom-letter-spacing">
+            <p className="text-sm lg:text-[20px] font-normal custom-letter-spacing pl-[14px] lg:pl-0">
               서울특별시 강남구 언주로 728, 5층(논현동)
             </p>
           </div>
-          <div className="flex items-center">
-            <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center">
+            <strong className="text-base lg:text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
               <Dot size={14} className="pb-1" />
               이메일
             </strong>
-            <p className="text-[20px] font-normal custom-letter-spacing">
+            <p className="text-sm lg:text-[20px] font-normal custom-letter-spacing pl-[14px] lg:pl-0">
               2021kabd@gmail.com
             </p>
           </div>
-          <div className="flex items-center">
-            <strong className="text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center">
+            <strong className="text-base lg:text-[20px] font-bold flex items-center max-w-[120px] w-full custom-letter-spacing">
               <Dot size={14} className="pb-1" />
               전화번호
             </strong>
-            <p className="text-[20px] font-normal custom-letter-spacing">
+            <p className="text-sm lg:text-[20px] font-normal custom-letter-spacing pl-[14px] lg:pl-0">
               070-5153-2795
             </p>
           </div>
@@ -377,7 +611,14 @@ const Introduction = () => {
           alt="map"
           width={1280}
           height={545}
-          className="w-full h-[545px] rounded-[20px]"
+          className="w-full h-[545px] rounded-[20px] hidden lg:block"
+        />
+        <Image
+          src={map}
+          alt="map"
+          width={335}
+          height={200}
+          className="w-[335px] h-[200px] rounded-[10px] lg:hidden"
         />
       </section>
     </div>

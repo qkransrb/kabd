@@ -8,14 +8,15 @@ interface Props {
 
 const PressRelease = ({ pressList }: Props) => {
   return (
-    <div>
+    <div className="px-5 lg:px-0">
       <div className="flex justify-between items-center mb-5">
         <h3 className="text-[26px] font-bold leading-[31.03px]">보도자료</h3>
         <Link href="/news">
-          <PlusIcon size={32} />
+          <PlusIcon className="size-6 lg:size-8" />
         </Link>
       </div>
-      <div className="flex items-center justify-between gap-x-5">
+      {/* DESKTOP */}
+      <div className="flex-row items-center justify-between gap-x-5 hidden lg:flex">
         {pressList.map((press) => (
           <Link
             key={press.b_seq}
@@ -34,6 +35,30 @@ const PressRelease = ({ pressList }: Props) => {
                 {press.b_regdate?.split("-").join(".")}
               </span>
               <p className="text-[23px] font-semibold leading-[27.6px] max-w-[354px]">
+                {press.b_title}
+              </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+      {/* MOBILE */}
+      <div className="lg:hidden flex flex-col items-center justify-between gap-y-16">
+        {pressList.map((press) => (
+          <Link
+            key={press.b_seq}
+            href={`/news/${press.b_seq}`}
+            className="w-full flex flex-col gap-3"
+          >
+            <img
+              src={press.b_file1}
+              alt={press.b_title}
+              className="w-full h-[282px] rounded-[10px] object-cover"
+            />
+            <div className="space-y-0">
+              <span className="text-[13px] font-medium text-[#595959]">
+                {press.b_regdate?.split("-").join(".")}
+              </span>
+              <p className="text-[20px] font-semibold max-w-[320px] truncate">
                 {press.b_title}
               </p>
             </div>
