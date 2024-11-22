@@ -21,10 +21,10 @@ const Notice = async ({ searchParams: { q, page } }: Props) => {
   const noticeList = await getNoticeList(q, page);
 
   return (
-    <div className="mt-[38px] max-w-screen-xl mx-auto">
+    <div className="mt-9 lg:mt-[38px] max-w-screen-xl mx-auto px-5 lg:px-0">
       <PageNavigation first="Home" second="학회소식" third="공지사항" />
 
-      <section className="mb-[105px]">
+      <section className="mb-[105px] hidden lg:block">
         <SubTitle text="공지사항" className="mt-[30px] mb-[58px]" />
       </section>
 

@@ -19,7 +19,8 @@ const PageNavigation = ({ first, second, third }: Props) => {
       </span>
       {third ? (
         <>
-          <ChevronRight size={16} className="h-4 w-4 self-start" />
+          <ChevronRight className="size-4 self-start hidden lg:block" />
+          <ChevronRight className="size-3 self-start mt-1.5 lg:hidden" />
           <span className="page-navigation text-[10px] lg:text-base leading-tight lg:leading-[19.2px]">
             {third}
           </span>

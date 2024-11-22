@@ -55,7 +55,7 @@ const Announcement = ({ noticeList, conferenceList }: Props) => {
           </Link>
         </div>
         <Separator className="h-[3px] bg-[#111111]" />
-        <ul className="h-full flex flex-col justify-between">
+        <ul className="h-full flex flex-col">
           {noticeList.map((notice) => (
             <li key={notice.b_seq} className="pb-3 lg:pb-5">
               <Link

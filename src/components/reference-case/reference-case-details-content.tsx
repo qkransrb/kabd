@@ -29,9 +29,6 @@ const ReferenceCaseDetailsContent = ({ referenceCaseDetails }: Props) => {
         </div>
         <div className="py-4 border-b border-[#D8D8D8] flex items-center gap-1.5 px-6">
           <Download size={20} className="mb-0.5" />
-          {/* <span className="text-base font-medium leading-[19.09px] custom-letter-spacing">
-            치주질환과비전염성만성질환(Non-communicable Disease, NCD)_v2.0.pdf
-          </span> */}
           <a
             href={referenceCaseDetails.data.b_file3}
             download

@@ -16,11 +16,14 @@ const NewsroomDetails = async ({ params: { id } }: Props) => {
   const newsroomDetails = await getNewsroomDetails(id);
 
   return (
-    <div className="mt-[38px] max-w-screen-xl mx-auto">
+    <div className="mt-9 lg:mt-[38px] max-w-screen-xl mx-auto px-5 lg:px-0">
       <PageNavigation first="Home" second="학회소식" third="뉴스룸" />
 
-      <section className="mb-[105px]">
-        <SubTitle text="뉴스룸" className="mt-[30px]" />
+      <section className="lg:mb-[105px]">
+        <SubTitle
+          text="뉴스룸"
+          className="mt-[50px] lg:mt-[30px] mb-[30px] lg:mb-0"
+        />
       </section>
 
       <NewsroomDetailsContent newsroomDetails={newsroomDetails} />

@@ -30,11 +30,11 @@ const SearchForm = () => {
   };
 
   return (
-    <div className="mb-[200px]">
+    <div className="mb-[100px] lg:mb-[200px]">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex items-center justify-center gap-3"
+          className="flex items-center justify-center gap-1 lg:gap-3"
         >
           <FormField
             control={form.control}
@@ -43,7 +43,7 @@ const SearchForm = () => {
               <FormItem>
                 <FormControl>
                   <Input
-                    className="min-w-[409px] h-[50px] bg-[#F5F5F5] text-base font-medium leading-[19.2px] custom-letter-spacing placeholder:text-[#828282] outline-none border-none"
+                    className="w-[250px] lg:min-w-[409px] h-[50px] bg-[#F5F5F5] text-base font-medium leading-[19.2px] custom-letter-spacing placeholder:text-[#828282] outline-none border-none"
                     placeholder="검색어를 입력해 주세요."
                     {...field}
                   />
@@ -53,7 +53,7 @@ const SearchForm = () => {
           />
           <Button
             type="submit"
-            className="w-[94px] h-[50px] flex items-center justify-center gap-x-1.5"
+            className="w-20 lg:w-[94px] h-[50px] flex items-center justify-center gap-x-1 lg:gap-x-1.5"
           >
             <span className="text-base text-white font-medium custom-letter-spacing leading-[19.09px]">
               검색

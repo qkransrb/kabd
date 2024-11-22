@@ -27,8 +27,10 @@ const NewsroomLists = ({ newsroomList }: Props) => {
     <div>
       <div
         className={cn(
-          "grid gap-[18px] mb-[100px]",
-          newsroomList.list.length ? "grid-cols-3" : "grid-cols-1"
+          "grid gap-[18px] mb-[50px] lg:mb-[100px]",
+          newsroomList.list.length
+            ? "grid-cols-1 lg:grid-cols-3"
+            : "grid-cols-1"
         )}
       >
         {newsroomList.list.length ? (
@@ -37,17 +39,17 @@ const NewsroomLists = ({ newsroomList }: Props) => {
               href={`/newsroom/${newsroom.b_seq}`}
               key={newsroom.b_seq}
               className={cn(
-                "h-[266px] rounded-[20px] flex flex-col justify-between p-9",
+                "h-[230px] lg:h-[266px] rounded-[10px] lg:rounded-[20px] flex flex-col justify-between px-5 py-7 lg:p-9",
                 parseInt(newsroom.rnum) % 2 === 0
                   ? "bg-[#E7E9F2]"
                   : "bg-[#F4F5FA]"
               )}
             >
               <div>
-                <span className="mb-8 inline-block font-medium leading-[19.2px] text-base text-[#525252]">
+                <span className="mb-4 lg:mb-8 inline-block font-medium lg:leading-[19.2px] text-base text-[#525252]">
                   치의학일반
                 </span>
-                <p className="text-[22px] text-black font-bold leading-[26.4px]">
+                <p className="text-base lg:text-[22px] text-black font-bold lg:leading-[26.4px]">
                   {newsroom.b_title}
                 </p>
               </div>
