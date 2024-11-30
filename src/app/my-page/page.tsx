@@ -13,6 +13,8 @@ import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 import { ChevronRight } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 const MyPage = () => {
   const [user, setUser] = useState<LocalStorageUser | null>(null);
 
@@ -23,8 +25,6 @@ const MyPage = () => {
   }, [user]);
 
   const pathname = usePathname();
-
-  console.log(user);
 
   return (
     <div className="mt-9 max-w-screen-xl mx-auto px-5 lg:px-0">
