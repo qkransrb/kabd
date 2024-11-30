@@ -31,7 +31,7 @@ const VideoList = ({ videoList }: Props) => {
       <div className="mb-10">
         {selectedVideo ? (
           <>
-            <h3 className="text-base lg:text-[24px] font-bold lg:leading-[28.8px] mb-3">
+            <h3 className="text-base lg:text-[24px] font-bold lg:leading-[28.8px] mb-3 px-5 lg:px-0">
               {selectedVideo.b_title}
             </h3>
             {selectedVideo ? (
