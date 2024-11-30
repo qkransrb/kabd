@@ -18,11 +18,14 @@ const Abstract = async ({ searchParams: { q, page } }: Props) => {
   const abstractList = await getAbstractList(q, page);
 
   return (
-    <div className="mt-[38px] max-w-screen-xl mx-auto">
+    <div className="mt-9 lg:mt-[38px] max-w-screen-xl mx-auto px-5 lg:px-0">
       <PageNavigation first="Home" second="자료실" third="학술대회 초록집" />
 
-      <section className="mb-[105px]">
-        <SubTitle text="학술대회초록집" className="mt-[30px]" />
+      <section className="lg:mb-[105px]">
+        <SubTitle
+          text="학술대회초록집"
+          className="mt-[50px] lg:mt-[30px] mb-[30px] lg:mb-0"
+        />
       </section>
 
       <AbstractList abstractList={abstractList} />

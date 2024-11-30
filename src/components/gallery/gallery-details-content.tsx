@@ -25,16 +25,19 @@ const GalleryDetailsContent = ({ galleryDetails }: Props) => {
 
   return (
     <div>
-      <div className="flex items-end justify-between mb-4">
-        <p className="text-[26px] leading-[31.2px] font-bold custom-letter-spacing">
+      <div className="flex items-end justify-between mb-2 lg:mb-4">
+        <p className="text-base lg:text-[26px] lg:leading-[31.2px] font-bold custom-letter-spacing">
           {galleryDetails.data.b_title}
         </p>
-        <span className="text-sm font-medium leading-[16.7px] custom-letter-spacing">
+        <span className="text-sm font-medium leading-[16.7px] custom-letter-spacing hidden lg:block">
           {galleryDetails.data.b_date}
         </span>
+        <span className="text-xs font-medium custom-letter-spacing lg:hidden">
+          {galleryDetails.data.b_date.split(" ")[0].split("-").join(".")}
+        </span>
       </div>
-      <Separator className="h-[3px] bg-black mb-[110px]" />
-      <div className="max-w-[1134px] mx-auto w-full mb-[100px]">
+      <Separator className="h-[3px] bg-black mb-[30px] lg:mb-[110px]" />
+      <div className="max-w-[1134px] mx-auto w-full mb-[100px] hidden lg:block">
         <Image
           src={mainPhoto}
           alt=""
@@ -79,8 +82,21 @@ const GalleryDetailsContent = ({ galleryDetails }: Props) => {
           <CarouselNext />
         </Carousel>
       </div>
-      <Separator className="bg-[#626262] mb-[100px]" />
-      <div className="flex items-center justify-center mb-[200px]">
+      <div className="lg:hidden space-y-3">
+        {galleryDetails.list.map((item) => (
+          <div key={`mo_gallery_${item.bf_seq}`}>
+            <Image
+              src={item.bf_link}
+              alt={item.bf_real_name}
+              width={335}
+              height={192}
+              className="w-full h-[192px] object-cover"
+            />
+          </div>
+        ))}
+      </div>
+      <Separator className="bg-[#626262] mb-[50px] lg:mb-[100px]" />
+      <div className="flex items-center justify-center mb-[100px] lg:mb-[200px]">
         <Link
           href="/gallery"
           className="w-[108px] h-[50px] rounded-[10px] bg-[#DFDFDF] flex items-center justify-center"

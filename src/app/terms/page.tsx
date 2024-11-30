@@ -2,14 +2,19 @@ export const dynamic = "force-dynamic";
 
 const Terms = () => {
   return (
-    <div className="max-w-screen-xl mx-auto">
-      <div className="my-20">
-        <h2 className="text-[33px] text-black font-bold">
+    <div className="max-w-screen-xl mx-auto px-5 lg:px-0">
+      <div className="mt-20 mb-12 lg:my-20">
+        <h2 className="text-[33px] text-black font-bold hidden lg:block">
           한국생체모방치의학회 홈페이지 이용약관
+        </h2>
+        <h2 className="text-[25px] text-black font-bold lg:hidden">
+          한국생체모방치의학회
+          <br />
+          홈페이지 이용약관
         </h2>
       </div>
 
-      <div className="text-lg font-normal leading-[32px] custom-letter-spacing mb-[150px]">
+      <div className="text-base lg:text-lg font-normal leading-relaxed lg:leading-[32px] custom-letter-spacing mb-[100px] lg:mb-[150px]">
         <p className="font-bold">한국생체모방치의학회 홈페이지 이용약관</p>
         <p>
           본 이용약관(이하 "약관")은 한국생체모방치의학회(이하 "학회")가

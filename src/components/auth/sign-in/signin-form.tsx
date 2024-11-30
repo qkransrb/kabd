@@ -57,7 +57,7 @@ const SignInForm = () => {
           userId: user.m_id,
           name: user.m_name,
           mobile: user.m_mobile,
-          emial: user.m_email,
+          email: user.m_email,
           grade: user.m_regular,
           type: user.m_type,
         })

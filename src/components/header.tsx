@@ -5,16 +5,8 @@ import Logo from "@/assets/images/kabd-header-logo.png";
 import Avatar from "@/assets/images/avatar.png";
 import { Button } from "@/components/ui/button";
 import HeaderLinkButton from "@/components/header-link-button";
+import MobileHeaderMenu from "@/components/mobile-header-menu";
 import { isAuthenticated, isRegularMember } from "@/actions/auth-actions";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "./ui/sheet";
-import { Menu } from "lucide-react";
 
 const Header = async () => {
   const authenticated = await isAuthenticated();
@@ -194,30 +186,26 @@ const Header = async () => {
             priority
           />
         </Link>
-        <div className="flex items-center gap-4">
-          <Link
-            href="/sign-in"
-            className="h-[34px] w-[65px] bg-[#2C2C2C] flex items-center justify-center text-[13px] text-white font-normal rounded-full"
-          >
-            로그인
-          </Link>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" className="p-0 hover:bg-transparent">
-                <Menu className="!size-7" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <SheetHeader>
-                <SheetTitle>Edit profile</SheetTitle>
-                <SheetDescription>
-                  Make changes to your profile here. Click save when you're
-                  done.
-                </SheetDescription>
-              </SheetHeader>
-              <div className="grid gap-4 py-4">Content</div>
-            </SheetContent>
-          </Sheet>
+        <div className="flex items-center gap-3">
+          {authenticated ? (
+            <Button
+              variant="ghost"
+              className="w-[27px] h-[27px] p-0 rounded-full flex-shrink-0"
+              asChild
+            >
+              <Link href="/my-page">
+                <Image src={Avatar} alt="마이페이지" width={27} height={27} />
+              </Link>
+            </Button>
+          ) : (
+            <Link
+              href="/sign-in"
+              className="h-[34px] w-[65px] bg-[#2C2C2C] flex items-center justify-center text-[13px] text-white font-normal rounded-full"
+            >
+              로그인
+            </Link>
+          )}
+          <MobileHeaderMenu regularMember={regularMember} />
         </div>
       </nav>
     </header>

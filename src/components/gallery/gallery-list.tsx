@@ -25,19 +25,19 @@ const GalleryList = ({ galleryList }: Props) => {
 
   return (
     <div>
-      <div className="flex items-center justify-end mb-2">
+      <div className="hidden lg:flex items-center justify-end mb-2">
         <span className="text-[15px] font-medium leading-[17.9px] custom-letter-spacing">
           총 {galleryList.total}건
         </span>
       </div>
-      <Separator className="h-[3px] bg-black mb-5" />
-      <div className="grid grid-cols-2 gap-5 mb-[50px]">
+      <Separator className="hidden lg:block h-[3px] bg-black mb-5" />
+      <div className="flex flex-col lg:grid grid-cols-2 gap-5 mb-[50px]">
         {galleryList.list.map((gallery) => (
           <GalleryItem key={gallery.b_seq} gallery={gallery} />
         ))}
       </div>
 
-      <div className="flex items-center justify-center mb-[50px]">
+      <div className="flex items-center justify-center mb-[50px] px-5 lg:px-0">
         <Pagination
           onPageChange={onPageChange}
           pageCount={galleryList.page_cnt}

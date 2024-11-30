@@ -34,7 +34,7 @@ const SearchForm = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex items-center justify-center gap-3"
+          className="flex items-center justify-center gap-1 lg:gap-3"
         >
           <FormField
             control={form.control}

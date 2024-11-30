@@ -9,7 +9,7 @@ const ReferenceCaseItem = ({ referenceCase }: Props) => {
   return (
     <Link
       href={`/reference-case/${referenceCase.b_seq}`}
-      className="py-11 border-b border-[#828282] flex items-center gap-7"
+      className="py-8 lg:py-11 border-b border-[#828282] flex flex-col lg:flex-row items-start lg:items-center gap-7 lg:gap-7"
     >
       <div>
         <Image
@@ -17,7 +17,14 @@ const ReferenceCaseItem = ({ referenceCase }: Props) => {
           alt={referenceCase.b_title}
           width={200}
           height={150}
-          className="w-[200px] h-[150px] object-cover"
+          className="w-[200px] h-[150px] object-cover hidden lg:block"
+        />
+        <Image
+          src={referenceCase.thumbnail}
+          alt={referenceCase.b_title}
+          width={335}
+          height={176}
+          className="w-full h-[176px] object-cover lg:hidden rounded-[10px]"
         />
       </div>
       <div className="flex flex-col justify-between flex-1 h-[150px]">

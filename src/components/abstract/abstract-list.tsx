@@ -26,14 +26,14 @@ const AbstractList = ({ abstractList }: Props) => {
 
   return (
     <div>
-      <div className="mb-4">
-        <h3 className="text-[26px] font-bold leading-[31.2px] custom-letter-spacing">
+      <div className="mb-2 lg:mb-4">
+        <h3 className="text-base lg:text-[26px] font-bold lg:leading-[31.2px] custom-letter-spacing">
           초록집
         </h3>
       </div>
-      <Separator className="h-[3px] bg-black mb-9" />
+      <Separator className="h-[2px] lg:h-[3px] bg-black mb-5 lg:mb-9" />
 
-      <div className="flex items-start justify-between">
+      <div className="hidden lg:flex items-start justify-between">
         {abstractList.list.map((abstract) => (
           <Link
             href={`/abstract/${abstract.b_seq}`}
@@ -50,6 +50,25 @@ const AbstractList = ({ abstractList }: Props) => {
             <span className="text-lg font-normal leading-[21.6px]">
               {abstract.b_title}
             </span>
+          </Link>
+        ))}
+      </div>
+
+      <div className="grid lg:hidden grid-cols-2">
+        {abstractList.list.map((abstract) => (
+          <Link
+            href={`/abstract/${abstract.b_seq}`}
+            key={`mo-abstract-${abstract.b_seq}`}
+            className="flex flex-col items-center gap-2"
+          >
+            <Image
+              src={abstract.b_file1}
+              alt={abstract.b_title}
+              width={163}
+              height={214}
+              className="w-full h-[214px] object-cover"
+            />
+            <span className="text-base font-normal">{abstract.b_title}</span>
           </Link>
         ))}
       </div>

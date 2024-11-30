@@ -24,12 +24,12 @@ const MyPageSidebar = () => {
   return (
     <div>
       <div>
-        <span className="text-[21px] text-[#595959] font-semibold custom-letter-spacing">
+        <span className="text-[19px] lg:text-[21px] text-[#595959] font-semibold custom-letter-spacing">
           {user?.type === "G" ? "치과의사" : "일반회원"} /{" "}
           {user?.grade !== "N" ? "정회원" : "비회원"}
         </span>
         <div className="space-x-2 my-4">
-          <span className="text-[30px] font-semibold custom-letter-spacing underline underline-offset-4">
+          <span className="text-[25px] lg:text-[30px] font-semibold custom-letter-spacing underline underline-offset-4">
             {user?.name}
           </span>
           <span className="text-base font-semibold">님</span>
@@ -43,7 +43,7 @@ const MyPageSidebar = () => {
           </span>
         </div>
 
-        <div>
+        <div className="hidden lg:block">
           <Link
             href="/my-page/profile"
             className="h-[90px] flex items-center gap-4 border-b border-[#D9D9D9] group"

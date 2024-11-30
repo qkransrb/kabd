@@ -231,17 +231,19 @@ const EditProfile = ({ userProfile }: Props) => {
 
   return (
     <div>
-      <div className="mb-[18px]">
-        <p className="text-[26px] font-bold leading-[31.2px]">회원정보</p>
+      <div className="lg:mb-[18px]">
+        <p className="text-[21px] lg:text-[26px] font-bold lg:leading-[31.2px]">
+          회원정보
+        </p>
       </div>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="border-t-[3px] border-black"
+          className="border-t-[2px] lg:border-t-[3px] border-black"
         >
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 아이디
               </span>
             </div>
@@ -250,11 +252,11 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="userId"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center gap-3 px-[22px]">
+                  <FormItem className="h-full flex items-center gap-3 px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         placeholder="아이디 입력"
-                        className="max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing cursor-not-allowed"
+                        className="w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing cursor-not-allowed"
                         {...field}
                         readOnly
                       />
@@ -293,9 +295,9 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 비밀번호
               </span>
             </div>
@@ -304,20 +306,20 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="password"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center gap-3 px-[22px]">
+                  <FormItem className="h-full flex items-center gap-3 px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="비밀번호 입력"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "max-w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
                         {...field}
                       />
                     </FormControl>
-                    <p className="text-sm text-[#828282] font-medium leading-[16.8px] custom-letter-spacing">
+                    <p className="text-sm text-[#828282] font-medium leading-[16.8px] custom-letter-spacing hidden lg:block">
                       8~16자의 영문/숫자를 조합하여 입력
                     </p>
                   </FormItem>
@@ -326,9 +328,9 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 비밀번호 확인
               </span>
             </div>
@@ -337,13 +339,13 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="confirmPassword"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center px-[22px]">
+                  <FormItem className="h-full flex items-center px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="비밀번호 확인"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "max-w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing text-xs lg:text-base",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -359,23 +361,23 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-auto lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 이름
               </span>
             </div>
-            <div className="w-full flex items-center gap-x-3">
+            <div className="w-full flex flex-col lg:flex-row items-start lg:items-center gap-y-1.5 lg:gay-y-0 lg:gap-x-3 py-1.5 lg:py-0">
               <FormField
                 control={form.control}
                 name="koreanName"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <Input
                         placeholder="국문 이름"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "min-w-[150px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -389,12 +391,12 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="englishName"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pr-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-0 lg:pr-[22px]">
                     <FormControl>
                       <Input
                         placeholder="영문 이름"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "min-w-[150px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -407,9 +409,9 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 생년월일
               </span>
             </div>
@@ -418,12 +420,12 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="birth"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <Input
                         placeholder="생년월일 8자리"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "min-w-[150px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -436,9 +438,9 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 성별
               </span>
             </div>
@@ -447,18 +449,18 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="gender"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
                         defaultValue={userProfile.mem_info.m_sex}
-                        className="flex items-center gap-[54px]"
+                        className="flex items-center gap-4 lg:gap-[54px]"
                       >
                         <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="M" />
                           </FormControl>
-                          <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="font-normal text-xs lg:text-base text-[#828282] leading-[19.2px] custom-letter-spacing">
                             남자
                           </FormLabel>
                         </FormItem>
@@ -466,7 +468,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           <FormControl>
                             <RadioGroupItem value="F" />
                           </FormControl>
-                          <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="font-medium text-xs lg:text-base text-[#828282] leading-[19.2px] custom-letter-spacing">
                             여자
                           </FormLabel>
                         </FormItem>
@@ -478,23 +480,23 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-auto lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 휴대전화
               </span>
             </div>
-            <div className="w-full flex items-center gap-x-4">
+            <div className="w-full flex flex-col lg:flex-row items-start lg:items-center lg:gap-x-4 gap-y-1.5 lg:gap-y-0 py-1.5 lg:py-0">
               <FormField
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px] gap-3">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px] gap-1.5 lg:gap-3">
                     <FormControl>
                       <Input
                         placeholder="번호 입력"
                         className={cn(
-                          "min-w-[223px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[135px] lg:min-w-[223px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -512,7 +514,7 @@ const EditProfile = ({ userProfile }: Props) => {
                         }
                       }}
                       className={cn(
-                        "h-10 rounded-full min-w-[116px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
+                        "h-[38px] lg:h-10 rounded-[6px] lg:rounded-full min-w-[86px] lg:min-w-[116px] text-xs lg:text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
                         form.getFieldState(field.name).invalid ||
                           form.getValues(field.name) === ""
                           ? "bg-[#828282]"
@@ -528,12 +530,12 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="confirmNumber"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pr-[22px] gap-3">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-0 lg:pr-[22px] gap-1.5 lg:gap-3">
                     <FormControl>
                       <Input
                         placeholder="인증번호 6자리 입력"
                         className={cn(
-                          "min-w-[202px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[135px] lg:min-w-[202px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -557,7 +559,7 @@ const EditProfile = ({ userProfile }: Props) => {
                         }
                       }}
                       className={cn(
-                        "h-10 rounded-full min-w-[116px] text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
+                        "h-[38px] lg:h-10 rounded-[6px] lg:rounded-full w-[50px] lg:min-w-[116px] text-xs lg:text-sm font-medium custom-letter-spacing text-white leading-[16.8px] !m-0",
                         form.getFieldState(field.name).invalid ||
                           form.getValues(field.name) === ""
                           ? "bg-[#828282]"
@@ -572,9 +574,9 @@ const EditProfile = ({ userProfile }: Props) => {
             </div>
           </div>
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                 이메일
               </span>
             </div>
@@ -583,12 +585,12 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center px-[22px]">
+                  <FormItem className="h-full flex items-center px-2 lg:px-[22px]">
                     <FormControl>
                       <Input
                         placeholder="이메일 입력"
                         className={cn(
-                          "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                          "w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                           form.getFieldState(field.name).error &&
                             "border-[#D00000]"
                         )}
@@ -603,9 +605,9 @@ const EditProfile = ({ userProfile }: Props) => {
 
           {userProfile.mem_info.m_type === "G" ? (
             <>
-              <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-                <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-                  <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+              <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+                <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+                  <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                     면허번호
                   </span>
                 </div>
@@ -614,12 +616,12 @@ const EditProfile = ({ userProfile }: Props) => {
                     control={form.control}
                     name="license"
                     render={({ field }) => (
-                      <FormItem className="h-full flex items-center px-[22px]">
+                      <FormItem className="h-full flex items-center px-2 lg:px-[22px]">
                         <FormControl>
                           <Input
                             placeholder="면허번호 입력"
                             className={cn(
-                              "max-w-[292px] h-12 rounded-[10px] placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
+                              "w-[150px] lg:max-w-[292px] h-[38px] lg:h-12 rounded-[6px] lg:rounded-[10px] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base placeholder:font-medium placeholder:text-[#828282] custom-letter-spacing",
                               form.getFieldState(field.name).error &&
                                 "border-[#D00000]"
                             )}
@@ -632,9 +634,9 @@ const EditProfile = ({ userProfile }: Props) => {
                 </div>
               </div>
 
-              <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-                <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-                  <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+              <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+                <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+                  <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                     출신학교 (학사)
                   </span>
                 </div>
@@ -643,7 +645,7 @@ const EditProfile = ({ userProfile }: Props) => {
                     control={form.control}
                     name="university"
                     render={({ field }) => (
-                      <FormItem className="h-full flex items-center px-[22px]">
+                      <FormItem className="h-full flex items-center px-2 lg:px-[22px]">
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
@@ -651,7 +653,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           <FormControl>
                             <SelectTrigger
                               className={cn(
-                                "h-12 max-w-[208px] text-base text-[#828282] font-medium custom-letter-spacing rounded-[10px]",
+                                "h-[38px] lg:h-12 w-[150px] lg:max-w-[208px] text-xs lg:text-base text-[#828282] font-medium custom-letter-spacing rounded-[6px] lg:rounded-[10px]",
                                 form.getFieldState(field.name).error &&
                                   "border-[#D00000]"
                               )}
@@ -662,7 +664,7 @@ const EditProfile = ({ userProfile }: Props) => {
                               />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="text-base font-medium custom-letter-spacing">
+                          <SelectContent className="text-xs lg:text-base font-medium custom-letter-spacing">
                             <SelectItem value="강릉대학교">
                               강릉대학교
                             </SelectItem>
@@ -705,13 +707,13 @@ const EditProfile = ({ userProfile }: Props) => {
                 </div>
               </div>
 
-              <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-                <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-                  <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+              <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+                <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+                  <span className="text-sm lg:text-lg font-semibold lg:leading-[21.48px] custom-letter-spacing">
                     전공과목
                   </span>
                 </div>
-                <div className="w-full flex items-center px-[22px] gap-x-4">
+                <div className="w-full flex items-center px-2 lg:px-[22px] lg:gap-x-4">
                   <FormField
                     control={form.control}
                     name="major"
@@ -719,12 +721,12 @@ const EditProfile = ({ userProfile }: Props) => {
                       <DropdownMenu>
                         <DropdownMenuTrigger
                           className={cn(
-                            "w-[208px] h-12 border border-[#D2D2D2] rounded-[10px] flex items-center justify-between px-3",
+                            "w-[150px] lg:w-[208px] h-[38px] lg:h-12 border border-[#D2D2D2] rounded-[6px] lg:rounded-[10px] flex items-center justify-between px-3",
                             form.getFieldState("major").error &&
                               "border-[#D00000]"
                           )}
                         >
-                          <span className="text-base text-[#828282] font-medium custom-letter-spacing">
+                          <span className="text-xs lg:text-base text-[#828282] font-medium custom-letter-spacing">
                             복수 선택 가능
                           </span>
                           <ChevronDown size={16} color="#828282" />
@@ -733,7 +735,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           {majors.map((major) => (
                             <DropdownMenuItem
                               key={major.id}
-                              className="w-[208px]"
+                              className="w-[150px] lg:w-[208px]"
                             >
                               <FormField
                                 key={major.id}
@@ -776,7 +778,7 @@ const EditProfile = ({ userProfile }: Props) => {
                                         }}
                                       />
                                     </FormControl>
-                                    <FormLabel className="text-sm font-medium leading-[19.09px] custom-letter-spacing !mt-0">
+                                    <FormLabel className="text-xs lg:text-sm font-medium lg:leading-[19.09px] custom-letter-spacing !mt-0">
                                       {major.label}
                                     </FormLabel>
                                   </FormItem>
@@ -789,7 +791,7 @@ const EditProfile = ({ userProfile }: Props) => {
                     )}
                   />
                   {Array.isArray(majorList) && (
-                    <div className="grid grid-cols-4 gap-x-2 gap-y-1">
+                    <div className="hidden lg:grid grid-cols-4 gap-x-2 gap-y-1">
                       {majorList.map((major) => {
                         if (major.length > 1) {
                           return (
@@ -811,10 +813,17 @@ const EditProfile = ({ userProfile }: Props) => {
             </>
           ) : null}
 
-          <div className="flex border-b border-b-[#D2D2D2] h-[70px]">
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex items-center">
-              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing">
+          <div className="flex border-b border-b-[#D2D2D2] h-[50px] lg:h-[70px]">
+            <div className="bg-[#F4F5FA] min-w-[100px] lg:min-w-[206px] px-2 lg:px-[22px] flex items-center">
+              {/* DESKTOP */}
+              <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing hidden lg:block">
                 학회공지수신방법
+              </span>
+              {/* MOBILE */}
+              <span className="text-sm font-semibold custom-letter-spacing lg:hidden">
+                학회공지
+                <br />
+                수신방법
               </span>
             </div>
             <div className="w-full flex items-center gap-x-3">
@@ -822,18 +831,18 @@ const EditProfile = ({ userProfile }: Props) => {
                 control={form.control}
                 name="type"
                 render={({ field }) => (
-                  <FormItem className="h-full flex items-center pl-[22px]">
+                  <FormItem className="h-full flex items-center pl-2 lg:pl-[22px]">
                     <FormControl>
                       <RadioGroup
                         onValueChange={field.onChange}
                         defaultValue={userProfile.mem_info.m_notices_method}
-                        className="flex items-center gap-6"
+                        className="flex items-center gap-4 lg:gap-6"
                       >
                         {/* <FormItem className="flex items-center space-x-1.5 space-y-0">
                           <FormControl>
                             <RadioGroupItem value="K" />
                           </FormControl>
-                          <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                             카카오톡
                           </FormLabel>
                         </FormItem> */}
@@ -841,7 +850,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           <FormControl>
                             <RadioGroupItem value="S" />
                           </FormControl>
-                          <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
                             문자
                           </FormLabel>
                         </FormItem>
@@ -849,7 +858,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           <FormControl>
                             <RadioGroupItem value="E" />
                           </FormControl>
-                          <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                          <FormLabel className="text-xs lg:text-base font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
                             이메일
                           </FormLabel>
                         </FormItem>
@@ -864,10 +873,13 @@ const EditProfile = ({ userProfile }: Props) => {
           <div
             className={cn(
               "flex border-b border-b-[#D2D2D2]",
-              addressType === "H" ? "h-[190px]" : "h-[250px]"
+              addressType === "H"
+                ? "h-auto lg:h-[190px]"
+                : "h-auto lg:h-[250px]"
             )}
           >
-            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex flex-col items-start pt-6">
+            {/* DESKTOP */}
+            <div className="bg-[#F4F5FA] min-w-[206px] px-[22px] flex-col items-start pt-6 hidden lg:flex">
               <span className="text-lg font-semibold leading-[21.48px] custom-letter-spacing mb-3">
                 우편물 수령지
               </span>
@@ -877,7 +889,20 @@ const EditProfile = ({ userProfile }: Props) => {
                 가급적 근무처로 기입 부탁드립니다.
               </p>
             </div>
-            <div className="flex flex-col justify-between px-[22px] py-6">
+            {/* MOBILE */}
+            <div className="bg-[#F4F5FA] min-w-[100px] px-2 flex flex-col items-start pt-3 lg:hidden">
+              <span className="text-sm font-semibold custom-letter-spacing mb-1.5">
+                우편물 수령지
+              </span>
+              <p className="text-[10px] font-semibold leading-snug custom-letter-spacing whitespace-nowrap">
+                * 올바른 입회 승인을
+                <br />
+                위해 가급적 근무처로
+                <br />
+                기입 부탁드립니다.
+              </p>
+            </div>
+            <div className="flex flex-col justify-between px-2 lg:px-[22px] py-3 lg:py-6 gap-y-1.5 lg:gap-y-0">
               <div className="w-full flex items-center gap-x-3">
                 <FormField
                   control={form.control}
@@ -894,13 +919,13 @@ const EditProfile = ({ userProfile }: Props) => {
                               form.setValue("addressTel", "");
                             }}
                             defaultValue={userProfile.mem_info.m_address_select}
-                            className="flex items-center gap-6"
+                            className="flex items-center gap-4 lg:gap-6"
                           >
                             <FormItem className="flex items-center space-x-1.5 space-y-0">
                               <FormControl>
                                 <RadioGroupItem value="H" />
                               </FormControl>
-                              <FormLabel className="font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
+                              <FormLabel className="text-xs lg:text-base font-normal text-[#828282] leading-[19.2px] custom-letter-spacing">
                                 자택
                               </FormLabel>
                             </FormItem>
@@ -908,7 +933,7 @@ const EditProfile = ({ userProfile }: Props) => {
                               <FormControl>
                                 <RadioGroupItem value="J" />
                               </FormControl>
-                              <FormLabel className="font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
+                              <FormLabel className="text-xs lg:text-base font-medium text-[#828282] leading-[19.2px] custom-letter-spacing">
                                 근무처
                               </FormLabel>
                             </FormItem>
@@ -920,7 +945,7 @@ const EditProfile = ({ userProfile }: Props) => {
                 />
               </div>
               <div
-                className="flex items-center gap-3"
+                className="flex flex-col lg:flex-row items-start lg:items-center gap-1.5 lg:gap-3"
                 hidden={addressType === "H"}
               >
                 <FormField
@@ -932,7 +957,7 @@ const EditProfile = ({ userProfile }: Props) => {
                         <Input
                           {...field}
                           placeholder="근무처명"
-                          className="h-12 w-[215px] rounded-[10px] border-[#D2D2D2]"
+                          className="h-[38px] lg:h-12 w-[135px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base"
                           disabled={addressType === "H"}
                         />
                       </FormControl>
@@ -948,7 +973,7 @@ const EditProfile = ({ userProfile }: Props) => {
                         <Input
                           {...field}
                           placeholder="근무처 전화번호"
-                          className="h-12 w-[215px] rounded-[10px] border-[#D2D2D2]"
+                          className="h-[38px] lg:h-12 w-[135px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base"
                           disabled={addressType === "H"}
                         />
                       </FormControl>
@@ -956,7 +981,7 @@ const EditProfile = ({ userProfile }: Props) => {
                   )}
                 />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 lg:gap-3">
                 <FormField
                   control={form.control}
                   name="zipcode"
@@ -967,7 +992,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           {...field}
                           placeholder="우편번호"
                           className={cn(
-                            "h-12 w-[215px] rounded-[10px] border-[#D2D2D2]",
+                            "h-[38px] lg:h-12 w-[135px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base",
                             form.getFieldState(field.name).error &&
                               "border-[#D00000]"
                           )}
@@ -984,7 +1009,7 @@ const EditProfile = ({ userProfile }: Props) => {
                   setZipcode={setZipcode}
                 />
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-1.5 lg:gap-3">
                 <FormField
                   control={form.control}
                   name="address"
@@ -995,7 +1020,7 @@ const EditProfile = ({ userProfile }: Props) => {
                           {...field}
                           placeholder="주소 입력"
                           className={cn(
-                            "h-12 w-[327px] rounded-[10px] border-[#D2D2D2]",
+                            "h-[38px] lg:h-12 w-[226px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base",
                             form.getFieldState(field.name).error &&
                               "border-[#D00000]"
                           )}
@@ -1015,7 +1040,7 @@ const EditProfile = ({ userProfile }: Props) => {
                         <Input
                           {...field}
                           placeholder="상세 주소 입력"
-                          className="h-12 w-[327px] rounded-[10px] border-[#D2D2D2]"
+                          className="h-[38px] lg:h-12 w-[226px] lg:w-[215px] rounded-[6px] lg:rounded-[10px] border-[#D2D2D2] text-xs lg:text-base placeholder:text-xs lg:placeholder:text-base"
                         />
                       </FormControl>
                     </FormItem>
@@ -1028,7 +1053,10 @@ const EditProfile = ({ userProfile }: Props) => {
           <div className="my-2">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-x-0.5">
+                <Button
+                  variant="link"
+                  className="flex items-center gap-x-0.5 px-0 lg:px-4"
+                >
                   <span className="text-base text-[#626262] font-medium">
                     회원탈퇴
                   </span>
@@ -1037,19 +1065,19 @@ const EditProfile = ({ userProfile }: Props) => {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle className="text-[20px] font-bold custom-letter-spacing text-center mb-4">
+                  <AlertDialogTitle className="text-[20px] lg:text-base lg:text-[20px] font-bold custom-letter-spacing text-center mb-4">
                     회원탈퇴
                   </AlertDialogTitle>
                   <AlertDialogDescription className="text-center space-y-2">
-                    <span className="block text-base text-black font-normal leading-[19.2px] custom-letter-spacing">
+                    <span className="block text-[15px] lg:text-base text-black font-normal leading-[19.2px] custom-letter-spacing">
                       탈퇴 선택시, 계정은 삭제되며 복구되지 않습니다.
                     </span>
-                    <span className="block text-base text-black font-normal leading-[19.2px] custom-letter-spacing">
+                    <span className="block text-[15px] lg:text-base text-black font-normal leading-[19.2px] custom-letter-spacing">
                       탈퇴하시겠습니까?
                     </span>
                   </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="pt-4">
+                <AlertDialogFooter className="pt-4 flex flex-row gap-2">
                   <AlertDialogAction
                     className="w-full"
                     onClick={async () => {
@@ -1059,7 +1087,9 @@ const EditProfile = ({ userProfile }: Props) => {
                   >
                     탈퇴
                   </AlertDialogAction>
-                  <AlertDialogCancel className="w-full">취소</AlertDialogCancel>
+                  <AlertDialogCancel className="w-full !m-0">
+                    취소
+                  </AlertDialogCancel>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
@@ -1068,7 +1098,7 @@ const EditProfile = ({ userProfile }: Props) => {
           <div className="flex items-center justify-center">
             <Button
               type="submit"
-              className="w-[345px] h-[55px] rounded-[10px] text-[18px] font-semibold custom-letter-spacing"
+              className="w-[280px] lg:w-[345px] h-[50px] lg:h-[55px] rounded-[10px] text-base lg:text-[18px] font-semibold custom-letter-spacing"
             >
               회원정보 수정
             </Button>

@@ -31,20 +31,22 @@ const VideoList = ({ videoList }: Props) => {
       <div className="mb-10">
         {selectedVideo ? (
           <>
-            <h3 className="text-[24px] font-bold leading-[28.8px] mb-3">
+            <h3 className="text-base lg:text-[24px] font-bold lg:leading-[28.8px] mb-3">
               {selectedVideo.b_title}
             </h3>
             {selectedVideo ? (
-              <div className="rounded-[20px] overflow-hidden">
+              <div className="lg:rounded-[20px] overflow-hidden">
                 <VimeoPlayer videoId={getVideoId(selectedVideo.b_file2_real)} />
               </div>
             ) : null}
           </>
         ) : (
-          <h3 className="text-[24px] font-bold leading-[28.8px]">목록</h3>
+          <h3 className="text-[24px] font-bold leading-[28.8px] hidden lg:block">
+            목록
+          </h3>
         )}
       </div>
-      <div className="grid grid-cols-2 gap-[18px] mb-[100px]">
+      <div className="flex flex-col lg:grid grid-cols-2 gap-[18px] mb-[50px] lg:mb-[100px]">
         {videoList.list.map((video) => (
           <VideoItem
             key={video.b_seq}
@@ -53,7 +55,7 @@ const VideoList = ({ videoList }: Props) => {
           />
         ))}
       </div>
-      <div className="flex items-center justify-center mb-[200px]">
+      <div className="flex items-center justify-center mb-[100px] lg:mb-[200px]">
         <Pagination
           onPageChange={onPageChange}
           pageCount={videoList.page_cnt}

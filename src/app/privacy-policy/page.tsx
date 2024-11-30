@@ -2,13 +2,18 @@ export const dynamic = "force-dynamic";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="max-w-screen-xl mx-auto">
-      <div className="my-20">
-        <h2 className="text-[33px] text-black font-bold">
+    <div className="max-w-screen-xl mx-auto px-5 lg:px-0">
+      <div className="mt-20 mb-12 lg:my-20">
+        <h2 className="text-[33px] text-black font-bold hidden lg:block">
           한국생체모방치의학회 개인정보처리방침
         </h2>
+        <h2 className="text-[25px] text-black font-bold lg:hidden">
+          한국생체모방치의학회
+          <br />
+          개인정보처리방침
+        </h2>
       </div>
-      <div className="text-lg font-normal leading-[32px] custom-letter-spacing mb-[150px]">
+      <div className="text-base lg:text-lg font-normal leading-relaxed lg:leading-[32px] custom-letter-spacing mb-[100px] lg:mb-[150px]">
         <p>
           한국생체모방치의학회(이하 "학회")는 회원의 개인정보를 중요하게
           생각하며, 개인정보 보호법 등 관련 법령을 준수하여 회원의 개인정보를
