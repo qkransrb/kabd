@@ -240,7 +240,7 @@ const MyPayment = ({ productList, paymentList }: Props) => {
             <TableBody>
               {paymentList.List.map((payment) => (
                 <TableRow key={payment.ph_seq}>
-                  <TableCell className="w-2/12 text-center">
+                  <TableCell className="w-3/12 text-center">
                     {payment.pp_title}
                   </TableCell>
                   <TableCell className="w-2/12 text-center">
@@ -249,7 +249,7 @@ const MyPayment = ({ productList, paymentList }: Props) => {
                   <TableCell className="w-2/12 text-center">
                     {getMyPagePaymentStatus(payment.ph_pay_status)}
                   </TableCell>
-                  <TableCell className="w-4/12">
+                  <TableCell className="w-3/12">
                     <div className="flex items-center justify-between">
                       <div className="w-1/2 text-center">
                         {getMyPagePaymentType(payment.ph_pay_type)}
