@@ -8,34 +8,25 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-import conferenceInfo from "@/assets/images/mobile-main-carousel-conference-info.png";
-
-const list = [
-  {
-    id: 1,
-    image: conferenceInfo,
-  },
-];
+import thx from "@/assets/images/thx_mo.jpeg";
 
 const MobileMainCarousel = () => {
   return (
     <Carousel className="!w-full !h-[320px]">
       <CarouselContent>
-        {list.map((item) => (
-          <CarouselItem key={item.id}>
-            <Link href="/conference" className="block overflow-hidden">
-              <Card>
-                <CardContent className="p-0">
-                  <Image
-                    src={item.image}
-                    alt="Main Carousel"
-                    className="h-[320px] w-full object-cover"
-                  />
-                </CardContent>
-              </Card>
-            </Link>
-          </CarouselItem>
-        ))}
+        <CarouselItem>
+          <Link href="/news" className="block overflow-hidden">
+            <Card>
+              <CardContent className="p-0">
+                <Image
+                  src={thx}
+                  alt="Main Carousel"
+                  className="h-[320px] w-full object-cover"
+                />
+              </CardContent>
+            </Card>
+          </Link>
+        </CarouselItem>
       </CarouselContent>
     </Carousel>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Menu } from "lucide-react";
+import { LogOut, Menu } from "lucide-react";
 
 import {
   Sheet,
@@ -19,13 +19,26 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { signOut } from "@/actions/auth-actions";
+import { useState } from "react";
 
 interface Props {
+  authenticated: boolean;
   regularMember: boolean;
 }
 
-const MobileHeaderMenu = ({ regularMember }: Props) => {
+const MobileHeaderMenu = ({ authenticated, regularMember }: Props) => {
+  const [open, setOpen] = useState<boolean>(false);
+
   const router = useRouter();
+
+  const onOpenChange = () => {
+    if (open) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  };
 
   const handleRoute = (href: string) => {
     regularMember
@@ -34,7 +47,7 @@ const MobileHeaderMenu = ({ regularMember }: Props) => {
   };
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>
         <Menu className="!size-7" />
       </SheetTrigger>
@@ -48,7 +61,7 @@ const MobileHeaderMenu = ({ regularMember }: Props) => {
             <SheetClose asChild>
               <Button
                 variant="link"
-                onClick={() => handleRoute("/introduction")}
+                onClick={() => router.push("/introduction")}
                 className="text-black text-[20px] font-bold custom-letter-spacing text-nowrap"
               >
                 학회소개
@@ -59,7 +72,7 @@ const MobileHeaderMenu = ({ regularMember }: Props) => {
             <SheetClose asChild>
               <Button
                 variant="link"
-                onClick={() => handleRoute("/info")}
+                onClick={() => router.push("/info")}
                 className="text-black text-[20px] font-bold custom-letter-spacing text-nowrap"
               >
                 회원가입안내
@@ -70,7 +83,7 @@ const MobileHeaderMenu = ({ regularMember }: Props) => {
             <SheetClose asChild>
               <Button
                 variant="link"
-                onClick={() => handleRoute("/conference")}
+                onClick={() => router.push("/conference")}
                 className="text-black text-[20px] font-bold custom-letter-spacing text-nowrap"
               >
                 학술대회안내
@@ -105,7 +118,7 @@ const MobileHeaderMenu = ({ regularMember }: Props) => {
                   <SheetClose asChild>
                     <Button
                       variant="link"
-                      onClick={() => handleRoute("/news")}
+                      onClick={() => router.push("/news")}
                       className="text-black text-sm font-medium custom-letter-spacing text-nowrap h-8"
                     >
                       보도자료
@@ -172,6 +185,25 @@ const MobileHeaderMenu = ({ regularMember }: Props) => {
             </Accordion>
           </div>
         </div>
+        {authenticated ? (
+          <div className="px-2">
+            <button
+              type="button"
+              onClick={() => {
+                signOut();
+                window.localStorage.removeItem("kabd_user");
+                setOpen(false);
+                router.refresh();
+              }}
+              className="w-[83px] h-7 rounded-[10px] border border-[#D2D2D2] flex items-center justify-center gap-1"
+            >
+              <span className="text-[13px] text-[#595959] font-medium custom-letter-spacing pt-0.5">
+                로그아웃
+              </span>
+              <LogOut size={14} color="#595959" />
+            </button>
+          </div>
+        ) : null}
       </SheetContent>
     </Sheet>
   );

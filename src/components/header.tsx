@@ -205,7 +205,10 @@ const Header = async () => {
               로그인
             </Link>
           )}
-          <MobileHeaderMenu regularMember={regularMember} />
+          <MobileHeaderMenu
+            authenticated={authenticated}
+            regularMember={regularMember}
+          />
         </div>
       </nav>
     </header>

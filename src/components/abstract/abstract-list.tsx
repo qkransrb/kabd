@@ -33,7 +33,7 @@ const AbstractList = ({ abstractList }: Props) => {
       </div>
       <Separator className="h-[2px] lg:h-[3px] bg-black mb-5 lg:mb-9" />
 
-      <div className="hidden lg:flex items-start justify-between">
+      <div className="hidden lg:grid grid-cols-4 gap-6">
         {abstractList.list.map((abstract) => (
           <Link
             href={`/abstract/${abstract.b_seq}`}
@@ -73,7 +73,7 @@ const AbstractList = ({ abstractList }: Props) => {
         ))}
       </div>
 
-      <div className="flex items-center justify-center my-[50px]">
+      <div className="flex items-center justify-center my-[50px] lg:my-[100px] ">
         <Pagination
           onPageChange={onPageChange}
           pageCount={abstractList.page_cnt}
