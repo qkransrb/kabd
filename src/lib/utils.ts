@@ -66,3 +66,37 @@ export function getMyPagePaymentStatus(status: string) {
       return "";
   }
 }
+
+export function getProductTitleBySeq(seq: string): string {
+  switch (seq) {
+    case "1":
+      return "입회비";
+    case "2":
+      return "입회비(1년)";
+    case "3":
+      return "입회비(3년)";
+    case "4":
+      return "입회비(4년)";
+    case "5":
+      return "종신회비";
+    default:
+      return "";
+  }
+}
+
+export function getProductSeqByTitle(title: string): string {
+  switch (title) {
+    case "입회비":
+      return "1";
+    case "입회비(1년)":
+      return "2";
+    case "입회비(3년)":
+      return "3";
+    case "입회비(4년)":
+      return "4";
+    case "종신회비":
+      return "5";
+    default:
+      return "";
+  }
+}

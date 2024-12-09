@@ -24,6 +24,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="14nad9KaTVsZrOdXZL_E4dhmthgIS_B52sD2-N1PSs4"
+        />
+        <meta
+          name="naver-site-verification"
+          content="37b0fb8ff84f9afcccca161e1f7fe8f970af8d71"
+        />
+        <script
+          type="text/javascript"
+          src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js"
+        ></script>
+
+        {/*
+        -- Production
+        <script
+          type="text/javascript"
+          src="https://stdpay.inicis.com/stdjs/INIStdPay.js"
+        ></script> 
+        */}
+      </head>
       <body
         className={`${pretendardRegular.variable} antialiased flex flex-col min-h-screen`}
       >
@@ -32,6 +54,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <Toaster />
+          <div id="payForms" hidden></div>
         </AuthProvider>
       </body>
     </html>

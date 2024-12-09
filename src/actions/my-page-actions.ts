@@ -198,7 +198,7 @@ export async function getConferenceList(page?: number) {
 
 export async function withdraw() {
   try {
-    const { data } = await axios.post(
+    await axios.post(
       "https://api.kabd.or.kr/api/member/withdraw.php",
       {},
       {

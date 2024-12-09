@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { registConference } from "@/actions/conference-actions";
 import { isAuthenticated } from "@/actions/auth-actions";
+import { generateInicisMobileForm, generateInicisPcForm } from "@/lib/inicis";
 
 interface Props {
   id: string;
@@ -28,14 +29,25 @@ interface Props {
 }
 
 const ConferencePaymentButton = ({ id, conference }: Props) => {
+  console.log(conference);
+
   const [user, setUser] = useState<LocalStorageUser | null>(null);
   const [isPending, setIsPending] = useState<boolean>(false);
+  const [width, setWidth] = useState<number>(0);
 
   useEffect(() => {
     if (!user) {
       setUser(JSON.parse(window.localStorage.getItem("kabd_user")!));
     }
   }, [user]);
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
 
   const payment = async () => {
     setIsPending(true);
@@ -51,19 +63,67 @@ const ConferencePaymentButton = ({ id, conference }: Props) => {
         ? conference.r_amount
         : conference.amount;
 
-    const result = await registConference(id, amount);
-    if (result.code === "000" && result.msg === "success") {
-      setIsPending(false);
-      window.alert("신청이 완료되었습니다.");
+    // const result = await registConference(id, amount);
+    // if (result.code === "000" && result.msg === "success") {
+    //   setIsPending(false);
+    //   window.alert("신청이 완료되었습니다.");
+    // } else {
+    //   setIsPending(false);
+    //   window.alert(result.msg);
+    // }
+
+    const formId = "conference_fee";
+
+    const exists = document.getElementById(formId);
+
+    // 기존 form 삭제
+    if (exists) {
+      exists.remove();
+    }
+
+    if (width <= 1024) {
+      // 모바일
+      const form = generateInicisMobileForm(
+        formId,
+        user?.name as string,
+        user?.mobile as string,
+        user?.email as string,
+        conference.ac_title,
+        "100",
+        true,
+        id
+      );
+
+      const target = document.getElementById("payForms");
+      target?.append(form);
+
+      form.submit();
     } else {
-      setIsPending(false);
-      window.alert(result.msg);
+      // PC
+      const form = generateInicisPcForm(
+        formId,
+        user?.name as string,
+        user?.mobile as string,
+        user?.email as string,
+        conference.ac_title,
+        "100",
+        true,
+        id
+      );
+
+      const target = document.getElementById("payForms");
+      target?.append(form);
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      INIStdPay.pay(formId);
     }
   };
 
   return (
     <div>
-      {user && user.grade !== "N" ? (
+      {/* 정회원 */}
+      {user && user.grade !== "N" && (
         <Button
           type="button"
           onClick={payment}
@@ -82,26 +142,40 @@ const ConferencePaymentButton = ({ id, conference }: Props) => {
             </>
           )}
         </Button>
-      ) : (
+      )}
+      {/* 비회원 */}
+      {user && user.grade === "N" && (
+        <Button
+          type="button"
+          onClick={() => alert("비회원")}
+          disabled={isPending}
+          className="w-[280px] lg:w-[269px] h-[50px] lg:h-[56px] flex items-center justify-center rounded-[10px] mb-[50px] lg:mb-[100px]"
+          hidden={conference.display !== "Y"}
+        >
+          {isPending ? (
+            <Loader className="animate-spin !size-5" />
+          ) : (
+            <>
+              <span className="text-base lg:text-lg text-white font-semibold leading-[21.48px] pl-2">
+                결제하기
+              </span>
+              <ChevronRight size={20} className="mb-0.5" />
+            </>
+          )}
+        </Button>
+      )}
+      {!user && (
         <Popover>
           <PopoverTrigger asChild>
             <Button
               type="button"
-              onClick={payment}
-              disabled={isPending}
               className="w-[280px] lg:w-[269px] h-[50px] lg:h-[56px] flex items-center justify-center rounded-[10px] mb-[50px] lg:mb-[100px]"
               hidden={conference.display !== "Y"}
             >
-              {isPending ? (
-                <Loader className="animate-spin !size-5" />
-              ) : (
-                <>
-                  <span className="text-base lg:text-lg text-white font-semibold leading-[21.48px] pl-2">
-                    결제하기
-                  </span>
-                  <ChevronRight size={20} className="mb-0.5" />
-                </>
-              )}
+              <span className="text-base lg:text-lg text-white font-semibold leading-[21.48px] pl-2">
+                결제하기
+              </span>
+              <ChevronRight size={20} className="mb-0.5" />
             </Button>
           </PopoverTrigger>
           <PopoverContent

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
@@ -43,6 +43,7 @@ import { cn, getMyPagePaymentStatus, getMyPagePaymentType } from "@/lib/utils";
 
 import receiptPhrase from "@/assets/images/receipt/receipt-phrase.png";
 import receiptKabd from "@/assets/images/receipt/receipt-kabd.png";
+import { generateInicisMobileForm, generateInicisPcForm } from "@/lib/inicis";
 
 const formSchema = z.object({
   type: z.string().min(1),
@@ -56,10 +57,34 @@ interface Props {
 }
 
 const MyPayment = ({ productList, paymentList }: Props) => {
+  const [user, setUser] = useState<LocalStorageUser | null>(null);
+  const [width, setWidth] = useState<number>(0);
+
   const contentRef = useRef<HTMLDivElement>(null);
   const reactToPrintFn = useReactToPrint({ contentRef });
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      setUser(JSON.parse(localStorage.getItem("kabd_user")!));
+    }
+  }, [user]);
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -86,7 +111,50 @@ const MyPayment = ({ productList, paymentList }: Props) => {
         window.alert("입·연회비 납부 신청에 실패하였습니다.");
       }
     } else {
-      window.alert("카드결제는 준비중 입니다.");
+      const formId = "membership_dues";
+
+      const exists = document.getElementById(formId);
+
+      // 기존 form 삭제
+      if (exists) {
+        exists.remove();
+      }
+
+      if (width <= 1024) {
+        // 모바일
+        const form = generateInicisMobileForm(
+          formId,
+          user?.name as string,
+          user?.mobile as string,
+          user?.email as string,
+          values.type,
+          values.amount,
+          false
+        );
+
+        const target = document.getElementById("payForms");
+        target?.append(form);
+
+        form.submit();
+      } else {
+        // PC
+        const form = generateInicisPcForm(
+          formId,
+          user?.name as string,
+          user?.mobile as string,
+          user?.email as string,
+          values.type,
+          values.amount,
+          false
+        );
+
+        const target = document.getElementById("payForms");
+        target?.append(form);
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        INIStdPay.pay(formId);
+      }
     }
   };
 
@@ -117,7 +185,8 @@ const MyPayment = ({ productList, paymentList }: Props) => {
                           (product) => product.pp_seq === value
                         );
                       if (product) {
-                        return form.setValue("amount", product.pp_amount);
+                        return form.setValue("amount", "100");
+                        // return form.setValue("amount", product.pp_amount);
                       } else {
                         return form.setValue("amount", "");
                       }
