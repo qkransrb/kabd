@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 const Payments = () => {
   return (
     <div className="flex items-center justify-center screen-height">

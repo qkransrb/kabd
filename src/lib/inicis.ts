@@ -269,13 +269,17 @@ export const generateInicisMobileForm = (
       JSON.stringify({
         phone,
         goodsName: type,
-        conferenceId: optionalData ? optionalData : "",
+        conferenceId: optionalData,
       })
     );
   } else {
     noti.setAttribute(
       "value",
-      JSON.stringify({ phone, goodsName: getProductTitleBySeq(type) })
+      JSON.stringify({
+        phone,
+        goodsName: getProductTitleBySeq(type),
+        conferenceId: "EMPTY",
+      })
     );
   }
 

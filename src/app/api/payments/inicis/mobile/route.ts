@@ -57,7 +57,7 @@ export async function POST(req: Request) {
 
             const noti = JSON.parse(map.get("P_NOTI") as string);
 
-            if (noti.conferenceId === "") {
+            if (noti.conferenceId == "EMPTY") {
               console.log(">>> 입연회비");
               request.post(
                 {
