@@ -185,8 +185,7 @@ const MyPayment = ({ productList, paymentList }: Props) => {
                           (product) => product.pp_seq === value
                         );
                       if (product) {
-                        return form.setValue("amount", "100");
-                        // return form.setValue("amount", product.pp_amount);
+                        return form.setValue("amount", product.pp_amount);
                       } else {
                         return form.setValue("amount", "");
                       }

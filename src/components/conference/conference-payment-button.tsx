@@ -89,7 +89,7 @@ const ConferencePaymentButton = ({ id, conference }: Props) => {
         user?.mobile as string,
         user?.email as string,
         conference.ac_title,
-        "100",
+        amount,
         true,
         id
       );
@@ -106,7 +106,7 @@ const ConferencePaymentButton = ({ id, conference }: Props) => {
         user?.mobile as string,
         user?.email as string,
         conference.ac_title,
-        "100",
+        amount,
         true,
         id
       );
