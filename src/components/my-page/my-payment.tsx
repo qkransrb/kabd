@@ -111,6 +111,12 @@ const MyPayment = ({ productList, paymentList }: Props) => {
         window.alert("입·연회비 납부 신청에 실패하였습니다.");
       }
     } else {
+      if (values.type !== "1" && values.type !== "2") {
+        return window.alert(
+          "해당 상품은 카드결제가 불가능합니다.\n계좌이체로 결제를 진행해주세요."
+        );
+      }
+
       const formId = "membership_dues";
 
       const exists = document.getElementById(formId);
