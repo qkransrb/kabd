@@ -8,6 +8,8 @@ import { getProductSeqByTitle } from "@/lib/utils";
 export async function POST(req: Request) {
   const formData = await req.formData();
 
+  // console.log("formData: ", formData);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const body: any = {};
 

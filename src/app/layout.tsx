@@ -33,18 +33,15 @@ export default function RootLayout({
           name="naver-site-verification"
           content="37b0fb8ff84f9afcccca161e1f7fe8f970af8d71"
         />
-        <script
+        {/* <script
           type="text/javascript"
           src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js"
-        ></script>
+        ></script> */}
 
-        {/*
-        -- Production
         <script
           type="text/javascript"
           src="https://stdpay.inicis.com/stdjs/INIStdPay.js"
-        ></script> 
-        */}
+        ></script>
       </head>
       <body
         className={`${pretendardRegular.variable} antialiased flex flex-col min-h-screen`}
