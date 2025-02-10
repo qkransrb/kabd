@@ -426,7 +426,6 @@ const GeneralForm = () => {
                       type="button"
                       onClick={async () => {
                         const result = await sendAuthCode(field.value);
-                        console.log(result);
                         if (result.code === "000" && result.msg === "success") {
                           window.alert("인증번호가 발송되었습니다.");
                         } else {
