@@ -3,15 +3,16 @@ import MyPageConference from "@/components/my-page/my-page-conference";
 import MyPageSidebar from "@/components/my-page/my-page-sidebar";
 
 import PageNavigation from "@/components/page-navigation";
+import PaymentResultDialog from "@/components/payment-result-dialog";
 import SubTitle from "@/components/sub-title";
 
 export const dynamic = "force-dynamic";
 
 interface Props {
-  searchParams: { page: number };
+  searchParams: { page: number; q?: string };
 }
 
-const MyConference = async ({ searchParams: { page } }: Props) => {
+const MyConference = async ({ searchParams: { page, q } }: Props) => {
   const conferenceList = await getConferenceList(page);
 
   return (
@@ -34,6 +35,8 @@ const MyConference = async ({ searchParams: { page } }: Props) => {
           <MyPageConference conferenceList={conferenceList} />
         </div>
       </section>
+
+      {q && <PaymentResultDialog q={q} url="/my-page/conference" />}
     </div>
   );
 };

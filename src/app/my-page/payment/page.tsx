@@ -2,15 +2,16 @@ import { getPaymentList, getProductList } from "@/actions/my-page-actions";
 import MyPageSidebar from "@/components/my-page/my-page-sidebar";
 import MyPayment from "@/components/my-page/my-payment";
 import PageNavigation from "@/components/page-navigation";
+import PaymentResultDialog from "@/components/payment-result-dialog";
 import SubTitle from "@/components/sub-title";
 
 export const dynamic = "force-dynamic";
 
 interface Props {
-  searchParams: { page: number };
+  searchParams: { page: number; q?: string };
 }
 
-const MyPage = async ({ searchParams: { page } }: Props) => {
+const MyPage = async ({ searchParams: { page, q } }: Props) => {
   const productList = await getProductList();
   const paymentList = await getPaymentList(page);
 
@@ -34,6 +35,8 @@ const MyPage = async ({ searchParams: { page } }: Props) => {
           <MyPayment productList={productList} paymentList={paymentList} />
         </div>
       </section>
+
+      {q && <PaymentResultDialog q={q} url="/my-page/payment" />}
     </div>
   );
 };

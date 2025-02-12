@@ -100,6 +100,12 @@ export async function POST(req: Request) {
                 }
               );
             }
+
+            if (noti.conferenceId == "EMPTY") {
+              return redirect("/my-page/payment?q=success");
+            } else {
+              return redirect("/my-page/conference?q=success");
+            }
           } catch (e) {
             console.log(e);
 
@@ -135,7 +141,7 @@ export async function POST(req: Request) {
         }
       );
 
-      return redirect("/payments");
+      return redirect("/");
     }
   } else {
     return redirect("/");

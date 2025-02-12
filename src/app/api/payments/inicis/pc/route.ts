@@ -171,10 +171,19 @@ export async function POST(req: Request) {
         }
       );
 
-      return redirect("/payments");
+      if (merchantData) {
+        return redirect(`/my-page/conference?q=success`);
+      } else {
+        return redirect("/my-page/payment?q=success");
+      }
     }
-    return redirect("/payments/failed");
+
+    if (merchantData) {
+      return redirect(`/my-page/conference?q=failed`);
+    } else {
+      return redirect("/my-page/payment?q=failed");
+    }
   } else {
-    return redirect("/payments/failed");
+    return redirect("/");
   }
 }
