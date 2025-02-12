@@ -42,21 +42,20 @@ export async function POST(req: Request) {
       request.post(
         { method: "POST", uri: P_REQ_URL2, form: options },
         (err, httpResponse, body) => {
+          let values = [];
+          values = new String(body).split("&");
+
+          const map = new HashMap();
+          for (let x = 0; x < values.length; x++) {
+            // 승인결과를 파싱값 잘라 hashmap에 저장
+            const i = values[x].indexOf("=");
+            const key1 = values[x].substring(0, i);
+            const value1 = values[x].substring(i + 1);
+            map.set(key1, value1);
+          }
+
+          const noti = JSON.parse(map.get("P_NOTI") as string);
           try {
-            let values = [];
-            values = new String(body).split("&");
-
-            const map = new HashMap();
-            for (let x = 0; x < values.length; x++) {
-              // 승인결과를 파싱값 잘라 hashmap에 저장
-              const i = values[x].indexOf("=");
-              const key1 = values[x].substring(0, i);
-              const value1 = values[x].substring(i + 1);
-              map.set(key1, value1);
-            }
-
-            const noti = JSON.parse(map.get("P_NOTI") as string);
-
             if (noti.conferenceId == "EMPTY") {
               console.log(">>> 입연회비");
               request.post(
@@ -100,12 +99,6 @@ export async function POST(req: Request) {
                 }
               );
             }
-
-            if (noti.conferenceId == "EMPTY") {
-              return redirect("/my-page/payment?q=success");
-            } else {
-              return redirect("/my-page/conference?q=success");
-            }
           } catch (e) {
             console.log(e);
 
@@ -138,10 +131,16 @@ export async function POST(req: Request) {
               }
             );
           }
+
+          if (noti.conferenceId == "EMPTY") {
+            return redirect("/my-page/payment?q=success");
+          } else {
+            return redirect("/my-page/conference?q=success");
+          }
         }
       );
 
-      return redirect("/");
+      // return redirect("/");
     }
   } else {
     return redirect("/");
