@@ -12,10 +12,15 @@ import { cn } from "@/lib/utils";
 import PageNavigation from "@/components/page-navigation";
 import SubTitle from "@/components/sub-title";
 import { ChevronRight } from "lucide-react";
+import PaymentResultDialog from "@/components/payment-result-dialog";
 
 export const dynamic = "force-dynamic";
 
-const MyPage = () => {
+interface Props {
+  searchParams: { q?: string };
+}
+
+const MyPage = ({ searchParams: { q } }: Props) => {
   const [user, setUser] = useState<LocalStorageUser | null>(null);
 
   useEffect(() => {
@@ -132,6 +137,8 @@ const MyPage = () => {
           </Link>
         </div>
       </div>
+
+      {q && <PaymentResultDialog q={q} url="/my-page" />}
     </div>
   );
 };

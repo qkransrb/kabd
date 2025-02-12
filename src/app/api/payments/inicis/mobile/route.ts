@@ -75,8 +75,6 @@ export async function POST(req: Request) {
                 (err, httpResponse, body) => {
                   const jsoncode = err ? err : JSON.stringify(body);
                   const r = JSON.parse(jsoncode);
-
-                  return redirect("/my-page/payment?q=success");
                 }
               );
             } else {
@@ -99,8 +97,6 @@ export async function POST(req: Request) {
                   const jsoncode = err ? err : JSON.stringify(body);
                   const r = JSON.parse(jsoncode);
                   console.log(r);
-
-                  return redirect("/my-page/payment?q=success");
                 }
               );
             }
@@ -139,9 +135,9 @@ export async function POST(req: Request) {
         }
       );
 
-      // return redirect("/");
+      return redirect("/my-page?q=success");
     }
   } else {
-    return redirect("/");
+    return redirect("/my-page?q=failed");
   }
 }
