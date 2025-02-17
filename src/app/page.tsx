@@ -3,7 +3,6 @@ import { getHomeResources } from "@/actions/home-actions";
 import Announcement from "@/components/home/announcement";
 import LoginForm from "@/components/home/login-form";
 import MainCarousel from "@/components/home/main-carousel";
-import MainPopup from "@/components/home/main-popup";
 import MobileMainCarousel from "@/components/home/mobile-main-carousel";
 import PressRelease from "@/components/home/press-release";
 import UserProfile from "@/components/home/user-profile";
@@ -45,7 +44,7 @@ export default async function Home() {
 
       <div className="w-full h-[344px] absolute top-[180px] bg-[#F4F5FA] -z-10 hidden lg:block" />
 
-      <MainPopup />
+      {/* <MainPopup /> */}
     </div>
   );
 }
